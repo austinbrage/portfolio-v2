@@ -1,0 +1,207 @@
+<layout
+  title="{{title}}"
+  description="{{description}}"
+>
+  <ui-navbar
+    navItems="{{navItems}}"
+    languages="{{languages}}"
+    currentPage="{{currentPage}}"
+  ></ui-navbar>
+
+  <main class="ui-contact-page">
+    <!-- Back Button -->
+    <div class="ui-contact-back-wrapper">
+      <a href="/{{lang}}" class="ui-contact-back-button">
+        <svg class="ui-contact-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 19-7-7 7-7"></path>
+          <path d="M19 12H5"></path>
+        </svg>
+        {{t('contact-back-button')}}
+      </a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="ui-contact-hero">
+      <h1 class="ui-contact-hero-title">
+        <span class="ui-contact-hero-title-gradient">{{t('contact-hero-title')}}</span>
+      </h1>
+      <p class="ui-contact-hero-subtitle">{{t('contact-hero-subtitle')}}</p>
+    </div>
+
+    <!-- Contact Info Cards -->
+    <div class="ui-contact-info-grid">
+      <!-- Email Card -->
+      <div class="ui-contact-info-card">
+        <div class="ui-contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </div>
+        <h3 class="ui-contact-info-title">{{t('contact-card-email')}}</h3>
+        <a href="mailto:{{email}}" class="ui-contact-info-link">{{email}}</a>
+      </div>
+
+      <!-- Phone Card -->
+      <div class="ui-contact-info-card">
+        <div class="ui-contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </div>
+        <h3 class="ui-contact-info-title">{{t('contact-card-phone')}}</h3>
+        <a href="tel:{{phone}}" class="ui-contact-info-link">{{t('contact-phone-value')}}</a>
+      </div>
+
+      <!-- Location Card -->
+      <div class="ui-contact-info-card">
+        <div class="ui-contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <h3 class="ui-contact-info-title">{{t('contact-card-location')}}</h3>
+        <p class="ui-contact-info-text">{{t('contact-location-value')}}</p>
+      </div>
+    </div>
+
+    <!-- Form and Social Section -->
+    <div class="ui-contact-content-grid" x-data="contactForm()">
+      <!-- Contact Form -->
+      <div class="ui-contact-form-card">
+        <h2 class="ui-contact-form-title">{{t('contact-form-title')}}</h2>
+
+        <!-- Success Message -->
+        <div x-show="showSuccess" x-transition class="ui-contact-alert ui-contact-alert-success">
+          <svg class="ui-contact-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <path d="m9 11 3 3L22 4"></path>
+          </svg>
+          <span>{{t('contact-form-success')}}</span>
+        </div>
+
+        <!-- Error Message -->
+        <div x-show="showError" x-transition class="ui-contact-alert ui-contact-alert-error">
+          <svg class="ui-contact-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m15 9-6 6"></path>
+            <path d="m9 9 6 6"></path>
+          </svg>
+          <span>Something went wrong. Please try again.</span>
+        </div>
+
+        <form @submit.prevent="handleSubmit" class="ui-contact-form">
+          <div class="ui-contact-form-field">
+            <label for="name" class="ui-contact-form-label">{{t('contact-form-name-label')}}</label>
+            <input
+              id="name"
+              type="text"
+              x-model="formData.name"
+              placeholder="{{t('contact-form-name-placeholder')}}"
+              required
+              :disabled="isSubmitting"
+              class="ui-contact-form-input"
+            />
+          </div>
+
+          <div class="ui-contact-form-field">
+            <label for="email" class="ui-contact-form-label">{{t('contact-form-email-label')}}</label>
+            <input
+              id="email"
+              type="email"
+              x-model="formData.email"
+              placeholder="{{t('contact-form-email-placeholder')}}"
+              required
+              :disabled="isSubmitting"
+              class="ui-contact-form-input"
+            />
+          </div>
+
+          <div class="ui-contact-form-field">
+            <label for="message" class="ui-contact-form-label">{{t('contact-form-message-label')}}</label>
+            <textarea
+              id="message"
+              x-model="formData.message"
+              placeholder="{{t('contact-form-message-placeholder')}}"
+              required
+              :disabled="isSubmitting"
+              class="ui-contact-form-textarea"
+              rows="5"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="ui-contact-form-submit" :disabled="isSubmitting" :class="{ 'ui-contact-form-submit-loading': isSubmitting }">
+            <!-- Loading Spinner -->
+            <svg x-show="isSubmitting" class="ui-contact-form-submit-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+            </svg>
+
+            <!-- Send Icon -->
+            <svg x-show="!isSubmitting" class="ui-contact-form-submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+
+            <span x-text="isSubmitting ? 'Sending...' : '{{t('contact-form-submit')}}'"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Social and Availability -->
+      <div class="ui-contact-sidebar">
+        <!-- Social Links Card -->
+        <div class="ui-contact-social-card">
+          <h2 class="ui-contact-social-title">{{t('contact-social-title')}}</h2>
+          <div class="ui-contact-social-links">
+            <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer" class="ui-contact-social-link">
+              <div class="ui-contact-social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="ui-contact-social-name">{{t('contact-social-github')}}</p>
+                <p class="ui-contact-social-handle">@austinbrage</p>
+              </div>
+            </a>
+
+            <a href="{{linkedinUrl}}" target="_blank" rel="noopener noreferrer" class="ui-contact-social-link">
+              <div class="ui-contact-social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect width="4" height="12" x="2" y="9"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </div>
+              <div>
+                <p class="ui-contact-social-name">{{t('contact-social-linkedin')}}</p>
+                <p class="ui-contact-social-handle">@austinbrage</p>
+              </div>
+            </a>
+
+            <a href="{{twitterUrl}}" target="_blank" rel="noopener noreferrer" class="ui-contact-social-link">
+              <div class="ui-contact-social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="ui-contact-social-name">{{t('contact-social-twitter')}}</p>
+                <p class="ui-contact-social-handle">@austinbrage</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Availability Card -->
+        <div class="ui-contact-availability-card">
+          <h3 class="ui-contact-availability-title">{{t('contact-availability-title')}}</h3>
+          <p class="ui-contact-availability-description">{{t('contact-availability-description')}}</p>
+          <div class="ui-contact-availability-badge">{{t('contact-availability-badge')}}</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</layout>

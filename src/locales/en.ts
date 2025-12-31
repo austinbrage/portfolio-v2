@@ -53,6 +53,32 @@ export default {
   "footer-cta": "Get In Touch",
   "footer-copyright": "© 2025 Austin Brage. All rights reserved.",
 
+  // Contact Page
+  "contact-back-button": "Back to Home",
+  "contact-hero-title": "Let's Connect",
+  "contact-hero-subtitle": "Have a project in mind or just want to chat? I'd love to hear from you!",
+  "contact-card-email": "Email",
+  "contact-card-phone": "Phone",
+  "contact-card-location": "Location",
+  "contact-location-value": "San Francisco, CA",
+  "contact-phone-value": "+1 (234) 567-890",
+  "contact-form-title": "Send Me a Message",
+  "contact-form-name-label": "Your Name",
+  "contact-form-name-placeholder": "John Doe",
+  "contact-form-email-label": "Your Email",
+  "contact-form-email-placeholder": "john@example.com",
+  "contact-form-message-label": "Your Message",
+  "contact-form-message-placeholder": "Tell me about your project...",
+  "contact-form-submit": "Send Message",
+  "contact-form-success": "Thanks for reaching out! I'll get back to you soon.",
+  "contact-social-title": "Connect on Social",
+  "contact-social-github": "GitHub",
+  "contact-social-linkedin": "LinkedIn",
+  "contact-social-twitter": "Twitter",
+  "contact-availability-title": "Availability",
+  "contact-availability-description": "I'm currently available for freelance projects and full-time opportunities. Let's build something amazing together!",
+  "contact-availability-badge": "✨ Open to Work",
+
   "projects": [
     {
       id: 1,

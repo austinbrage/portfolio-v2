@@ -50,8 +50,34 @@ export default {
   // Footer
   "footer-title": "Trabajemos Juntos",
   "footer-description": "Siempre estoy interesado en escuchar sobre nuevos proyectos y oportunidades. Ya sea que tengas una pregunta o solo quieras saludar, ¡no dudes en contactarme!",
-  "footer-cta": "Contáctame",
+  "footer-cta": "Contactame",
   "footer-copyright": "© 2025 Agustin Brage. Todos los derechos reservados.",
+
+  // Contact Page
+  "contact-back-button": "Volver al Inicio",
+  "contact-hero-title": "Conectemos",
+  "contact-hero-subtitle": "¿Tenés un proyecto en mente o solo querés charlar? ¡Me encantaría saber de vos!",
+  "contact-card-email": "Correo",
+  "contact-card-phone": "Teléfono",
+  "contact-card-location": "Ubicación",
+  "contact-location-value": "San Francisco, CA",
+  "contact-phone-value": "+1 (234) 567-890",
+  "contact-form-title": "Enviame un Mensaje",
+  "contact-form-name-label": "Tu Nombre",
+  "contact-form-name-placeholder": "Juan Pérez",
+  "contact-form-email-label": "Tu Correo",
+  "contact-form-email-placeholder": "juan@ejemplo.com",
+  "contact-form-message-label": "Tu Mensaje",
+  "contact-form-message-placeholder": "Contame sobre tu proyecto...",
+  "contact-form-submit": "Enviar Mensaje",
+  "contact-form-success": "¡Gracias por contactarme! Te responderé pronto.",
+  "contact-social-title": "Conectate en Redes",
+  "contact-social-github": "GitHub",
+  "contact-social-linkedin": "LinkedIn",
+  "contact-social-twitter": "Twitter",
+  "contact-availability-title": "Disponibilidad",
+  "contact-availability-description": "Actualmente estoy disponible para proyectos freelance y oportunidades de tiempo completo. ¡Construyamos algo increíble juntos!",
+  "contact-availability-badge": "✨ Disponible para Trabajar",
 
   "projects": [
     {

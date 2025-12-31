@@ -6,14 +6,7 @@ document.addEventListener("alpine:init", function() {
         if (projectsSection) {
           projectsSection.scrollIntoView({ behavior: "smooth" });
         }
-      },
-
-      scrollToContact: function() {
-        var contactSection = document.getElementById("contact");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-      },
+      }
     };
   });
 });

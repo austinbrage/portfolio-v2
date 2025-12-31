@@ -470,6 +470,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
 }
 
 :root.dark .ui-hero-cta-secondary {
