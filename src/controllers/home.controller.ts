@@ -45,8 +45,8 @@ export class HomeController {
         heroLinkedinUrl: "https://linkedin.com/in/austinbrage",
         heroEmail: "austin@example.com",
         experiences: I18nService.getExperiences(lang),
-        projects: I18nService.getProjects(lang),
-        blogPosts: I18nService.getBlogPosts(lang),
+        projects: I18nService.getProjects(lang, 4),
+        blogPosts: I18nService.getBlogPosts(lang, 2),
       };
 
       context.set.headers["Content-Type"] = "text/html";

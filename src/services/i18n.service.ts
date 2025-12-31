@@ -40,8 +40,9 @@ export class I18nService {
   /**
    * Get projects array for a specific language
    * Returns the projects from the locale file
+   * @param limit - Optional number of projects to return (for featured sections)
    */
-  static getProjects(lang: string): any[] {
+  static getProjects(lang: string, limit?: number): any[] {
     // Validate language
     if (!availableLanguages.includes(lang)) {
       lang = "en";
@@ -53,15 +54,19 @@ export class I18nService {
       return [];
     }
 
-    // Return projects array
-    return (locale as any).projects || [];
+    // Get projects array
+    var projects = (locale as any).projects || [];
+
+    // Return limited or full array
+    return limit ? projects.slice(0, limit) : projects;
   }
 
   /**
    * Get blog posts array for a specific language
    * Returns the blog posts from the locale file
+   * @param limit - Optional number of blog posts to return (for featured sections)
    */
-  static getBlogPosts(lang: string): any[] {
+  static getBlogPosts(lang: string, limit?: number): any[] {
     // Validate language
     if (!availableLanguages.includes(lang)) {
       lang = "en";
@@ -73,8 +78,11 @@ export class I18nService {
       return [];
     }
 
-    // Return blog posts array
-    return (locale as any).blogPosts || [];
+    // Get blog posts array
+    var blogPosts = (locale as any).blogPosts || [];
+
+    // Return limited or full array
+    return limit ? blogPosts.slice(0, limit) : blogPosts;
   }
 
   /**
