@@ -47,6 +47,12 @@ export default {
   "blog-title": "Últimas Entradas del Blog",
   "blog-view-all": "Ver Todas las Entradas",
 
+  // Footer
+  "footer-title": "Trabajemos Juntos",
+  "footer-description": "Siempre estoy interesado en escuchar sobre nuevos proyectos y oportunidades. Ya sea que tengas una pregunta o solo quieras saludar, ¡no dudes en contactarme!",
+  "footer-cta": "Contáctame",
+  "footer-copyright": "© 2025 Agustin Brage. Todos los derechos reservados.",
+
   "projects": [
     {
       id: 1,

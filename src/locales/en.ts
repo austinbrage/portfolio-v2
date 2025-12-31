@@ -47,6 +47,12 @@ export default {
   "blog-title": "Latest from the Blog",
   "blog-view-all": "View All Posts",
 
+  // Footer
+  "footer-title": "Let's Work Together",
+  "footer-description": "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
+  "footer-cta": "Get In Touch",
+  "footer-copyright": "© 2025 Austin Brage. All rights reserved.",
+
   "projects": [
     {
       id: 1,

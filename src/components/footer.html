@@ -1,0 +1,19 @@
+<template is="ui-footer" email="string">
+  <footer id="contact" class="ui-footer">
+    <div class="ui-footer-container">
+      <h2 class="ui-footer-title">{{t('footer-title')}}</h2>
+      <p class="ui-footer-description">
+        {{t('footer-description')}}
+      </p>
+      <a
+        href="mailto:{{props.email}}"
+        class="ui-footer-cta"
+      >
+        {{t('footer-cta')}}
+      </a>
+      <div class="ui-footer-copyright">
+        <p>{{t('footer-copyright')}}</p>
+      </div>
+    </div>
+  </footer>
+</template>
