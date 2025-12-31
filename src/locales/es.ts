@@ -35,5 +35,50 @@ export default {
       description: "Liderando el desarrollo de aplicaciones web escalables, mentoreando desarrolladores junior e implementando mejores prácticas en todo el equipo de ingeniería. Reducción de tiempos de carga en un 40% y aumento de la participación de usuarios en un 25% mediante optimización estratégica.",
       technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "AWS"]
     }
+  ],
+
+  // Projects
+  "projects-title": "Proyectos Destacados",
+  "projects-view-all": "Ver Todos los Proyectos",
+  "projects-code": "Código",
+  "projects-details": "Detalles",
+
+  "projects": [
+    {
+      id: 1,
+      title: "Plataforma de E-Commerce",
+      description: "Tienda en línea completa con gestión de inventario en tiempo real, procesamiento de pagos y panel de análisis.",
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
+      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      gradient: "from-blue-500",
+      githubUrl: "https://github.com/austinbrage/ecommerce"
+    },
+    {
+      id: 2,
+      title: "App de Gestión de Tareas",
+      description: "Herramienta de gestión de proyectos colaborativa con interfaz de arrastrar y soltar, chat de equipo y seguimiento de progreso.",
+      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&q=80",
+      tags: ["Next.js", "TypeScript", "Prisma", "TailwindCSS"],
+      gradient: "from-purple-500",
+      githubUrl: "https://github.com/austinbrage/task-manager"
+    },
+    {
+      id: 3,
+      title: "Panel de Análisis",
+      description: "Plataforma de visualización de datos en tiempo real con widgets personalizables, generación de informes e integraciones de API.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      tags: ["Vue.js", "D3.js", "Python", "FastAPI"],
+      gradient: "from-orange-500",
+      githubUrl: "https://github.com/austinbrage/analytics"
+    },
+    {
+      id: 4,
+      title: "Plataforma de Redes Sociales",
+      description: "App de redes sociales moderna con mensajería en tiempo real, compartición de contenido y análisis de participación.",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
+      tags: ["React Native", "GraphQL", "PostgreSQL", "Redis"],
+      gradient: "from-green-500",
+      githubUrl: "https://github.com/austinbrage/social-app"
+    }
   ]
 }

@@ -38,6 +38,26 @@ export class I18nService {
   }
 
   /**
+   * Get projects array for a specific language
+   * Returns the projects from the locale file
+   */
+  static getProjects(lang: string): any[] {
+    // Validate language
+    if (!availableLanguages.includes(lang)) {
+      lang = "en";
+    }
+
+    // Get locale
+    var locale = locales[lang as keyof typeof locales];
+    if (!locale) {
+      return [];
+    }
+
+    // Return projects array
+    return (locale as any).projects || [];
+  }
+
+  /**
    * Translate a single key with optional variable replacements
    * Returns the original key if translation not found (graceful fallback)
    */
