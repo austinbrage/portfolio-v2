@@ -58,6 +58,26 @@ export class I18nService {
   }
 
   /**
+   * Get blog posts array for a specific language
+   * Returns the blog posts from the locale file
+   */
+  static getBlogPosts(lang: string): any[] {
+    // Validate language
+    if (!availableLanguages.includes(lang)) {
+      lang = "en";
+    }
+
+    // Get locale
+    var locale = locales[lang as keyof typeof locales];
+    if (!locale) {
+      return [];
+    }
+
+    // Return blog posts array
+    return (locale as any).blogPosts || [];
+  }
+
+  /**
    * Translate a single key with optional variable replacements
    * Returns the original key if translation not found (graceful fallback)
    */

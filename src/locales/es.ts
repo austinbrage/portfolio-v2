@@ -43,6 +43,10 @@ export default {
   "projects-code": "Código",
   "projects-details": "Detalles",
 
+  // Blog
+  "blog-title": "Últimas Entradas del Blog",
+  "blog-view-all": "Ver Todas las Entradas",
+
   "projects": [
     {
       id: 1,
@@ -79,6 +83,27 @@ export default {
       tags: ["React Native", "GraphQL", "PostgreSQL", "Redis"],
       gradient: "from-green-500",
       githubUrl: "https://github.com/austinbrage/social-app"
+    }
+  ],
+
+  "blogPosts": [
+    {
+      id: 1,
+      title: "Construyendo Aplicaciones React Escalables",
+      excerpt: "Aprende las mejores prácticas y patrones para crear aplicaciones React que puedan crecer con las necesidades de tu negocio.",
+      date: "28 Nov 2025",
+      readTime: "5 min de lectura",
+      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+      category: "Desarrollo"
+    },
+    {
+      id: 2,
+      title: "El Futuro del Desarrollo Web",
+      excerpt: "Explorando las próximas tendencias y tecnologías que darán forma a cómo construimos para la web en 2026 y más allá.",
+      date: "20 Nov 2025",
+      readTime: "8 min de lectura",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+      category: "Tendencias Tech"
     }
   ]
 }
