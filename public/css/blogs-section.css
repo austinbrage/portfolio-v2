@@ -1,52 +1,52 @@
 /* Blog Preview Section */
-.ui-blogs {
+.ui-blogs-section {
   padding: 5rem 1rem;
   max-width: 80rem;
   margin: 0 auto;
 }
 
 @media (min-width: 640px) {
-  .ui-blogs {
+  .ui-blogs-section {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .ui-blogs {
+  .ui-blogs-section {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 
 /* Header */
-.ui-blogs-header {
+.ui-blogs-section-header {
   margin-bottom: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ui-blogs-title {
+.ui-blogs-section-title {
   margin-bottom: 1rem;
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  .ui-blogs-title {
+  .ui-blogs-section-title {
     font-size: 1.5rem;
   }
 }
 
-.ui-blogs-title-gradient {
+.ui-blogs-section-title-gradient {
   background: linear-gradient(to right, #9333ea, #db2777);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.ui-blogs-line {
+.ui-blogs-section-line {
   width: 5rem;
   height: 0.25rem;
   background: linear-gradient(to right, #9333ea, #db2777);
@@ -54,7 +54,7 @@
 }
 
 /* View All Button */
-.ui-blogs-view-all {
+.ui-blogs-section-view-all {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -69,36 +69,36 @@
   transition: all 0.2s;
 }
 
-:root.dark .ui-blogs-view-all {
+:root.dark .ui-blogs-section-view-all {
   border-color: #475569;
   color: #cbd5e1;
 }
 
-.ui-blogs-view-all:hover {
+.ui-blogs-section-view-all:hover {
   background-color: #f9fafb;
 }
 
-:root.dark .ui-blogs-view-all:hover {
+:root.dark .ui-blogs-section-view-all:hover {
   background-color: #334155;
 }
 
-.ui-blogs-view-all-icon {
+.ui-blogs-section-view-all-icon {
   width: 1rem;
   height: 1rem;
 }
 
-.ui-blogs-view-all-desktop {
+.ui-blogs-section-view-all-desktop {
   display: none;
 }
 
 @media (min-width: 640px) {
-  .ui-blogs-view-all-desktop {
+  .ui-blogs-section-view-all-desktop {
     display: flex;
   }
 }
 
 /* Grid */
-.ui-blogs-grid {
+.ui-blogs-section-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -106,13 +106,13 @@
 }
 
 @media (min-width: 768px) {
-  .ui-blogs-grid {
+  .ui-blogs-section-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Card */
-.ui-blogs-card {
+.ui-blogs-section-card {
   border: 2px solid #cbcdd1ff;
   border-radius: 1rem;
   background-color: white;
@@ -122,40 +122,40 @@
   cursor: pointer;
 }
 
-:root.dark .ui-blogs-card {
+:root.dark .ui-blogs-section-card {
   background-color: #1e293b;
   border-color: #334155;
 }
 
-.ui-blogs-card:hover {
+.ui-blogs-section-card:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   border-color: #e9d5ff;
 }
 
-:root.dark .ui-blogs-card:hover {
+:root.dark .ui-blogs-section-card:hover {
   border-color: #581c87;
 }
 
 /* Card Image */
-.ui-blogs-card-image-wrapper {
+.ui-blogs-section-card-image-wrapper {
   position: relative;
   height: 14rem;
   overflow: hidden;
 }
 
-.ui-blogs-card-image {
+.ui-blogs-section-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s;
 }
 
-.ui-blogs-card:hover .ui-blogs-card-image {
+.ui-blogs-section-card:hover .ui-blogs-section-card-image {
   transform: scale(1.1);
 }
 
 /* Category Badge */
-.ui-blogs-card-category {
+.ui-blogs-section-card-category {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -168,17 +168,17 @@
   font-weight: 500;
 }
 
-:root.dark .ui-blogs-card-category {
+:root.dark .ui-blogs-section-card-category {
   background-color: rgba(30, 41, 59, 0.9);
   color: white;
 }
 
 /* Card Content */
-.ui-blogs-card-content {
+.ui-blogs-section-card-content {
   padding: 1.5rem;
 }
 
-.ui-blogs-card-title {
+.ui-blogs-section-card-title {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
@@ -186,63 +186,63 @@
   transition: color 0.3s;
 }
 
-:root.dark .ui-blogs-card-title {
+:root.dark .ui-blogs-section-card-title {
   color: white;
 }
 
-.ui-blogs-card:hover .ui-blogs-card-title {
+.ui-blogs-section-card:hover .ui-blogs-section-card-title {
   color: #9333ea;
 }
 
-:root.dark .ui-blogs-card:hover .ui-blogs-card-title {
+:root.dark .ui-blogs-section-card:hover .ui-blogs-section-card-title {
   color: #c084fc;
 }
 
-.ui-blogs-card-excerpt {
+.ui-blogs-section-card-excerpt {
   color: #4b5563;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
 
-:root.dark .ui-blogs-card-excerpt {
+:root.dark .ui-blogs-section-card-excerpt {
   color: #cbd5e1;
 }
 
 /* Metadata */
-.ui-blogs-card-meta {
+.ui-blogs-section-card-meta {
   display: flex;
   align-items: center;
   gap: 1rem;
   color: #6b7280;
 }
 
-:root.dark .ui-blogs-card-meta {
+:root.dark .ui-blogs-section-card-meta {
   color: #94a3b8;
 }
 
-.ui-blogs-card-meta-item {
+.ui-blogs-section-card-meta-item {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   font-size: 0.875rem;
 }
 
-.ui-blogs-card-meta-icon {
+.ui-blogs-section-card-meta-icon {
   width: 1rem;
   height: 1rem;
 }
 
 /* Mobile View All */
-.ui-blogs-view-all-mobile {
+.ui-blogs-section-view-all-mobile {
   text-align: center;
 }
 
-.ui-blogs-view-all-mobile-btn {
+.ui-blogs-section-view-all-mobile-btn {
   width: 100%;
 }
 
 @media (min-width: 640px) {
-  .ui-blogs-view-all-mobile {
+  .ui-blogs-section-view-all-mobile {
     display: none;
   }
 }

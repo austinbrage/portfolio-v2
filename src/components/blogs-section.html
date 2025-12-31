@@ -1,0 +1,68 @@
+<template is="ui-blogs-section" blogPosts="array">
+  <section class="ui-blogs-section">
+    <div class="ui-blogs-section-header">
+      <div>
+        <h2 class="ui-blogs-section-title">
+          <span class="ui-blogs-section-title-gradient">{{t('blog-title')}}</span>
+        </h2>
+        <div class="ui-blogs-section-line"></div>
+      </div>
+      <button class="ui-blogs-section-view-all ui-blogs-section-view-all-desktop">
+        {{t('blog-view-all')}}
+        <svg class="ui-blogs-section-view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="ui-blogs-section-grid">
+      <div class="ui-blogs-section-card" map="post of props.blogPosts">
+        <div class="ui-blogs-section-card-image-wrapper">
+          <img
+            src="{{post.image}}"
+            alt="{{post.title}}"
+            class="ui-blogs-section-card-image"
+          />
+          <div class="ui-blogs-section-card-category">
+            {{post.category}}
+          </div>
+        </div>
+
+        <div class="ui-blogs-section-card-content">
+          <h3 class="ui-blogs-section-card-title">{{post.title}}</h3>
+          <p class="ui-blogs-section-card-excerpt">{{post.excerpt}}</p>
+
+          <div class="ui-blogs-section-card-meta">
+            <div class="ui-blogs-section-card-meta-item">
+              <svg class="ui-blogs-section-card-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                <line x1="16" x2="16" y1="2" y2="6"></line>
+                <line x1="8" x2="8" y1="2" y2="6"></line>
+                <line x1="3" x2="21" y1="10" y2="10"></line>
+              </svg>
+              <span>{{post.date}}</span>
+            </div>
+            <div class="ui-blogs-section-card-meta-item">
+              <svg class="ui-blogs-section-card-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>{{post.readTime}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-blogs-section-view-all-mobile">
+      <button class="ui-blogs-section-view-all ui-blogs-section-view-all-mobile-btn">
+        {{t('blog-view-all')}}
+        <svg class="ui-blogs-section-view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </section>
+</template>
