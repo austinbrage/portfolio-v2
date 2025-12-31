@@ -43,6 +43,11 @@ export default {
   "projects-code": "Code",
   "projects-details": "Details",
 
+  // Projects Page
+  "projects-page-back": "Back to Home",
+  "projects-page-title": "All Projects",
+  "projects-page-description": "A showcase of my work across web development, mobile apps, and innovative tech solutions. Each project represents a unique challenge and learning experience.",
+
   // Blog
   "blog-title": "Latest from the Blog",
   "blog-view-all": "View All Posts",
@@ -115,6 +120,24 @@ export default {
       tags: ["React Native", "GraphQL", "PostgreSQL", "Redis"],
       gradient: "from-green-500",
       githubUrl: "https://github.com/austinbrage/social-app"
+    },
+    {
+      id: 5,
+      title: "AI Content Generator",
+      description: "Intelligent content creation platform powered by machine learning for generating marketing copy and blog posts.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      tags: ["Python", "OpenAI", "React", "FastAPI"],
+      gradient: "from-violet-500",
+      githubUrl: "https://github.com/austinbrage/ai-content"
+    },
+    {
+      id: 6,
+      title: "Fitness Tracking App",
+      description: "Comprehensive fitness tracker with workout planning, nutrition tracking, and progress visualization.",
+      image: "https://images.unsplash.com/photo-1461088945293-0c17689e48ac?w=800&q=80",
+      tags: ["React Native", "Firebase", "HealthKit", "Charts"],
+      gradient: "from-emerald-500",
+      githubUrl: "https://github.com/austinbrage/fitness-tracker"
     }
   ],
 

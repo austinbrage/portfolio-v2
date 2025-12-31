@@ -43,6 +43,11 @@ export default {
   "projects-code": "Código",
   "projects-details": "Detalles",
 
+  // Projects Page
+  "projects-page-back": "Volver al Inicio",
+  "projects-page-title": "Todos los Proyectos",
+  "projects-page-description": "Una muestra de mi trabajo en desarrollo web, aplicaciones móviles y soluciones tecnológicas innovadoras. Cada proyecto representa un desafío único y una experiencia de aprendizaje.",
+
   // Blog
   "blog-title": "Últimas Entradas del Blog",
   "blog-view-all": "Ver Todas las Entradas",
@@ -115,6 +120,24 @@ export default {
       tags: ["React Native", "GraphQL", "PostgreSQL", "Redis"],
       gradient: "from-green-500",
       githubUrl: "https://github.com/austinbrage/social-app"
+    },
+    {
+      id: 5,
+      title: "Generador de Contenido IA",
+      description: "Plataforma de creación de contenido inteligente impulsada por aprendizaje automático para generar textos de marketing y artículos de blog.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      tags: ["Python", "OpenAI", "React", "FastAPI"],
+      gradient: "from-violet-500",
+      githubUrl: "https://github.com/austinbrage/ai-content"
+    },
+    {
+      id: 6,
+      title: "App de Seguimiento de Fitness",
+      description: "Rastreador de fitness integral con planificación de entrenamientos, seguimiento de nutrición y visualización de progreso.",
+      image: "https://images.unsplash.com/photo-1461088945293-0c17689e48ac?w=800&q=80",
+      tags: ["React Native", "Firebase", "HealthKit", "Charts"],
+      gradient: "from-emerald-500",
+      githubUrl: "https://github.com/austinbrage/fitness-tracker"
     }
   ],
 
