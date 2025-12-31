@@ -1,0 +1,169 @@
+<template is="ui-navbar" navItems="array" languages="array" currentPage="string">
+  <nav class="ui-navbar" x-data="navbar()">
+    <div class="ui-navbar-container">
+      <div class="ui-navbar-content">
+        <!-- Logo/Brand -->
+        <a href="/" class="ui-navbar-brand">
+          {{t('navbar-brand')}}
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="ui-navbar-desktop">
+          <div class="ui-navbar-links">
+            <a
+              map="item of props.navItems"
+              href="{{item.href}}"
+              class="ui-navbar-link {{props.currentPage === item.id ? 'active' : ''}}"
+            >
+              {{item.name}}
+            </a>
+          </div>
+
+          <!-- Theme Toggle Button -->
+          <button
+            @click="toggleTheme()"
+            class="ui-navbar-icon-btn"
+            aria-label="Toggle theme"
+          >
+            <svg x-show="theme === 'light'" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <svg x-show="theme === 'dark'" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+          </button>
+
+          <!-- Language Dropdown -->
+          <div class="ui-navbar-dropdown" @click.away="languageDropdownOpen = false">
+            <button
+              @click="languageDropdownOpen = !languageDropdownOpen"
+              class="ui-navbar-lang-btn"
+              aria-label="Select language"
+            >
+              <svg class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 8 6 6"></path>
+                <path d="m4 14 6-6 2-3"></path>
+                <path d="M2 5h12"></path>
+                <path d="M7 2h1"></path>
+                <path d="m22 22-5-10-5 10"></path>
+                <path d="M14 18h6"></path>
+              </svg>
+              <span class="ui-navbar-lang-code">{{lang |> upper}}</span>
+              <svg class="ui-navbar-chevron" :class="{'rotate': languageDropdownOpen}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div x-show="languageDropdownOpen" x-transition class="ui-navbar-dropdown-menu">
+              <a
+                map="language of props.languages"
+                href="/{{language.code}}"
+                class="ui-navbar-dropdown-item {{lang === language.code ? 'active' : ''}}"
+              >
+                <span class="ui-navbar-flag">{{language.flag}}</span>
+                <div class="ui-navbar-lang-info">
+                  <div class="ui-navbar-lang-name">{{language.name}}</div>
+                  <div class="ui-navbar-lang-code-small">{{language.code}}</div>
+                </div>
+                <span if="lang === language.code" class="ui-navbar-checkmark">✓</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Buttons -->
+        <div class="ui-navbar-mobile">
+          <!-- Language Dropdown Mobile -->
+          <div class="ui-navbar-dropdown" @click.away="languageDropdownOpen = false">
+            <button
+              @click="languageDropdownOpen = !languageDropdownOpen"
+              class="ui-navbar-lang-btn-mobile"
+              aria-label="Select language"
+            >
+              <svg class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 8 6 6"></path>
+                <path d="m4 14 6-6 2-3"></path>
+                <path d="M2 5h12"></path>
+                <path d="M7 2h1"></path>
+                <path d="m22 22-5-10-5 10"></path>
+                <path d="M14 18h6"></path>
+              </svg>
+              <span class="ui-navbar-lang-code">{{lang |> upper}}</span>
+            </button>
+            <div x-show="languageDropdownOpen" x-transition class="ui-navbar-dropdown-menu">
+              <a
+                map="language of props.languages"
+                href="/{{language.code}}"
+                class="ui-navbar-dropdown-item {{lang === language.code ? 'active' : ''}}"
+              >
+                <span class="ui-navbar-flag">{{language.flag}}</span>
+                <div class="ui-navbar-lang-info">
+                  <div class="ui-navbar-lang-name">{{language.name}}</div>
+                  <div class="ui-navbar-lang-code-small">{{language.code}}</div>
+                </div>
+                <span if="lang === language.code" class="ui-navbar-checkmark">✓</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Theme Toggle Mobile -->
+          <button
+            @click="toggleTheme()"
+            class="ui-navbar-icon-btn"
+            aria-label="Toggle theme"
+          >
+            <svg x-show="theme === 'light'" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <svg x-show="theme === 'dark'" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+          </button>
+
+          <!-- Mobile Menu Toggle -->
+          <button
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            class="ui-navbar-menu-btn"
+          >
+            <svg x-show="!mobileMenuOpen" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+            <svg x-show="mobileMenuOpen" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div x-show="mobileMenuOpen" x-transition class="ui-navbar-mobile-menu">
+        <a
+          map="item of props.navItems"
+          href="{{item.href}}"
+          class="ui-navbar-mobile-link {{props.currentPage === item.id ? 'active' : ''}}"
+          @click="mobileMenuOpen = false"
+        >
+          {{item.name}}
+        </a>
+      </div>
+    </div>
+  </nav>
+</template>

@@ -1,0 +1,48 @@
+<template is="layout" title="string" description="string">
+  <!DOCTYPE html>
+  <html lang="{{lang || 'en'}}">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>{{props.title}}</title>
+      <meta name="description" content="{{props.description}}" />
+
+      <!-- CSS Styles -->
+      <link
+        rel="stylesheet"
+        href="/css/layout.css{{timestamp ? `?v=${timestamp}` : ''}}"
+      />
+      <link
+        rel="stylesheet"
+        href="/css/navbar.css{{timestamp ? `?v=${timestamp}` : ''}}"
+      />
+      <link
+        rel="stylesheet"
+        href="/css/hero.css{{timestamp ? `?v=${timestamp}` : ''}}"
+      />
+      <link
+        rel="stylesheet"
+        href="/css/experience.css{{timestamp ? `?v=${timestamp}` : ''}}"
+      />
+
+      <!-- Client Javascript -->
+      <script
+        defer
+        src="/js/navbar.js{{timestamp ? `?v=${timestamp}` : ''}}"
+      ></script>
+      <script
+        defer
+        src="/js/hero.js{{timestamp ? `?v=${timestamp}` : ''}}"
+      ></script>
+
+      <!-- ALPINE -->
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      ></script>
+    </head>
+    <body>
+      <slot></slot>
+    </body>
+  </html>
+</template>
