@@ -52,6 +52,11 @@ export default {
   "blog-title": "Últimas Entradas del Blog",
   "blog-view-all": "Ver Todas las Entradas",
 
+  // Blog Page
+  "blog-page-back": "Volver al Inicio",
+  "blog-page-title": "Blog",
+  "blog-page-description": "Reflexiones, tutoriales y conocimientos sobre desarrollo web, ingeniería de software y las últimas tendencias tecnológicas. Acompañame en mi viaje de aprendizaje continuo y compartir conocimiento.",
+
   // Footer
   "footer-title": "Trabajemos Juntos",
   "footer-description": "Siempre estoy interesado en escuchar sobre nuevos proyectos y oportunidades. Ya sea que tengas una pregunta o solo quieras saludar, ¡no dudes en contactarme!",
@@ -149,7 +154,8 @@ export default {
       date: "28 Nov 2025",
       readTime: "5 min de lectura",
       image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
-      category: "Desarrollo"
+      category: "Desarrollo",
+      tags: ["React", "Arquitectura", "Mejores Prácticas"]
     },
     {
       id: 2,
@@ -158,7 +164,48 @@ export default {
       date: "20 Nov 2025",
       readTime: "8 min de lectura",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-      category: "Tendencias Tech"
+      category: "Tendencias Tech",
+      tags: ["Web3", "IA", "Tecnología Futura"]
+    },
+    {
+      id: 3,
+      title: "Dominando TypeScript en 2025",
+      excerpt: "Una guía completa de características avanzadas de TypeScript y cómo aprovecharlas en tus proyectos.",
+      date: "15 Nov 2025",
+      readTime: "6 min de lectura",
+      image: "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80",
+      category: "Desarrollo",
+      tags: ["TypeScript", "JavaScript", "Programación"]
+    },
+    {
+      id: 4,
+      title: "Sistemas de Diseño Escalables",
+      excerpt: "Cómo construir y mantener sistemas de diseño que crecen con tu producto y equipo.",
+      date: "10 Nov 2025",
+      readTime: "7 min de lectura",
+      image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
+      category: "Diseño",
+      tags: ["Sistemas de Diseño", "UI/UX", "Escalabilidad"]
+    },
+    {
+      id: 5,
+      title: "Optimizando el Rendimiento Web",
+      excerpt: "Técnicas probadas para hacer tus aplicaciones web más rápidas y eficientes.",
+      date: "5 Nov 2025",
+      readTime: "10 min de lectura",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      category: "Rendimiento",
+      tags: ["Optimización", "Web Vitals", "Performance"]
+    },
+    {
+      id: 6,
+      title: "Construyendo con IA: Guía para Desarrolladores",
+      excerpt: "Integrando capacidades de IA en tus aplicaciones con ejemplos prácticos y mejores prácticas.",
+      date: "30 Oct 2025",
+      readTime: "12 min de lectura",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      category: "IA & ML",
+      tags: ["IA", "Machine Learning", "Integración"]
     }
   ]
 }

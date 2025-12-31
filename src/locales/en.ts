@@ -52,6 +52,11 @@ export default {
   "blog-title": "Latest from the Blog",
   "blog-view-all": "View All Posts",
 
+  // Blog Page
+  "blog-page-back": "Back to Home",
+  "blog-page-title": "Blog",
+  "blog-page-description": "Thoughts, tutorials, and insights about web development, software engineering, and the latest tech trends. Join me on my journey of continuous learning and sharing knowledge.",
+
   // Footer
   "footer-title": "Let's Work Together",
   "footer-description": "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
@@ -149,7 +154,8 @@ export default {
       date: "Nov 28, 2025",
       readTime: "5 min read",
       image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
-      category: "Development"
+      category: "Development",
+      tags: ["React", "Architecture", "Best Practices"]
     },
     {
       id: 2,
@@ -158,7 +164,48 @@ export default {
       date: "Nov 20, 2025",
       readTime: "8 min read",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-      category: "Tech Trends"
+      category: "Tech Trends",
+      tags: ["Web3", "AI", "Future Tech"]
+    },
+    {
+      id: 3,
+      title: "Mastering TypeScript in 2025",
+      excerpt: "A comprehensive guide to advanced TypeScript features and how to leverage them in your projects.",
+      date: "Nov 15, 2025",
+      readTime: "6 min read",
+      image: "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80",
+      category: "Development",
+      tags: ["TypeScript", "JavaScript", "Programming"]
+    },
+    {
+      id: 4,
+      title: "Design Systems That Scale",
+      excerpt: "How to build and maintain design systems that grow with your product and team.",
+      date: "Nov 10, 2025",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
+      category: "Design",
+      tags: ["Design Systems", "UI/UX", "Scalability"]
+    },
+    {
+      id: 5,
+      title: "Optimizing Web Performance",
+      excerpt: "Proven techniques to make your web applications faster and more efficient.",
+      date: "Nov 5, 2025",
+      readTime: "10 min read",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      category: "Performance",
+      tags: ["Optimization", "Web Vitals", "Performance"]
+    },
+    {
+      id: 6,
+      title: "Building with AI: A Developer's Guide",
+      excerpt: "Integrating AI capabilities into your applications with practical examples and best practices.",
+      date: "Oct 30, 2025",
+      readTime: "12 min read",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      category: "AI & ML",
+      tags: ["AI", "Machine Learning", "Integration"]
     }
   ]
 }

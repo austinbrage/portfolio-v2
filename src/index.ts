@@ -4,6 +4,7 @@ import { availableLanguages } from "./locales";
 import { HomeController } from "./controllers/home.controller";
 import { ContactController } from "./controllers/contact.controller";
 import { ProjectsController } from "./controllers/projects.controller";
+import { BlogsController } from "./controllers/blogs.controller";
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ app.use(express.static(join(__dirname, "../public")));
 var homeController = new HomeController();
 var contactController = new ContactController();
 var projectsController = new ProjectsController();
+var blogsController = new BlogsController();
 
 // Routes - support both root and language-specific paths
 app.get(["/:lang", "/"], async function (req, res) {
@@ -99,6 +101,47 @@ app.get("/:lang/projects", async function (req, res) {
   }
 });
 
+// Blog page route
+app.get("/:lang/blog", async function (req, res) {
+  try {
+    // Get language from path param or default to 'en'
+    var lang = req.params.lang || "en";
+
+    // Validate language
+    if (!availableLanguages.includes(lang)) {
+      lang = "en";
+    }
+
+    // Create context object
+    var context = {
+      lang: lang,
+      set: {
+        headers: {} as Record<string, string>,
+        status: 200,
+      },
+    };
+
+    // Render the blog page
+    var html = await blogsController.render(context);
+
+    // Apply headers and status from context
+    if (context.set.status) {
+      res.status(context.set.status);
+    }
+
+    if (context.set.headers) {
+      Object.entries(context.set.headers).forEach(function ([key, value]) {
+        res.setHeader(key, value);
+      });
+    }
+
+    res.send(html);
+  } catch (error) {
+    console.error("Error rendering blog page:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Contact page route
 app.get("/:lang/contact", async function (req, res) {
   try {
@@ -147,6 +190,7 @@ async function startServer() {
     if (!isDev) {
       await homeController.warmupCache();
       await projectsController.warmupCache();
+      await blogsController.warmupCache();
       await contactController.warmupCache();
     }
 
