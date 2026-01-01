@@ -62,6 +62,31 @@ export class I18nService {
   }
 
   /**
+   * Get a single project by ID for a specific language
+   * Returns the project from the locale file or null if not found
+   */
+  static getProjectById(lang: string, id: number): any | null {
+    // Validate language
+    if (!availableLanguages.includes(lang)) {
+      lang = "en";
+    }
+
+    // Get locale
+    var locale = locales[lang as keyof typeof locales];
+    if (!locale) {
+      return null;
+    }
+
+    // Get projects array
+    var projects = (locale as any).projects || [];
+
+    // Find project by ID
+    var project = projects.find((p: any) => p.id === id);
+
+    return project || null;
+  }
+
+  /**
    * Get blog posts array for a specific language
    * Returns the blog posts from the locale file
    * @param limit - Optional number of blog posts to return (for featured sections)

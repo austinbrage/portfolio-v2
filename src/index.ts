@@ -4,6 +4,7 @@ import { availableLanguages } from "./locales";
 import { HomeController } from "./controllers/home.controller";
 import { ContactController } from "./controllers/contact.controller";
 import { ProjectsController } from "./controllers/projects.controller";
+import { ProjectController } from "./controllers/project.controller";
 import { BlogsController } from "./controllers/blogs.controller";
 
 var app = express();
@@ -17,6 +18,7 @@ app.use(express.static(join(__dirname, "../public")));
 var homeController = new HomeController();
 var contactController = new ContactController();
 var projectsController = new ProjectsController();
+var projectController = new ProjectController();
 var blogsController = new BlogsController();
 
 // Routes - support both root and language-specific paths
@@ -97,6 +99,54 @@ app.get("/:lang/projects", async function (req, res) {
     res.send(html);
   } catch (error) {
     console.error("Error rendering projects page:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// Project detail page route
+app.get("/:lang/projects/:id", async function (req, res) {
+  try {
+    // Get language from path param or default to 'en'
+    var lang = req.params.lang || "en";
+    var projectId = parseInt(req.params.id, 10);
+
+    // Validate language
+    if (!availableLanguages.includes(lang)) {
+      lang = "en";
+    }
+
+    // Validate project ID
+    if (isNaN(projectId)) {
+      res.status(404).send("Invalid project ID");
+      return;
+    }
+
+    // Create context object
+    var context = {
+      lang: lang,
+      set: {
+        headers: {} as Record<string, string>,
+        status: 200,
+      },
+    };
+
+    // Render the project detail page
+    var html = await projectController.render(context, projectId);
+
+    // Apply headers and status from context
+    if (context.set.status) {
+      res.status(context.set.status);
+    }
+
+    if (context.set.headers) {
+      Object.entries(context.set.headers).forEach(function ([key, value]) {
+        res.setHeader(key, value);
+      });
+    }
+
+    res.send(html);
+  } catch (error) {
+    console.error("Error rendering project detail page:", error);
     res.status(500).send("Internal Server Error");
   }
 });
@@ -190,6 +240,7 @@ async function startServer() {
     if (!isDev) {
       await homeController.warmupCache();
       await projectsController.warmupCache();
+      await projectController.warmupCache();
       await blogsController.warmupCache();
       await contactController.warmupCache();
     }

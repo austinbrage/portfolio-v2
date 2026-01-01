@@ -48,6 +48,22 @@ export default {
   "projects-page-title": "All Projects",
   "projects-page-description": "A showcase of my work across web development, mobile apps, and innovative tech solutions. Each project represents a unique challenge and learning experience.",
 
+  // Project Detail Page
+  "project-detail-back": "Back to Projects",
+  "project-detail-view-demo": "View Live Demo",
+  "project-detail-view-source": "View Source Code",
+  "project-detail-timeline": "Timeline",
+  "project-detail-team": "Team",
+  "project-detail-role": "Role",
+  "project-detail-overview": "Overview",
+  "project-detail-challenge": "The Challenge",
+  "project-detail-solution": "The Solution",
+  "project-detail-features": "Key Features",
+  "project-detail-cta-title": "Interested in this project?",
+  "project-detail-cta-description": "I'd love to discuss the technical details, challenges faced, and lessons learned from building this project.",
+  "project-detail-cta-button": "Get in Touch",
+  "project-detail-not-found": "Project not found",
+
   // Blog
   "blog-title": "Latest from the Blog",
   "blog-view-all": "View All Posts",
@@ -97,7 +113,22 @@ export default {
       image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
       tags: ["React", "Node.js", "MongoDB", "Stripe"],
       gradient: "from-blue-500",
-      githubUrl: "https://github.com/austinbrage/ecommerce"
+      githubUrl: "https://github.com/austinbrage/ecommerce",
+      liveUrl: "https://demo-ecommerce.com",
+      longDescription: "Built a comprehensive e-commerce solution from the ground up, handling everything from product catalog management to secure payment processing. The platform features a modern, responsive interface with advanced search and filtering capabilities, real-time inventory tracking, and a sophisticated admin dashboard for managing orders, customers, and analytics.",
+      challenge: "The main challenge was implementing a scalable architecture that could handle high traffic during sales events while maintaining sub-second page load times. Additionally, integrating multiple payment gateways while ensuring PCI compliance required careful planning and execution.",
+      solution: "Implemented a microservices architecture with Redis caching for frequently accessed data, CDN integration for static assets, and horizontal scaling capabilities. Used Stripe for payment processing with proper webhook handling for order confirmation and inventory updates.",
+      features: [
+        "Real-time inventory management across multiple warehouses",
+        "Advanced product filtering and search with Elasticsearch",
+        "Secure payment processing with Stripe integration",
+        "Comprehensive admin dashboard with analytics",
+        "Email notifications and order tracking",
+        "Responsive design optimized for mobile shopping"
+      ],
+      timeline: "3 months",
+      team: "4 developers, 1 designer, 1 PM",
+      role: "Lead Developer"
     },
     {
       id: 2,
@@ -106,7 +137,22 @@ export default {
       image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&q=80",
       tags: ["Next.js", "TypeScript", "Prisma", "TailwindCSS"],
       gradient: "from-purple-500",
-      githubUrl: "https://github.com/austinbrage/task-manager"
+      githubUrl: "https://github.com/austinbrage/task-manager",
+      liveUrl: "https://demo-taskmanager.com",
+      longDescription: "Developed a modern task management application designed for remote teams. The app features an intuitive drag-and-drop interface inspired by Trello and Asana, real-time collaboration features, and comprehensive project tracking capabilities. Built with Next.js for optimal performance and SEO.",
+      challenge: "Creating a smooth real-time collaboration experience where multiple team members could work on the same board simultaneously without conflicts. Also needed to ensure the drag-and-drop interface worked flawlessly across different devices and browsers.",
+      solution: "Implemented WebSocket connections for real-time updates with conflict resolution using operational transformation. Used optimistic UI updates for instant feedback and implemented a robust state management system with Zustand to handle complex board states.",
+      features: [
+        "Drag-and-drop task boards with customizable columns",
+        "Real-time collaboration with live cursor tracking",
+        "Team chat and @mentions for quick communication",
+        "File attachments and rich text descriptions",
+        "Progress tracking with burndown charts",
+        "Custom workflows and automation rules"
+      ],
+      timeline: "4 months",
+      team: "Solo project",
+      role: "Full-Stack Developer & Designer"
     },
     {
       id: 3,
@@ -115,7 +161,22 @@ export default {
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
       tags: ["Vue.js", "D3.js", "Python", "FastAPI"],
       gradient: "from-orange-500",
-      githubUrl: "https://github.com/austinbrage/analytics"
+      githubUrl: "https://github.com/austinbrage/analytics",
+      liveUrl: "https://demo-analytics.com",
+      longDescription: "Created a powerful analytics dashboard that aggregates data from multiple sources and presents it through beautiful, interactive visualizations. The platform allows users to create custom dashboards, set up automated reports, and gain insights from their data through advanced charting and filtering options.",
+      challenge: "Processing and visualizing large datasets in real-time without impacting performance. The dashboard needed to handle millions of data points while providing smooth interactions and instant updates.",
+      solution: "Implemented server-side data aggregation with Python and FastAPI, using efficient database queries and caching strategies. On the frontend, used Web Workers for heavy computations and virtual scrolling for large data tables. Implemented progressive data loading to show initial results quickly.",
+      features: [
+        "Customizable dashboard with drag-and-drop widgets",
+        "Interactive charts using D3.js and Chart.js",
+        "Real-time data updates via WebSocket",
+        "Advanced filtering and data drill-down",
+        "Scheduled report generation and email delivery",
+        "API integrations with popular platforms"
+      ],
+      timeline: "5 months",
+      team: "3 developers, 1 data analyst",
+      role: "Frontend Lead"
     },
     {
       id: 4,
@@ -124,7 +185,22 @@ export default {
       image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
       tags: ["React Native", "GraphQL", "PostgreSQL", "Redis"],
       gradient: "from-green-500",
-      githubUrl: "https://github.com/austinbrage/social-app"
+      githubUrl: "https://github.com/austinbrage/social-app",
+      liveUrl: "https://demo-social.com",
+      longDescription: "Built a cross-platform social networking application with features similar to Twitter and Instagram. The app includes a sophisticated recommendation algorithm, real-time messaging, media sharing with image processing, and detailed engagement analytics for content creators.",
+      challenge: "Building a mobile app that performs well on both iOS and Android while maintaining feature parity with web platforms. Also needed to implement an efficient notification system that doesn't drain battery life.",
+      solution: "Used React Native with native modules for performance-critical features. Implemented GraphQL for efficient data fetching and caching. Built a smart notification system using Firebase Cloud Messaging with batching and priority levels to optimize battery usage.",
+      features: [
+        "Real-time messaging with read receipts",
+        "Media sharing with automatic compression and filtering",
+        "Social feed with personalized recommendations",
+        "Stories feature with 24-hour expiration",
+        "Detailed analytics for content creators",
+        "Push notifications with smart batching"
+      ],
+      timeline: "6 months",
+      team: "5 developers, 2 designers",
+      role: "Mobile Lead Developer"
     },
     {
       id: 5,
@@ -133,7 +209,22 @@ export default {
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
       tags: ["Python", "OpenAI", "React", "FastAPI"],
       gradient: "from-violet-500",
-      githubUrl: "https://github.com/austinbrage/ai-content"
+      githubUrl: "https://github.com/austinbrage/ai-content",
+      liveUrl: "https://demo-ai-content.com",
+      longDescription: "Developed an AI-powered content creation platform that helps marketers and writers generate high-quality content efficiently. The platform leverages OpenAI's GPT models to create engaging marketing copy, blog posts, and social media content while maintaining brand voice consistency.",
+      challenge: "Creating a reliable AI content generation system that produces consistent, brand-appropriate content while avoiding generic or repetitive outputs. Also needed to implement proper rate limiting and cost management for API usage.",
+      solution: "Built a sophisticated prompt engineering system with custom templates and fine-tuning capabilities. Implemented a multi-stage content generation pipeline with tone analysis and brand voice matching. Added smart caching to reduce API costs and response times for similar requests.",
+      features: [
+        "Multiple content types: blog posts, social media, ads",
+        "Brand voice customization and consistency",
+        "SEO optimization suggestions",
+        "Content templates and prompt library",
+        "Real-time collaboration and editing",
+        "Usage analytics and cost tracking"
+      ],
+      timeline: "4 months",
+      team: "3 developers, 1 ML engineer",
+      role: "Backend Lead & ML Integration"
     },
     {
       id: 6,
@@ -142,7 +233,22 @@ export default {
       image: "https://images.unsplash.com/photo-1461088945293-0c17689e48ac?w=800&q=80",
       tags: ["React Native", "Firebase", "HealthKit", "Charts"],
       gradient: "from-emerald-500",
-      githubUrl: "https://github.com/austinbrage/fitness-tracker"
+      githubUrl: "https://github.com/austinbrage/fitness-tracker",
+      liveUrl: "https://demo-fitness.com",
+      longDescription: "Built a comprehensive fitness tracking application that helps users achieve their health goals through workout planning, nutrition tracking, and detailed progress analytics. The app integrates with native health APIs to provide accurate tracking and personalized recommendations.",
+      challenge: "Integrating with platform-specific health APIs (HealthKit for iOS, Google Fit for Android) while maintaining a consistent user experience across platforms. Also needed to handle offline functionality for gym environments with poor connectivity.",
+      solution: "Created a unified health data abstraction layer that works seamlessly across both platforms. Implemented local-first architecture with Firebase for sync, ensuring the app works perfectly offline and syncs automatically when connected. Used background tasks for continuous activity tracking.",
+      features: [
+        "Workout planning with exercise library and videos",
+        "Nutrition tracking with barcode scanning",
+        "Progress visualization with interactive charts",
+        "Integration with HealthKit and Google Fit",
+        "Social features for accountability and motivation",
+        "Offline-first with automatic cloud sync"
+      ],
+      timeline: "5 months",
+      team: "2 developers, 1 fitness consultant",
+      role: "Lead Mobile Developer"
     }
   ],
 

@@ -1,0 +1,453 @@
+/* Project Detail Page */
+.ui-project-detail-page {
+  min-height: 100vh;
+  padding-top: 5rem;
+  background: linear-gradient(to bottom, white, #faf5ff);
+  transition: background 0.3s;
+}
+
+:root.dark .ui-project-detail-page {
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+}
+
+/* Container */
+.ui-project-detail-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .ui-project-detail-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ui-project-detail-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Back Button */
+.ui-project-detail-back-wrapper {
+  margin-bottom: 2rem;
+}
+
+.ui-project-detail-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #4b5563;
+  background-color: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-left: -1rem;
+}
+
+:root.dark .ui-project-detail-back-button {
+  color: #cbd5e1;
+  border-color: #475569;
+}
+
+.ui-project-detail-back-button:hover {
+  background-color: #f9fafb;
+}
+
+:root.dark .ui-project-detail-back-button:hover {
+  background-color: #1e293b;
+}
+
+.ui-project-detail-back-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Hero Section */
+.ui-project-detail-hero {
+  margin-bottom: 3rem;
+}
+
+/* Tags */
+.ui-project-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ui-project-detail-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: #faf5ff;
+  color: #7e22ce;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+:root.dark .ui-project-detail-tag {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: #c084fc;
+}
+
+/* Title */
+.ui-project-detail-title {
+  margin-bottom: 1.5rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .ui-project-detail-title {
+    font-size: 3rem;
+  }
+}
+
+.ui-project-detail-title-gradient {
+  background: linear-gradient(to right, #9333ea, #db2777);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Description */
+.ui-project-detail-description {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  max-width: 48rem;
+}
+
+@media (min-width: 768px) {
+  .ui-project-detail-description {
+    font-size: 1.25rem;
+  }
+}
+
+:root.dark .ui-project-detail-description {
+  color: #cbd5e1;
+}
+
+/* Action Buttons */
+.ui-project-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ui-project-detail-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.ui-project-detail-button-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.ui-project-detail-button-primary {
+  background: linear-gradient(to right, #9333ea, #db2777);
+  color: white;
+  border: none;
+}
+
+.ui-project-detail-button-primary:hover {
+  background: linear-gradient(to right, #7e22ce, #be185d);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+}
+
+.ui-project-detail-button-secondary {
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+:root.dark .ui-project-detail-button-secondary {
+  border-color: #475569;
+  color: #cbd5e1;
+}
+
+.ui-project-detail-button-secondary:hover {
+  background-color: #f9fafb;
+}
+
+:root.dark .ui-project-detail-button-secondary:hover {
+  background-color: #475569;
+}
+
+/* Stats Cards */
+.ui-project-detail-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .ui-project-detail-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ui-project-detail-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+:root.dark .ui-project-detail-stat-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.ui-project-detail-stat-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #9333ea;
+  flex-shrink: 0;
+}
+
+:root.dark .ui-project-detail-stat-icon {
+  color: #c084fc;
+}
+
+.ui-project-detail-stat-content {
+  flex: 1;
+}
+
+.ui-project-detail-stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+:root.dark .ui-project-detail-stat-label {
+  color: #94a3b8;
+}
+
+.ui-project-detail-stat-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+:root.dark .ui-project-detail-stat-value {
+  color: white;
+}
+
+/* Project Image */
+.ui-project-detail-image-wrapper {
+  margin-bottom: 3rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.ui-project-detail-image {
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+}
+
+@media (min-width: 640px) {
+  .ui-project-detail-image {
+    height: 31.25rem;
+  }
+}
+
+/* Content Grid */
+.ui-project-detail-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .ui-project-detail-content {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Main Content */
+.ui-project-detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ui-project-detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ui-project-detail-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+:root.dark .ui-project-detail-section-title {
+  color: white;
+}
+
+.ui-project-detail-section-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+:root.dark .ui-project-detail-section-text {
+  color: #cbd5e1;
+}
+
+/* Sidebar */
+.ui-project-detail-sidebar {
+  position: relative;
+}
+
+.ui-project-detail-features-card {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .ui-project-detail-features-card {
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+:root.dark .ui-project-detail-features-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.ui-project-detail-features-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+:root.dark .ui-project-detail-features-title {
+  color: white;
+}
+
+.ui-project-detail-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ui-project-detail-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+:root.dark .ui-project-detail-feature-item {
+  color: #cbd5e1;
+}
+
+.ui-project-detail-feature-check {
+  color: #9333ea;
+  font-weight: bold;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+:root.dark .ui-project-detail-feature-check {
+  color: #c084fc;
+}
+
+/* CTA Section */
+.ui-project-detail-cta {
+  background: linear-gradient(to right, #9333ea, #db2777);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .ui-project-detail-cta {
+    padding: 3rem;
+  }
+}
+
+.ui-project-detail-cta-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.ui-project-detail-cta-description {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #f3e8ff;
+  max-width: 42rem;
+  margin: 0 auto 1.5rem;
+}
+
+.ui-project-detail-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #9333ea;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.ui-project-detail-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Not Found */
+.ui-project-detail-not-found {
+  font-size: 1.25rem;
+  color: #6b7280;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+:root.dark .ui-project-detail-not-found {
+  color: #94a3b8;
+}
