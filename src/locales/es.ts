@@ -73,6 +73,14 @@ export default {
   "blog-page-title": "Blog",
   "blog-page-description": "Reflexiones, tutoriales y conocimientos sobre desarrollo web, ingeniería de software y las últimas tendencias tecnológicas. Acompañame en mi viaje de aprendizaje continuo y compartir conocimiento.",
 
+  // Blog Post Detail Page
+  "blog-post-back": "Volver al Blog",
+  "blog-post-not-found": "Artículo no encontrado",
+  "blog-post-cta-title": "¿Disfrutaste este artículo?",
+  "blog-post-cta-description": "Seguime para más contenido sobre desarrollo web, diseño y tecnología.",
+  "blog-post-share-twitter": "Compartir en Twitter",
+  "blog-post-share-linkedin": "Compartir en LinkedIn",
+
   // Footer
   "footer-title": "Trabajemos Juntos",
   "footer-description": "Siempre estoy interesado en escuchar sobre nuevos proyectos y oportunidades. Ya sea que tengas una pregunta o solo quieras saludar, ¡no dudes en contactarme!",
@@ -261,7 +269,9 @@ export default {
       readTime: "5 min de lectura",
       image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
       category: "Desarrollo",
-      tags: ["React", "Arquitectura", "Mejores Prácticas"]
+      tags: ["React", "Arquitectura", "Mejores Prácticas"],
+      author: "Agustin Brage",
+      slug: "building-scalable-react"
     },
     {
       id: 2,
@@ -271,7 +281,9 @@ export default {
       readTime: "8 min de lectura",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
       category: "Tendencias Tech",
-      tags: ["Web3", "IA", "Tecnología Futura"]
+      tags: ["Web3", "IA", "Tecnología Futura"],
+      author: "Agustin Brage",
+      slug: "future-of-web-development"
     },
     {
       id: 3,
@@ -281,7 +293,9 @@ export default {
       readTime: "6 min de lectura",
       image: "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80",
       category: "Desarrollo",
-      tags: ["TypeScript", "JavaScript", "Programación"]
+      tags: ["TypeScript", "JavaScript", "Programación"],
+      author: "Agustin Brage",
+      slug: "mastering-typescript-2025"
     },
     {
       id: 4,
@@ -291,7 +305,9 @@ export default {
       readTime: "7 min de lectura",
       image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
       category: "Diseño",
-      tags: ["Sistemas de Diseño", "UI/UX", "Escalabilidad"]
+      tags: ["Sistemas de Diseño", "UI/UX", "Escalabilidad"],
+      author: "Agustin Brage",
+      slug: "design-systems-that-scale"
     },
     {
       id: 5,
@@ -301,7 +317,9 @@ export default {
       readTime: "10 min de lectura",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
       category: "Rendimiento",
-      tags: ["Optimización", "Web Vitals", "Performance"]
+      tags: ["Optimización", "Web Vitals", "Performance"],
+      author: "Agustin Brage",
+      slug: "optimizing-web-performance"
     },
     {
       id: 6,
@@ -311,7 +329,9 @@ export default {
       readTime: "12 min de lectura",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
       category: "IA & ML",
-      tags: ["IA", "Machine Learning", "Integración"]
+      tags: ["IA", "Machine Learning", "Integración"],
+      author: "Agustin Brage",
+      slug: "building-with-ai-guide"
     }
   ]
 }

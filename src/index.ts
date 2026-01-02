@@ -6,6 +6,7 @@ import { ContactController } from "./controllers/contact.controller";
 import { ProjectsController } from "./controllers/projects.controller";
 import { ProjectController } from "./controllers/project.controller";
 import { BlogsController } from "./controllers/blogs.controller";
+import { BlogController } from "./controllers/blog.controller";
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ var contactController = new ContactController();
 var projectsController = new ProjectsController();
 var projectController = new ProjectController();
 var blogsController = new BlogsController();
+var blogController = new BlogController();
 
 // Routes - support both root and language-specific paths
 app.get(["/:lang", "/"], async function (req, res) {
@@ -192,6 +194,54 @@ app.get("/:lang/blog", async function (req, res) {
   }
 });
 
+// Blog post detail page route
+app.get("/:lang/blog/:id", async function (req, res) {
+  try {
+    // Get language from path param or default to 'en'
+    var lang = req.params.lang || "en";
+    var postId = parseInt(req.params.id, 10);
+
+    // Validate language
+    if (!availableLanguages.includes(lang)) {
+      lang = "en";
+    }
+
+    // Validate post ID
+    if (isNaN(postId)) {
+      res.status(404).send("Invalid post ID");
+      return;
+    }
+
+    // Create context object
+    var context = {
+      lang: lang,
+      set: {
+        headers: {} as Record<string, string>,
+        status: 200,
+      },
+    };
+
+    // Render the blog post detail page
+    var html = await blogController.render(context, postId);
+
+    // Apply headers and status from context
+    if (context.set.status) {
+      res.status(context.set.status);
+    }
+
+    if (context.set.headers) {
+      Object.entries(context.set.headers).forEach(function ([key, value]) {
+        res.setHeader(key, value);
+      });
+    }
+
+    res.send(html);
+  } catch (error) {
+    console.error("Error rendering blog post detail page:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Contact page route
 app.get("/:lang/contact", async function (req, res) {
   try {
@@ -242,6 +292,7 @@ async function startServer() {
       await projectsController.warmupCache();
       await projectController.warmupCache();
       await blogsController.warmupCache();
+      await blogController.warmupCache();
       await contactController.warmupCache();
     }
 

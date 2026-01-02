@@ -167,6 +167,7 @@
   overflow: hidden;
   transition: all 0.3s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 :root.dark .ui-blogs-card {

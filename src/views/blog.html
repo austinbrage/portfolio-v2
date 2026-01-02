@@ -1,0 +1,101 @@
+<layout title="{{title}}" description="{{description}}">
+  <ui-navbar navItems="{{navItems}}" languages="{{languages}}" currentPage="{{currentPage}}"></ui-navbar>
+
+  <main class="ui-blog-page" if="props.post">
+    <article class="ui-blog-container">
+      <!-- Back Button -->
+      <div class="ui-blog-back-wrapper">
+        <a href="/{{lang}}/blog" class="ui-blog-back-button">
+          <svg class="ui-blog-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          {{t('blog-post-back')}}
+        </a>
+      </div>
+
+      <!-- Article Header -->
+      <div class="ui-blog-header">
+        <div class="ui-blog-category">{{post.category}}</div>
+
+        <h1 class="ui-blog-title">{{post.title}}</h1>
+
+        <div class="ui-blog-meta">
+          <div class="ui-blog-meta-item">
+            <svg class="ui-blog-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>{{post.author}}</span>
+          </div>
+          <div class="ui-blog-meta-item">
+            <svg class="ui-blog-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+              <line x1="16" x2="16" y1="2" y2="6"></line>
+              <line x1="8" x2="8" y1="2" y2="6"></line>
+              <line x1="3" x2="21" y1="10" y2="10"></line>
+            </svg>
+            <span>{{post.date}}</span>
+          </div>
+          <div class="ui-blog-meta-item">
+            <svg class="ui-blog-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>{{post.readTime}}</span>
+          </div>
+        </div>
+
+        <div class="ui-blog-tags">
+          <span class="ui-blog-tag" map="tag of post.tags">
+            <svg class="ui-blog-tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.828 2.828 0 0 0 4 0l7.586-7.586a2.828 2.828 0 0 0 0-4z"></path>
+              <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
+            </svg>
+            {{tag}}
+          </span>
+        </div>
+      </div>
+
+      <!-- Featured Image -->
+      <div class="ui-blog-image-wrapper">
+        <img src="{{post.image}}" alt="{{post.title}}" class="ui-blog-image" />
+      </div>
+
+      <!-- Article Content -->
+      <div class="ui-blog-content">{{content}}</div>
+
+      <!-- Share Section -->
+      <div class="ui-blog-cta">
+        <h2 class="ui-blog-cta-title">{{t('blog-post-cta-title')}}</h2>
+        <p class="ui-blog-cta-description">{{t('blog-post-cta-description')}}</p>
+        <div class="ui-blog-cta-buttons">
+          <a href="https://twitter.com/intent/tweet?url={{encodeURIComponent(currentUrl)}}&text={{encodeURIComponent(post.title)}}" target="_blank" rel="noopener noreferrer" class="ui-blog-cta-button">
+            {{t('blog-post-share-twitter')}}
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{encodeURIComponent(currentUrl)}}" target="_blank" rel="noopener noreferrer" class="ui-blog-cta-button">
+            {{t('blog-post-share-linkedin')}}
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Post Not Found -->
+  <main class="ui-blog-page" if="!props.post">
+    <div class="ui-blog-container">
+      <div class="ui-blog-back-wrapper">
+        <a href="/{{lang}}/blog" class="ui-blog-back-button">
+          <svg class="ui-blog-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          {{t('blog-post-back')}}
+        </a>
+      </div>
+      <p class="ui-blog-not-found">{{t('blog-post-not-found')}}</p>
+    </div>
+  </main>
+
+  <ui-footer email="{{email}}"></ui-footer>
+</layout>

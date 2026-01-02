@@ -111,6 +111,32 @@ export class I18nService {
   }
 
   /**
+   * Get a single blog post by ID for a specific language
+   * Returns the blog post metadata from the locale file or null if not found
+   * Note: Content is loaded separately via MarkdownService
+   */
+  static getBlogPostById(lang: string, id: number): any | null {
+    // Validate language
+    if (!availableLanguages.includes(lang)) {
+      lang = "en";
+    }
+
+    // Get locale
+    var locale = locales[lang as keyof typeof locales];
+    if (!locale) {
+      return null;
+    }
+
+    // Get blog posts array
+    var blogPosts = (locale as any).blogPosts || [];
+
+    // Find blog post by ID
+    var blogPost = blogPosts.find((p: any) => p.id === id);
+
+    return blogPost || null;
+  }
+
+  /**
    * Translate a single key with optional variable replacements
    * Returns the original key if translation not found (graceful fallback)
    */

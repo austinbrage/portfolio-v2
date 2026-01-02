@@ -73,6 +73,14 @@ export default {
   "blog-page-title": "Blog",
   "blog-page-description": "Thoughts, tutorials, and insights about web development, software engineering, and the latest tech trends. Join me on my journey of continuous learning and sharing knowledge.",
 
+  // Blog Post Detail Page
+  "blog-post-back": "Back to Blog",
+  "blog-post-not-found": "Blog post not found",
+  "blog-post-cta-title": "Enjoyed this article?",
+  "blog-post-cta-description": "Follow me for more content on web development, design, and technology.",
+  "blog-post-share-twitter": "Share on Twitter",
+  "blog-post-share-linkedin": "Share on LinkedIn",
+
   // Footer
   "footer-title": "Let's Work Together",
   "footer-description": "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
@@ -261,7 +269,9 @@ export default {
       readTime: "5 min read",
       image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
       category: "Development",
-      tags: ["React", "Architecture", "Best Practices"]
+      tags: ["React", "Architecture", "Best Practices"],
+      author: "Austin Brage",
+      slug: "building-scalable-react"
     },
     {
       id: 2,
@@ -271,7 +281,9 @@ export default {
       readTime: "8 min read",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
       category: "Tech Trends",
-      tags: ["Web3", "AI", "Future Tech"]
+      tags: ["Web3", "AI", "Future Tech"],
+      author: "Austin Brage",
+      slug: "future-of-web-development"
     },
     {
       id: 3,
@@ -281,7 +293,9 @@ export default {
       readTime: "6 min read",
       image: "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80",
       category: "Development",
-      tags: ["TypeScript", "JavaScript", "Programming"]
+      tags: ["TypeScript", "JavaScript", "Programming"],
+      author: "Austin Brage",
+      slug: "mastering-typescript-2025"
     },
     {
       id: 4,
@@ -291,7 +305,9 @@ export default {
       readTime: "7 min read",
       image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
       category: "Design",
-      tags: ["Design Systems", "UI/UX", "Scalability"]
+      tags: ["Design Systems", "UI/UX", "Scalability"],
+      author: "Austin Brage",
+      slug: "design-systems-that-scale"
     },
     {
       id: 5,
@@ -301,7 +317,9 @@ export default {
       readTime: "10 min read",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
       category: "Performance",
-      tags: ["Optimization", "Web Vitals", "Performance"]
+      tags: ["Optimization", "Web Vitals", "Performance"],
+      author: "Austin Brage",
+      slug: "optimizing-web-performance"
     },
     {
       id: 6,
@@ -311,7 +329,9 @@ export default {
       readTime: "12 min read",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
       category: "AI & ML",
-      tags: ["AI", "Machine Learning", "Integration"]
+      tags: ["AI", "Machine Learning", "Integration"],
+      author: "Austin Brage",
+      slug: "building-with-ai-guide"
     }
   ]
 }
