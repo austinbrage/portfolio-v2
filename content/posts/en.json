@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Building Scalable React Applications",
+    "excerpt": "Learn the best practices and patterns for creating React apps that can grow with your business needs.",
+    "date": "Nov 28, 2025",
+    "readTime": "5 min read",
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    "category": "Development",
+    "tags": ["React", "Architecture", "Best Practices"],
+    "author": "Austin Brage",
+    "slug": "building-scalable-react"
+  },
+  {
+    "id": 2,
+    "title": "The Future of Web Development",
+    "excerpt": "Exploring upcoming trends and technologies that will shape how we build for the web in 2026 and beyond.",
+    "date": "Nov 20, 2025",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+    "category": "Tech Trends",
+    "tags": ["Web3", "AI", "Future Tech"],
+    "author": "Austin Brage",
+    "slug": "future-of-web-development"
+  },
+  {
+    "id": 3,
+    "title": "Mastering TypeScript in 2025",
+    "excerpt": "A comprehensive guide to advanced TypeScript features and how to leverage them in your projects.",
+    "date": "Nov 15, 2025",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80",
+    "category": "Development",
+    "tags": ["TypeScript", "JavaScript", "Programming"],
+    "author": "Austin Brage",
+    "slug": "mastering-typescript-2025"
+  },
+  {
+    "id": 4,
+    "title": "Design Systems That Scale",
+    "excerpt": "How to build and maintain design systems that grow with your product and team.",
+    "date": "Nov 10, 2025",
+    "readTime": "7 min read",
+    "image": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
+    "category": "Design",
+    "tags": ["Design Systems", "UI/UX", "Scalability"],
+    "author": "Austin Brage",
+    "slug": "design-systems-that-scale"
+  },
+  {
+    "id": 5,
+    "title": "Optimizing Web Performance",
+    "excerpt": "Proven techniques to make your web applications faster and more efficient.",
+    "date": "Nov 5, 2025",
+    "readTime": "10 min read",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "category": "Performance",
+    "tags": ["Optimization", "Web Vitals", "Performance"],
+    "author": "Austin Brage",
+    "slug": "optimizing-web-performance"
+  },
+  {
+    "id": 6,
+    "title": "Building with AI: A Developer's Guide",
+    "excerpt": "Integrating AI capabilities into your applications with practical examples and best practices.",
+    "date": "Oct 30, 2025",
+    "readTime": "12 min read",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    "category": "AI & ML",
+    "tags": ["AI", "Machine Learning", "Integration"],
+    "author": "Austin Brage",
+    "slug": "building-with-ai-guide"
+  }
+]

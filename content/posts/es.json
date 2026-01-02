@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Construyendo Aplicaciones React Escalables",
+    "excerpt": "Aprende las mejores prácticas y patrones para crear aplicaciones React que puedan crecer con las necesidades de tu negocio.",
+    "date": "28 Nov 2025",
+    "readTime": "5 min de lectura",
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    "category": "Desarrollo",
+    "tags": ["React", "Arquitectura", "Mejores Prácticas"],
+    "author": "Agustin Brage",
+    "slug": "building-scalable-react"
+  },
+  {
+    "id": 2,
+    "title": "El Futuro del Desarrollo Web",
+    "excerpt": "Explorando las próximas tendencias y tecnologías que darán forma a cómo construimos para la web en 2026 y más allá.",
+    "date": "20 Nov 2025",
+    "readTime": "8 min de lectura",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+    "category": "Tendencias Tech",
+    "tags": ["Web3", "IA", "Tecnología Futura"],
+    "author": "Agustin Brage",
+    "slug": "future-of-web-development"
+  },
+  {
+    "id": 3,
+    "title": "Dominando TypeScript en 2025",
+    "excerpt": "Una guía completa de características avanzadas de TypeScript y cómo aprovecharlas en tus proyectos.",
+    "date": "15 Nov 2025",
+    "readTime": "6 min de lectura",
+    "image": "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80",
+    "category": "Desarrollo",
+    "tags": ["TypeScript", "JavaScript", "Programación"],
+    "author": "Agustin Brage",
+    "slug": "mastering-typescript-2025"
+  },
+  {
+    "id": 4,
+    "title": "Sistemas de Diseño Escalables",
+    "excerpt": "Cómo construir y mantener sistemas de diseño que crecen con tu producto y equipo.",
+    "date": "10 Nov 2025",
+    "readTime": "7 min de lectura",
+    "image": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
+    "category": "Diseño",
+    "tags": ["Sistemas de Diseño", "UI/UX", "Escalabilidad"],
+    "author": "Agustin Brage",
+    "slug": "design-systems-that-scale"
+  },
+  {
+    "id": 5,
+    "title": "Optimizando el Rendimiento Web",
+    "excerpt": "Técnicas probadas para hacer tus aplicaciones web más rápidas y eficientes.",
+    "date": "5 Nov 2025",
+    "readTime": "10 min de lectura",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "category": "Rendimiento",
+    "tags": ["Optimización", "Web Vitals", "Performance"],
+    "author": "Agustin Brage",
+    "slug": "optimizing-web-performance"
+  },
+  {
+    "id": 6,
+    "title": "Construyendo con IA: Guía para Desarrolladores",
+    "excerpt": "Integrando capacidades de IA en tus aplicaciones con ejemplos prácticos y mejores prácticas.",
+    "date": "30 Oct 2025",
+    "readTime": "12 min de lectura",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    "category": "IA & ML",
+    "tags": ["IA", "Machine Learning", "Integración"],
+    "author": "Agustin Brage",
+    "slug": "building-with-ai-guide"
+  }
+]
