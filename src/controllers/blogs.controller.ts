@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
@@ -23,6 +24,9 @@ export class BlogsController {
       var lang = context.lang || "en";
       var t = I18nService.createTranslator(lang);
 
+      // Get all blog posts
+      var blogPosts = await ContentService.getBlogPosts(lang);
+
       const renderData = {
         title: "Blog - Austin Brage",
         description: "Read my blog posts about web development and technology",
@@ -41,7 +45,7 @@ export class BlogsController {
           { code: "en", name: "English", flag: "🇺🇸" },
           { code: "es", name: "Español", flag: "🇪🇸" },
         ],
-        blogPosts: I18nService.getBlogPosts(lang),
+        blogPosts,
         email: "austin@example.com",
       };
 

@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
@@ -23,6 +24,9 @@ export class ProjectsController {
       var lang = context.lang || "en";
       var t = I18nService.createTranslator(lang);
 
+      // Get all projects
+      var projects = await ContentService.getProjects(lang);
+
       const renderData = {
         title: "Projects - Austin Brage",
         description: "Browse all my projects",
@@ -41,7 +45,7 @@ export class ProjectsController {
           { code: "en", name: "English", flag: "🇺🇸" },
           { code: "es", name: "Español", flag: "🇪🇸" },
         ],
-        projects: I18nService.getProjects(lang),
+        projects,
         email: "austin@example.com",
       };
 

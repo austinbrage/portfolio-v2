@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
@@ -23,6 +24,10 @@ export class HomeController {
       var lang = context.lang || "en";
       var t = I18nService.createTranslator(lang);
 
+      // Get content data
+      var projects = await ContentService.getProjects(lang, 4);
+      var blogPosts = await ContentService.getBlogPosts(lang, 2);
+
       const renderData = {
         title: "Austin Brage",
         description: "Austin Brage - Personal portfolio",
@@ -45,8 +50,8 @@ export class HomeController {
         heroLinkedinUrl: "https://linkedin.com/in/austinbrage",
         heroEmail: "austin@example.com",
         experiences: I18nService.getExperiences(lang),
-        projects: I18nService.getProjects(lang, 4),
-        blogPosts: I18nService.getBlogPosts(lang, 2),
+        projects,
+        blogPosts,
       };
 
       context.set.headers["Content-Type"] = "text/html";

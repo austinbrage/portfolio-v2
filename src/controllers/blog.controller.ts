@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { ContentService } from "../services/content.service";
 import { MarkdownService } from "../services/markdown.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
@@ -25,7 +26,7 @@ export class BlogController {
       var t = I18nService.createTranslator(lang);
 
       // Get blog post metadata by ID
-      var post = I18nService.getBlogPostById(lang, postId);
+      var post = await ContentService.getBlogPostById(lang, postId);
 
       // Load markdown content (will use placeholder if file doesn't exist)
       var content = "";

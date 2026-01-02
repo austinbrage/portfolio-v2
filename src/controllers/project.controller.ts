@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
@@ -24,7 +25,7 @@ export class ProjectController {
       var t = I18nService.createTranslator(lang);
 
       // Get project by ID
-      var project = I18nService.getProjectById(lang, projectId);
+      var project = await ContentService.getProjectById(lang, projectId);
 
       const renderData = {
         title: project ? `${project.title} - Austin Brage` : "Project Not Found",
