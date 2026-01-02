@@ -1,5 +1,5 @@
 <template is="ui-hero" githubUrl="string" linkedinUrl="string" email="string">
-  <section class="ui-hero" x-data="hero()">
+  <section class="ui-hero">
     <!-- Gradient Background -->
     <div class="ui-hero-bg-gradient"></div>
 
@@ -66,7 +66,7 @@
 
       <!-- CTA Buttons -->
       <div class="ui-hero-cta-buttons">
-        <button class="ui-hero-cta-primary" @click="scrollToProjects()">
+        <a href="/{{lang}}/projects" class="ui-hero-cta-primary">
           <span class="ui-hero-cta-text">
             {{t('hero-cta-primary')}}
             <svg class="ui-hero-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -75,7 +75,7 @@
             </svg>
           </span>
           <div class="ui-hero-cta-primary-overlay"></div>
-        </button>
+        </a>
         <a href="/{{lang}}/contact" class="ui-hero-cta-secondary">
           {{t('hero-cta-secondary')}}
           <svg class="ui-hero-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -411,6 +411,7 @@
   border: none;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .ui-hero-cta-primary {
