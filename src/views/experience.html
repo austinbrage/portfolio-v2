@@ -1,12 +1,12 @@
 <layout title="{{title}}" description="{{description}}">
   <ui-navbar navItems="{{navItems}}" languages="{{languages}}" currentPage="{{currentPage}}"></ui-navbar>
 
-  <main class="ui-experience-detail-page" if="props.experience">
-    <div class="ui-experience-detail-container">
+  <main class="ui-experience-page" if="props.experience">
+    <div class="ui-experience-container">
       <!-- Back Button -->
-      <div class="ui-experience-detail-back-wrapper">
-        <a href="/{{lang}}" class="ui-experience-detail-back-button">
-          <svg class="ui-experience-detail-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="ui-experience-back-wrapper">
+        <a href="/{{lang}}" class="ui-experience-back-button">
+          <svg class="ui-experience-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m12 19-7-7 7-7"></path>
             <path d="M19 12H5"></path>
           </svg>
@@ -15,21 +15,21 @@
       </div>
 
       <!-- Header -->
-      <div class="ui-experience-detail-header">
-        <div class="ui-experience-detail-header-main">
-          <div class="ui-experience-detail-icon">
+      <div class="ui-experience-header">
+        <div class="ui-experience-header-main">
+          <div class="ui-experience-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
               <rect width="20" height="14" x="2" y="6" rx="2"></rect>
             </svg>
           </div>
-          <div class="ui-experience-detail-header-content">
-            <h1 class="ui-experience-detail-title">
-              <span class="ui-experience-detail-title-gradient">{{experience.title}}</span>
+          <div class="ui-experience-header-content">
+            <h1 class="ui-experience-title">
+              <span class="ui-experience-title-gradient">{{experience.title}}</span>
             </h1>
-            <p class="ui-experience-detail-company">{{experience.company}}</p>
-            <div class="ui-experience-detail-meta">
-              <div class="ui-experience-detail-meta-item">
+            <p class="ui-experience-company">{{experience.company}}</p>
+            <div class="ui-experience-meta">
+              <div class="ui-experience-meta-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
                   <line x1="16" x2="16" y1="2" y2="6"></line>
@@ -38,7 +38,7 @@
                 </svg>
                 <span>{{experience.startDate}} - {{experience.endDate}} ({{experience.duration}})</span>
               </div>
-              <div class="ui-experience-detail-meta-item">
+              <div class="ui-experience-meta-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
@@ -49,31 +49,31 @@
           </div>
         </div>
 
-        <p class="ui-experience-detail-description">{{experience.description}}</p>
+        <p class="ui-experience-description">{{experience.description}}</p>
 
         <!-- Technologies -->
-        <div class="ui-experience-detail-technologies">
-          <h3 class="ui-experience-detail-technologies-title">{{t('experience-detail-technologies')}}</h3>
-          <div class="ui-experience-detail-technologies-list">
-            <span class="ui-experience-detail-tech-badge" map="tech of experience.technologies">{{tech}}</span>
+        <div class="ui-experience-technologies">
+          <h3 class="ui-experience-technologies-title">{{t('experience-detail-technologies')}}</h3>
+          <div class="ui-experience-technologies-list">
+            <span class="ui-experience-tech-badge" map="tech of experience.technologies">{{tech}}</span>
           </div>
         </div>
 
-        <div class="ui-experience-detail-divider"></div>
+        <div class="ui-experience-divider"></div>
       </div>
 
       <!-- Key Accomplishments -->
-      <div class="ui-experience-detail-accomplishments">
-        <h2 class="ui-experience-detail-accomplishments-title">
-          <span class="ui-experience-detail-title-gradient">{{t('experience-detail-accomplishments')}}</span>
+      <div class="ui-experience-accomplishments">
+        <h2 class="ui-experience-accomplishments-title">
+          <span class="ui-experience-title-gradient">{{t('experience-detail-accomplishments')}}</span>
         </h2>
 
-        <div class="ui-experience-detail-accomplishments-list">
-          <div class="ui-experience-detail-card" map="accomplishment, index of experience.accomplishments">
-            <div class="ui-experience-detail-card-content">
+        <div class="ui-experience-accomplishments-list">
+          <div class="ui-experience-card" map="accomplishment, index of experience.accomplishments">
+            <div class="ui-experience-card-content">
               <!-- Header -->
-              <div class="ui-experience-detail-card-header">
-                <div class="ui-experience-detail-card-icon" data-index="{{index}}">
+              <div class="ui-experience-card-header">
+                <div class="ui-experience-card-icon" data-index="{{index}}">
                   <!-- Target Icon (index % 6 === 0) -->
                   <svg if="index % 6 === 0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -108,32 +108,32 @@
                     <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
                   </svg>
                 </div>
-                <div class="ui-experience-detail-card-header-text">
-                  <h3 class="ui-experience-detail-card-title">{{accomplishment.title}}</h3>
-                  <p class="ui-experience-detail-card-description">{{accomplishment.description}}</p>
+                <div class="ui-experience-card-header-text">
+                  <h3 class="ui-experience-card-title">{{accomplishment.title}}</h3>
+                  <p class="ui-experience-card-description">{{accomplishment.description}}</p>
                 </div>
               </div>
 
               <!-- Content -->
-              <div class="ui-experience-detail-card-sections">
+              <div class="ui-experience-card-sections">
                 <!-- Challenge -->
-                <div class="ui-experience-detail-card-section">
-                  <h4 class="ui-experience-detail-card-section-title">{{t('experience-detail-challenge')}}</h4>
-                  <p class="ui-experience-detail-card-section-text">{{accomplishment.challenge}}</p>
+                <div class="ui-experience-card-section">
+                  <h4 class="ui-experience-card-section-title">{{t('experience-detail-challenge')}}</h4>
+                  <p class="ui-experience-card-section-text">{{accomplishment.challenge}}</p>
                 </div>
 
                 <!-- Solution -->
-                <div class="ui-experience-detail-card-section">
-                  <h4 class="ui-experience-detail-card-section-title">{{t('experience-detail-solution')}}</h4>
-                  <p class="ui-experience-detail-card-section-text">{{accomplishment.solution}}</p>
+                <div class="ui-experience-card-section">
+                  <h4 class="ui-experience-card-section-title">{{t('experience-detail-solution')}}</h4>
+                  <p class="ui-experience-card-section-text">{{accomplishment.solution}}</p>
                 </div>
 
                 <!-- Impact -->
-                <div class="ui-experience-detail-card-section">
-                  <h4 class="ui-experience-detail-card-section-title">{{t('experience-detail-impact')}}</h4>
-                  <ul class="ui-experience-detail-card-results">
+                <div class="ui-experience-card-section">
+                  <h4 class="ui-experience-card-section-title">{{t('experience-detail-impact')}}</h4>
+                  <ul class="ui-experience-card-results">
                     <li map="result of accomplishment.results">
-                      <span class="ui-experience-detail-card-bullet">•</span>
+                      <span class="ui-experience-card-bullet">•</span>
                       <span>{{result}}</span>
                     </li>
                   </ul>
@@ -145,8 +145,8 @@
       </div>
 
       <!-- Back to Top -->
-      <div class="ui-experience-detail-footer">
-        <a href="/{{lang}}" class="ui-experience-detail-cta-button">
+      <div class="ui-experience-footer">
+        <a href="/{{lang}}" class="ui-experience-cta-button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m12 19-7-7 7-7"></path>
             <path d="M19 12H5"></path>
@@ -158,18 +158,18 @@
   </main>
 
   <!-- Experience Not Found -->
-  <main class="ui-experience-detail-page" if="!props.experience">
-    <div class="ui-experience-detail-container">
-      <div class="ui-experience-detail-back-wrapper">
-        <a href="/{{lang}}" class="ui-experience-detail-back-button">
-          <svg class="ui-experience-detail-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <main class="ui-experience-page" if="!props.experience">
+    <div class="ui-experience-container">
+      <div class="ui-experience-back-wrapper">
+        <a href="/{{lang}}" class="ui-experience-back-button">
+          <svg class="ui-experience-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m12 19-7-7 7-7"></path>
             <path d="M19 12H5"></path>
           </svg>
           {{t('experience-detail-back')}}
         </a>
       </div>
-      <p class="ui-experience-detail-not-found">{{t('experience-detail-not-found')}}</p>
+      <p class="ui-experience-not-found">{{t('experience-detail-not-found')}}</p>
     </div>
   </main>
 
