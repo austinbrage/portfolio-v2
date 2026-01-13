@@ -18,26 +18,6 @@ export class I18nService {
   }
 
   /**
-   * Get experiences array for a specific language
-   * Returns the experiences from the locale file
-   */
-  static getExperiences(lang: string): any[] {
-    // Validate language
-    if (!availableLanguages.includes(lang)) {
-      lang = "en";
-    }
-
-    // Get locale
-    var locale = locales[lang as keyof typeof locales];
-    if (!locale) {
-      return [];
-    }
-
-    // Return experiences array
-    return (locale as any).experiences || [];
-  }
-
-  /**
    * Translate a single key with optional variable replacements
    * Returns the original key if translation not found (graceful fallback)
    */

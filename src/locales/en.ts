@@ -25,17 +25,14 @@ export default {
   "experience-title": "Experience",
   "experience-view-details": "View details",
 
-  "experiences": [
-    {
-      title: "Senior Full-Stack Developer",
-      company: "TechCorp Solutions",
-      startDate: "Jan 2023",
-      endDate: "Present",
-      location: "San Francisco, CA",
-      description: "Leading the development of scalable web applications, mentoring junior developers, and implementing best practices across the engineering team. Reduced load times by 40% and increased user engagement by 25% through strategic optimization.",
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "AWS"]
-    }
-  ],
+  // Experience Detail Page
+  "experience-detail-back": "Back to Home",
+  "experience-detail-technologies": "Technologies & Skills",
+  "experience-detail-accomplishments": "Key Accomplishments",
+  "experience-detail-challenge": "Challenge",
+  "experience-detail-solution": "Solution",
+  "experience-detail-impact": "Impact",
+  "experience-detail-not-found": "Experience not found",
 
   // Projects
   "projects-title": "Featured Projects",

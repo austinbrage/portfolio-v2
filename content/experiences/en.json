@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "title": "Senior Full-Stack Developer",
+    "company": "TechCorp Solutions",
+    "startDate": "Jan 2023",
+    "endDate": "Present",
+    "duration": "2 years",
+    "location": "San Francisco, CA",
+    "description": "Leading the development of scalable web applications, mentoring junior developers, and implementing best practices across the engineering team. Focused on building high-performance, user-centric solutions that drive business growth.",
+    "technologies": ["React", "TypeScript", "Next.js", "Node.js", "PostgreSQL", "Redis", "AWS", "Docker", "GraphQL", "Tailwind CSS"],
+    "accomplishments": [
+      {
+        "title": "E-Commerce Platform Redesign",
+        "description": "Led the complete redesign and re-architecture of the company's main e-commerce platform serving 500K+ monthly active users.",
+        "challenge": "The legacy platform was built on outdated technology, had poor mobile performance (loading times >5s), and lacked scalability to handle traffic spikes during sales events. The codebase was tightly coupled with no testing infrastructure.",
+        "solution": "Architected a new microservices-based system using Next.js and React for the frontend, with Node.js/Express backends. Implemented progressive image loading, code splitting, and server-side rendering. Set up comprehensive CI/CD pipelines with automated testing achieving 85% code coverage.",
+        "results": [
+          "Reduced page load times from 5.2s to 1.1s (78% improvement)",
+          "Increased mobile conversion rate by 34%",
+          "Zero downtime during Black Friday handling 10x normal traffic",
+          "Decreased bug reports by 60% through automated testing"
+        ]
+      },
+      {
+        "title": "Real-Time Analytics Dashboard",
+        "description": "Built a comprehensive real-time analytics platform for business intelligence, processing millions of events daily.",
+        "challenge": "Needed to process and visualize large amounts of data in real-time without overwhelming the database or creating performance bottlenecks. The dashboard needed to support complex filtering and custom date ranges while maintaining sub-second response times.",
+        "solution": "Implemented a streaming data pipeline using WebSockets and Redis for real-time updates. Used PostgreSQL with optimized indexing and materialized views for historical data. Created a custom query builder with intelligent caching strategies. Leveraged React Query for efficient data fetching and Chart.js for performant visualizations.",
+        "results": [
+          "Processing 5M+ events per day with <100ms latency",
+          "Dashboard queries returning in <500ms even with 1M+ records",
+          "Enabled data-driven decisions leading to 20% revenue increase",
+          "Saved 15+ hours/week of manual reporting time for the team"
+        ]
+      },
+      {
+        "title": "Developer Productivity Tools",
+        "description": "Created internal tooling and established engineering best practices to improve team velocity and code quality.",
+        "challenge": "The engineering team was growing rapidly (from 5 to 20 developers), but lacked standardized processes, code review guidelines, and automated tooling. This led to inconsistent code quality, frequent merge conflicts, and slow onboarding for new developers.",
+        "solution": "Developed a comprehensive developer portal with automated code scaffolding, integrated linting/formatting tools, and interactive documentation. Implemented Git hooks for pre-commit checks, automated PR templates, and a design system component library. Established weekly code review sessions and pair programming guidelines.",
+        "results": [
+          "Reduced onboarding time for new developers from 2 weeks to 3 days",
+          "Decreased code review cycle time by 50%",
+          "Improved code consistency scores from 62% to 94%",
+          "Increased deployment frequency from 2x/week to daily releases"
+        ]
+      }
+    ]
+  }
+]

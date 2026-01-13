@@ -9,11 +9,13 @@ import { join } from "path";
 export class ContentService {
   private static projectsPath = join(__dirname, "../../content/projects");
   private static postsPath = join(__dirname, "../../content/posts");
+  private static experiencesPath = join(__dirname, "../../content/experiences");
 
   // Cache objects
   private static cache = {
     projects: {} as Record<string, any[]>,
     posts: {} as Record<string, any[]>,
+    experiences: {} as Record<string, any[]>,
   };
 
   /**
@@ -32,12 +34,12 @@ export class ContentService {
       // Load from file
       var filePath = join(this.projectsPath, `${lang}.json`);
       var jsonData = await readFile(filePath, "utf8");
-      var projects = JSON.parse(jsonData);
+      var loadedProjects = JSON.parse(jsonData);
 
       // Cache it
-      this.cache.projects[lang] = projects;
+      this.cache.projects[lang] = loadedProjects;
 
-      return limit ? projects.slice(0, limit) : projects;
+      return limit ? loadedProjects.slice(0, limit) : loadedProjects;
     } catch (error) {
       console.error(`Error loading projects for ${lang}:`, error);
       return [];
@@ -74,12 +76,12 @@ export class ContentService {
       // Load from file
       var filePath = join(this.postsPath, `${lang}.json`);
       var jsonData = await readFile(filePath, "utf8");
-      var posts = JSON.parse(jsonData);
+      var loadedPosts = JSON.parse(jsonData);
 
       // Cache it
-      this.cache.posts[lang] = posts;
+      this.cache.posts[lang] = loadedPosts;
 
-      return limit ? posts.slice(0, limit) : posts;
+      return limit ? loadedPosts.slice(0, limit) : loadedPosts;
     } catch (error) {
       console.error(`Error loading blog posts for ${lang}:`, error);
       return [];
@@ -101,10 +103,53 @@ export class ContentService {
   }
 
   /**
+   * Get all experiences for a language
+   * @param lang Language code
+   * @param limit Optional limit on number of results
+   */
+  static async getExperiences(lang: string, limit?: number): Promise<any[]> {
+    try {
+      // Check cache first
+      if (this.cache.experiences[lang]) {
+        var experiences = this.cache.experiences[lang];
+        return limit ? experiences.slice(0, limit) : experiences;
+      }
+
+      // Load from file
+      var filePath = join(this.experiencesPath, `${lang}.json`);
+      var jsonData = await readFile(filePath, "utf8");
+      var loadedExperiences = JSON.parse(jsonData);
+
+      // Cache it
+      this.cache.experiences[lang] = loadedExperiences;
+
+      return limit ? loadedExperiences.slice(0, limit) : loadedExperiences;
+    } catch (error) {
+      console.error(`Error loading experiences for ${lang}:`, error);
+      return [];
+    }
+  }
+
+  /**
+   * Get a single experience by ID and language
+   */
+  static async getExperienceById(lang: string, id: number): Promise<any | null> {
+    try {
+      var experiences = await this.getExperiences(lang);
+      var experience = experiences.find((e) => e.id === id);
+      return experience || null;
+    } catch (error) {
+      console.error(`Error getting experience ${id} for ${lang}:`, error);
+      return null;
+    }
+  }
+
+  /**
    * Clear cache (useful for development or testing)
    */
   static clearCache() {
     this.cache.projects = {};
     this.cache.posts = {};
+    this.cache.experiences = {};
   }
 }

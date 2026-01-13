@@ -27,6 +27,7 @@ export class HomeController {
       // Get content data
       var projects = await ContentService.getProjects(lang, 4);
       var blogPosts = await ContentService.getBlogPosts(lang, 2);
+      var experiences = await ContentService.getExperiences(lang);
 
       const renderData = {
         title: "Austin Brage",
@@ -49,7 +50,7 @@ export class HomeController {
         heroGithubUrl: "https://github.com/austinbrage",
         heroLinkedinUrl: "https://linkedin.com/in/austinbrage",
         heroEmail: "austin@example.com",
-        experiences: I18nService.getExperiences(lang),
+        experiences,
         projects,
         blogPosts,
       };
