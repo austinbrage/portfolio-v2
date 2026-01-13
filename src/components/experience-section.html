@@ -1,0 +1,77 @@
+<template is="ui-experience-section" experiences="array" lang="string">
+  <section class="ui-experience-section">
+    <div class="ui-experience-section-header">
+      <div class="ui-experience-section-header-content">
+        <div>
+          <h2 class="ui-experience-section-title">
+            <span class="ui-experience-section-title-gradient">{{t('experience-title')}}</span>
+          </h2>
+          <div class="ui-experience-section-line"></div>
+        </div>
+        <a href="/pdf/Austin_Brage_Resume.pdf" download="Austin_Brage_Resume.pdf" class="ui-experience-section-download-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-experience-section-download-icon">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" x2="12" y1="15" y2="3"></line>
+          </svg>
+          {{t('experience-download-cv')}}
+        </a>
+      </div>
+    </div>
+
+    <a
+      href="/{{props.lang}}/experience/{{exp.id}}"
+      class="ui-experience-section-card"
+      map="exp of props.experiences"
+    >
+      <div class="ui-experience-section-card-content">
+        <div class="ui-experience-section-card-header">
+          <div class="ui-experience-section-card-main">
+            <div class="ui-experience-section-card-icon">
+              <svg class="ui-experience-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+              </svg>
+            </div>
+            <div>
+              <h3 class="ui-experience-section-card-title">{{exp.title}}</h3>
+              <p class="ui-experience-section-card-company">{{exp.company}}</p>
+            </div>
+          </div>
+          <div class="ui-experience-section-card-meta">
+            <div class="ui-experience-section-card-meta-item">
+              <svg class="ui-experience-section-card-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                <line x1="16" x2="16" y1="2" y2="6"></line>
+                <line x1="8" x2="8" y1="2" y2="6"></line>
+                <line x1="3" x2="21" y1="10" y2="10"></line>
+              </svg>
+              <span>{{exp.startDate}} - {{exp.endDate}}</span>
+            </div>
+            <div class="ui-experience-section-card-meta-item">
+              <svg class="ui-experience-section-card-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>{{exp.location}}</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="ui-experience-section-card-description">{{exp.description}}</p>
+
+        <div class="ui-experience-section-card-tech">
+          <span class="ui-experience-section-card-tech-badge" map="tech of exp.technologies">{{tech}}</span>
+        </div>
+
+        <div class="ui-experience-section-card-footer">
+          <span>{{t('experience-view-details')}}</span>
+          <svg class="ui-experience-section-card-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </section>
+</template>
