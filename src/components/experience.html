@@ -1,4 +1,4 @@
-<template is="ui-experience" experiences="array">
+<template is="ui-experience" experiences="array" lang="string">
   <section class="ui-experience">
     <div class="ui-experience-header">
       <h2 class="ui-experience-title">
@@ -7,7 +7,8 @@
       <div class="ui-experience-line"></div>
     </div>
 
-    <div
+    <a
+      href="/{{props.lang}}/experience/{{exp.id}}"
       class="ui-experience-card"
       map="exp of props.experiences"
     >
@@ -59,6 +60,6 @@
           </svg>
         </div>
       </div>
-    </div>
+    </a>
   </section>
 </template>

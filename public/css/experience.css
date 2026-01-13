@@ -52,12 +52,15 @@
 
 /* Card */
 .ui-experience-card {
+  display: block;
   border: 2px solid #cbcdd1ff;
   border-radius: 1rem;
   background-color: #fff;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  color: inherit;
 }
 
 :root.dark .ui-experience-card {
@@ -68,6 +71,7 @@
 .ui-experience-card:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   border-color: #e9d5ff;
+  transform: translateY(-2px);
 }
 
 :root.dark .ui-experience-card:hover {
