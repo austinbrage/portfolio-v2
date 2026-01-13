@@ -24,6 +24,7 @@ export default {
   // Experience
   "experience-title": "Experiencia",
   "experience-view-details": "Ver detalles",
+  "experience-download-cv": "Descargar CV",
 
   // Experience Detail Page
   "experience-detail-back": "Volver al Inicio",
