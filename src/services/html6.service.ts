@@ -1,11 +1,11 @@
 import html6 from "html6";
-import pretty from "pretty";
 import { readdir, readFile } from "fs/promises";
 import { join, resolve } from "path";
 import { utilPipes } from "../utils/pipes";
 
 var mode = process.env.NODE_ENV || "development";
 var components: string[] = [];
+var hasLogged = false;
 
 // Recursively walk a directory to get all file paths
 async function tree(dir: string): Promise<string[]> {
@@ -45,7 +45,12 @@ async function loadComponents(): Promise<string[]> {
   }
 
   var components = await Promise.all(htmlFiles.map(read));
-  console.log(`Loaded ${components.length} HTML6 components`);
+
+  if (!hasLogged) {
+    console.log(`Loaded ${components.length} HTML6 components`);
+    hasLogged = true;
+  }
+
   return components;
 }
 
@@ -59,12 +64,11 @@ var componentsReady = (async function () {
   }
 })();
 
-// Function to reload components in development
+// Function to reload components in non-prod envs
 async function reloadComponents() {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV !== "production") {
     try {
       components = await loadComponents();
-      console.log("🔄 Components reloaded for development");
     } catch (error) {
       console.error("Error reloading components:", error);
     }
@@ -88,17 +92,18 @@ async function compile(
 ): Promise<Renderer> {
   await componentsReady;
 
-  // Reload components in development
-  if (process.env.NODE_ENV === "development") {
-    await reloadComponents();
-  }
+  await reloadComponents();
 
   opt.pipes = Object.assign({}, utilPipes, opt.pipes);
   opt.components = components.concat(opt.components || []);
   opt.mode = mode;
 
   if (mode === "development" && typeof opt.formatter !== "function") {
-    opt.formatter = pretty;
+    try {
+      opt.formatter = require("pretty");
+    } catch {
+      // pretty not installed (e.g. production image), skip formatting
+    }
   }
 
   var renderer = html6.compile(page, opt);
