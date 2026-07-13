@@ -8,6 +8,7 @@ import { ProjectController } from "./controllers/project.controller";
 import { BlogsController } from "./controllers/blogs.controller";
 import { BlogController } from "./controllers/blog.controller";
 import { ExperienceController } from "./controllers/experience.controller";
+import { NotFoundController } from "./controllers/not-found.controller";
 import { warmupServiceDownPage } from "./services/system.service";
 
 var app = express();
@@ -25,6 +26,7 @@ var projectController = new ProjectController();
 var blogsController = new BlogsController();
 var blogController = new BlogController();
 var experienceController = new ExperienceController();
+var notFoundController = new NotFoundController();
 
 // Routes - support both root and language-specific paths
 app.get(["/:lang", "/"], async function (req, res) {
@@ -334,6 +336,36 @@ app.get("/:lang/experience/:id", async function (req, res) {
   }
 });
 
+// Catch-all 404 route - must be registered after every other route
+app.use(async function (req, res) {
+  try {
+    var context = {
+      path: req.path,
+      set: {
+        headers: {} as Record<string, string>,
+        status: 200,
+      },
+    };
+
+    var html = await notFoundController.render(context);
+
+    if (context.set.status) {
+      res.status(context.set.status);
+    }
+
+    if (context.set.headers) {
+      Object.entries(context.set.headers).forEach(function ([key, value]) {
+        res.setHeader(key, value);
+      });
+    }
+
+    res.send(html);
+  } catch (error) {
+    console.error("Error rendering not-found page:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Start server
 async function startServer() {
   try {
@@ -346,6 +378,7 @@ async function startServer() {
       await blogController.warmupCache();
       await contactController.warmupCache();
       await experienceController.warmupCache();
+      await notFoundController.warmupCache();
       await warmupServiceDownPage();
     }
 

@@ -122,5 +122,19 @@ export default {
   "service-down-refresh-button": "Try Again",
   "service-down-home-button": "Back to Home",
   "service-down-assistance-title": "Need help?",
-  "service-down-email-label": "Email Me"
+  "service-down-email-label": "Email Me",
+
+  // Not Found Page
+  "not-found-page-title": "Page Not Found - Austin Brage",
+  "not-found-page-description": "The page you're looking for doesn't exist or may have been moved.",
+  "not-found-badge": "404 Error",
+  "not-found-float-oops": "Oops!",
+  "not-found-float-lost": "Lost?",
+  "not-found-float-error": "Error",
+  "not-found-float-not-found": "Not Found",
+  "not-found-heading-prefix": "This page went",
+  "not-found-heading-highlight": "missing",
+  "not-found-description": "The page you're looking for doesn't exist or may have been moved. Let's get you back on track.",
+  "not-found-go-back": "Go Back",
+  "not-found-go-home": "Back to Home"
 }

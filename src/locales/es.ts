@@ -122,5 +122,19 @@ export default {
   "service-down-refresh-button": "Reintentar",
   "service-down-home-button": "Volver al Inicio",
   "service-down-assistance-title": "¿Necesitás ayuda?",
-  "service-down-email-label": "Escribime"
+  "service-down-email-label": "Escribime",
+
+  // Not Found Page
+  "not-found-page-title": "Página No Encontrada - Agustin Brage",
+  "not-found-page-description": "La página que buscás no existe o pudo haber sido movida.",
+  "not-found-badge": "Error 404",
+  "not-found-float-oops": "¡Ups!",
+  "not-found-float-lost": "¿Perdido?",
+  "not-found-float-error": "Error",
+  "not-found-float-not-found": "No Encontrada",
+  "not-found-heading-prefix": "Esta página se",
+  "not-found-heading-highlight": "perdió",
+  "not-found-description": "La página que buscás no existe o pudo haber sido movida. Volvamos a encaminarte.",
+  "not-found-go-back": "Volver Atrás",
+  "not-found-go-home": "Volver al Inicio"
 }

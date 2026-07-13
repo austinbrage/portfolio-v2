@@ -1,0 +1,140 @@
+<layout
+  title="{{t('not-found-page-title')}}"
+  description="{{t('not-found-page-description')}}"
+>
+  <main class="not-found-container">
+    <div class="not-found-theme-toggle" x-data="navbar()">
+      <button
+        @click="toggleTheme()"
+        class="ui-navbar-icon-btn"
+        aria-label="Toggle theme"
+      >
+        <svg x-show="theme === 'light'" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+        <svg x-show="theme === 'dark'" class="ui-navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Decorative background orbs -->
+    <div class="not-found-bg">
+      <div class="not-found-orb not-found-orb-1"></div>
+      <div class="not-found-orb not-found-orb-2"></div>
+      <div class="not-found-orb not-found-orb-3"></div>
+    </div>
+
+    <!-- Floating elements (desktop only) -->
+    <div class="not-found-floating" aria-hidden="true">
+      <div class="not-found-float not-found-float-1">
+        <span class="not-found-float-text">404</span>
+      </div>
+      <div class="not-found-float not-found-float-2">
+        <span class="not-found-float-text">{{t('not-found-float-oops')}}</span>
+      </div>
+      <div class="not-found-float not-found-float-3">
+        <span class="not-found-float-text">{{t('not-found-float-lost')}}</span>
+      </div>
+      <div class="not-found-float not-found-float-4">
+        <span class="not-found-float-text">{{t('not-found-float-error')}}</span>
+      </div>
+      <div class="not-found-float not-found-float-5">
+        <span class="not-found-float-text">{{t('not-found-float-not-found')}}</span>
+      </div>
+      <div class="not-found-float not-found-float-6">
+        <span class="not-found-float-text">¯\_(ツ)_/¯</span>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="not-found-content">
+      <div class="not-found-badge-wrapper">
+        <div class="not-found-badge">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="not-found-badge-icon"
+          >
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+            <path d="M5 3v4"></path>
+            <path d="M19 17v4"></path>
+            <path d="M3 5h4"></path>
+            <path d="M17 19h4"></path>
+          </svg>
+          <span class="not-found-badge-text">{{t('not-found-badge')}}</span>
+        </div>
+      </div>
+
+      <h1 class="not-found-number">404</h1>
+
+      <h2 class="not-found-heading">
+        {{t('not-found-heading-prefix')}}
+        <span class="not-found-heading-gradient">{{t('not-found-heading-highlight')}}</span>
+      </h2>
+
+      <p class="not-found-description">{{t('not-found-description')}}</p>
+
+      <div class="not-found-actions">
+        <a href="javascript:history.back()" class="not-found-btn not-found-btn-outline">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="not-found-btn-icon"
+          >
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          {{t('not-found-go-back')}}
+        </a>
+
+        <a href="/{{lang}}" class="not-found-btn not-found-btn-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="not-found-btn-icon"
+          >
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          {{t('not-found-go-home')}}
+        </a>
+      </div>
+
+      <div class="not-found-bars">
+        <div class="not-found-bar not-found-bar-1"></div>
+        <div class="not-found-bar not-found-bar-2"></div>
+        <div class="not-found-bar not-found-bar-3"></div>
+      </div>
+    </div>
+  </main>
+</layout>
