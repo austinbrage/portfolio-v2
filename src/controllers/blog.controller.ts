@@ -6,6 +6,7 @@ import { MarkdownService } from "../services/markdown.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
+import { cssBundle, jsBundle } from "../utils/bundle";
 
 export class BlogController {
   private templatePath = join(__dirname, "../views/blog.html");
@@ -44,6 +45,8 @@ export class BlogController {
         title: post ? `${post.title} - Austin Brage` : "Post Not Found",
         description: post ? post.excerpt : "Blog post not found",
         isDevelopment: this.isDev,
+        cssBundle: cssBundle,
+        jsBundle: jsBundle,
         timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,

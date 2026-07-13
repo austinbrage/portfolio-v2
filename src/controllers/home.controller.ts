@@ -5,6 +5,7 @@ import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
+import { cssBundle, jsBundle } from "../utils/bundle";
 
 export class HomeController {
   private templatePath = join(__dirname, "../views/home.html");
@@ -36,6 +37,8 @@ export class HomeController {
         title: "Austin Brage",
         description: "Austin Brage - Personal portfolio",
         isDevelopment: this.isDev,
+        cssBundle: cssBundle,
+        jsBundle: jsBundle,
         timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,

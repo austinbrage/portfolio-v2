@@ -5,6 +5,7 @@ import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
+import { cssBundle, jsBundle } from "../utils/bundle";
 
 export class ProjectsController {
   private templatePath = join(__dirname, "../views/projects.html");
@@ -34,6 +35,8 @@ export class ProjectsController {
         title: "Projects - Austin Brage",
         description: "Browse all my projects",
         isDevelopment: this.isDev,
+        cssBundle: cssBundle,
+        jsBundle: jsBundle,
         timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,

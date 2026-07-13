@@ -4,6 +4,7 @@ import { availableLanguages } from "../locales";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
+import { cssBundle, jsBundle } from "../utils/bundle";
 
 export class NotFoundController {
   private templatePath = join(__dirname, "../views/not-found.html");
@@ -24,6 +25,8 @@ export class NotFoundController {
 
     var renderData = {
       isDevelopment: this.isDev,
+      cssBundle: cssBundle,
+      jsBundle: jsBundle,
       timestamp: this.isDev ? Date.now() : startupTimestamp,
       lang,
       t,

@@ -8,75 +8,94 @@
       <meta name="description" content="{{props.description}}" />
 
       <!-- CSS Styles -->
+      <link rel="stylesheet" href="/css/{{cssBundle}}" if="cssBundle" />
       <link
         rel="stylesheet"
         href="/css/layout.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/navbar.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/hero.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/experience-section.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/projects-section.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/blogs-section.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/footer.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/contact.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/projects.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/blogs.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/project.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/blog.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/experience.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/service-down.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
       <link
         rel="stylesheet"
         href="/css/not-found.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
       />
 
       <!-- Client Javascript -->
+      <script defer src="/js/{{jsBundle}}" if="jsBundle"></script>
       <script
         defer
         src="/js/navbar.js{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!jsBundle"
       ></script>
       <script
         defer
         src="/js/contact.js{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!jsBundle"
       ></script>
 
       <!-- ALPINE -->

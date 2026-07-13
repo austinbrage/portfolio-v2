@@ -3,6 +3,7 @@ import { I18nService } from "./i18n.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
+import { cssBundle, jsBundle } from "../utils/bundle";
 
 var isProd = process.env.NODE_ENV === "production";
 var isDev = !isProd;
@@ -24,6 +25,8 @@ export async function renderServiceDown(context: any): Promise<string> {
 
   var renderData = {
     isDevelopment: isDev,
+    cssBundle: cssBundle,
+    jsBundle: jsBundle,
     timestamp: isDev ? Date.now() : startupTimestamp,
     lang,
     t,

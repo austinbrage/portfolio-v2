@@ -4,6 +4,7 @@ import { renderServiceDown } from "../services/system.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
+import { cssBundle, jsBundle } from "../utils/bundle";
 
 export class ContactController {
   private templatePath = join(__dirname, "../views/contact.html");
@@ -30,6 +31,8 @@ export class ContactController {
         title: "Contact - Austin Brage",
         description: "Get in touch with Austin Brage",
         isDevelopment: this.isDev,
+        cssBundle: cssBundle,
+        jsBundle: jsBundle,
         timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,
