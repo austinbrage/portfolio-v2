@@ -50,6 +50,8 @@ export class ContactController {
         twitterUrl: "https://twitter.com/austinbrage",
       };
 
+      // Browser + Cloudflare edge cache, 1h
+      context.set.headers["Cache-Control"] = "public, max-age=3600, s-maxage=3600";
       context.set.headers["Content-Type"] = "text/html";
       return renderer.render(renderData);
     } catch (error) {
