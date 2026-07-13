@@ -8,6 +8,7 @@ import { ProjectController } from "./controllers/project.controller";
 import { BlogsController } from "./controllers/blogs.controller";
 import { BlogController } from "./controllers/blog.controller";
 import { ExperienceController } from "./controllers/experience.controller";
+import { warmupServiceDownPage } from "./services/system.service";
 
 var app = express();
 var port = process.env.PORT || 5173;
@@ -345,6 +346,7 @@ async function startServer() {
       await blogController.warmupCache();
       await contactController.warmupCache();
       await experienceController.warmupCache();
+      await warmupServiceDownPage();
     }
 
     app.listen(port, function () {

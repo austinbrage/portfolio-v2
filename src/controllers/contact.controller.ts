@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { renderServiceDown } from "../services/system.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
@@ -53,11 +54,7 @@ export class ContactController {
       return renderer.render(renderData);
     } catch (error) {
       console.error("Error rendering contact:", error);
-
-      // Return error message as plain text for toast
-      context.set.status = 500;
-      context.set.headers["Content-Type"] = "text/plain";
-      return "Error loading contact page";
+      return renderServiceDown(context);
     }
   }
 

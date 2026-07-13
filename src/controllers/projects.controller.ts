@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { renderServiceDown } from "../services/system.service";
 import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
@@ -38,9 +39,17 @@ export class ProjectsController {
         currentPage: "projects",
         navItems: [
           { name: t("navbar-home"), id: "home", href: `/${lang}` },
-          { name: t("navbar-projects"), id: "projects", href: `/${lang}/projects` },
+          {
+            name: t("navbar-projects"),
+            id: "projects",
+            href: `/${lang}/projects`,
+          },
           { name: t("navbar-blog"), id: "blog", href: `/${lang}/blog` },
-          { name: t("navbar-contact"), id: "contact", href: `/${lang}/contact` },
+          {
+            name: t("navbar-contact"),
+            id: "contact",
+            href: `/${lang}/contact`,
+          },
         ],
         languages: [
           { code: "en", name: "English", flag: "🇺🇸" },
@@ -54,11 +63,7 @@ export class ProjectsController {
       return renderer.render(renderData);
     } catch (error) {
       console.error("Error rendering projects:", error);
-
-      // Return error message as plain text for toast
-      context.set.status = 500;
-      context.set.headers["Content-Type"] = "text/plain";
-      return "Error loading projects page";
+      return renderServiceDown(context);
     }
   }
 

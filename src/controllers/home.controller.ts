@@ -1,5 +1,6 @@
 import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
+import { renderServiceDown } from "../services/system.service";
 import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
@@ -40,9 +41,17 @@ export class HomeController {
         currentPage: "home",
         navItems: [
           { name: t("navbar-home"), id: "home", href: `/${lang}` },
-          { name: t("navbar-projects"), id: "projects", href: `/${lang}/projects` },
+          {
+            name: t("navbar-projects"),
+            id: "projects",
+            href: `/${lang}/projects`,
+          },
           { name: t("navbar-blog"), id: "blog", href: `/${lang}/blog` },
-          { name: t("navbar-contact"), id: "contact", href: `/${lang}/contact` },
+          {
+            name: t("navbar-contact"),
+            id: "contact",
+            href: `/${lang}/contact`,
+          },
         ],
         languages: [
           { code: "en", name: "English", flag: "🇺🇸" },
@@ -60,11 +69,7 @@ export class HomeController {
       return renderer.render(renderData);
     } catch (error) {
       console.error("Error rendering home:", error);
-
-      // Return error message as plain text for toast
-      context.set.status = 500;
-      context.set.headers["Content-Type"] = "text/plain";
-      return "Error loading home";
+      return renderServiceDown(context);
     }
   }
 
