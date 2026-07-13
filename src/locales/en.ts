@@ -109,5 +109,18 @@ export default {
   "contact-social-twitter": "Twitter",
   "contact-availability-title": "Availability",
   "contact-availability-description": "I'm currently available for freelance projects and full-time opportunities. Let's build something amazing together!",
-  "contact-availability-badge": "✨ Open to Work"
+  "contact-availability-badge": "✨ Open to Work",
+
+  // Service Down Page
+  "service-down-page-title": "Service Unavailable - Austin Brage",
+  "service-down-page-description": "This page is temporarily unavailable. Please try again shortly.",
+  "service-down-title": "Something Went Wrong",
+  "service-down-subtitle": "We're having trouble loading this page right now.",
+  "service-down-message": "Our team has been notified and we're working to fix it. In the meantime, try refreshing the page or come back in a few minutes.",
+  "service-down-status-label": "Status:",
+  "service-down-status-disrupted": "Disrupted",
+  "service-down-refresh-button": "Try Again",
+  "service-down-home-button": "Back to Home",
+  "service-down-assistance-title": "Need help?",
+  "service-down-email-label": "Email Me"
 }

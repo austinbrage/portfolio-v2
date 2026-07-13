@@ -109,5 +109,18 @@ export default {
   "contact-social-twitter": "Twitter",
   "contact-availability-title": "Disponibilidad",
   "contact-availability-description": "Actualmente estoy disponible para proyectos freelance y oportunidades de tiempo completo. ¡Construyamos algo increíble juntos!",
-  "contact-availability-badge": "✨ Disponible para Trabajar"
+  "contact-availability-badge": "✨ Disponible para Trabajar",
+
+  // Service Down Page
+  "service-down-page-title": "Servicio No Disponible - Agustin Brage",
+  "service-down-page-description": "Esta página no está disponible temporalmente. Por favor, intentá de nuevo en unos minutos.",
+  "service-down-title": "Algo Salió Mal",
+  "service-down-subtitle": "Estamos teniendo problemas para cargar esta página en este momento.",
+  "service-down-message": "Nuestro equipo ya fue notificado y estamos trabajando para solucionarlo. Mientras tanto, intentá recargar la página o volvé en unos minutos.",
+  "service-down-status-label": "Estado:",
+  "service-down-status-disrupted": "Interrumpido",
+  "service-down-refresh-button": "Reintentar",
+  "service-down-home-button": "Volver al Inicio",
+  "service-down-assistance-title": "¿Necesitás ayuda?",
+  "service-down-email-label": "Escribime"
 }
