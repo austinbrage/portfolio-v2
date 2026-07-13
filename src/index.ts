@@ -29,15 +29,15 @@ var experienceController = new ExperienceController();
 var notFoundController = new NotFoundController();
 
 // Routes - support both root and language-specific paths
-app.get(["/:lang", "/"], async function (req, res) {
+app.get(["/:lang", "/"], async function (req, res, next) {
   try {
-    // Get language from path param or default to 'en'
-    var lang = req.params.lang || "en";
-
-    // Validate language (optional - add supported languages)
-    if (!availableLanguages.includes(lang)) {
-      lang = "en";
+    // Root path ("/") has no :lang param - default to 'en'
+    // A present but unrecognized :lang (e.g. "/xyz") is not a language - fall through to 404
+    var lang = req.params.lang;
+    if (lang && !availableLanguages.includes(lang)) {
+      return next();
     }
+    lang = lang || "en";
 
     // Create context object similar to what home.controller expects
     var context = {
@@ -70,14 +70,12 @@ app.get(["/:lang", "/"], async function (req, res) {
 });
 
 // Projects page route
-app.get("/:lang/projects", async function (req, res) {
+app.get("/:lang/projects", async function (req, res, next) {
   try {
-    // Get language from path param or default to 'en'
-    var lang = req.params.lang || "en";
-
-    // Validate language
+    // Validate language - not recognized means this isn't a language segment at all
+    var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
-      lang = "en";
+      return next();
     }
 
     // Create context object
@@ -111,16 +109,14 @@ app.get("/:lang/projects", async function (req, res) {
 });
 
 // Project detail page route
-app.get("/:lang/projects/:id", async function (req, res) {
+app.get("/:lang/projects/:id", async function (req, res, next) {
   try {
-    // Get language from path param or default to 'en'
-    var lang = req.params.lang || "en";
-    var projectId = parseInt(req.params.id, 10);
-
-    // Validate language
+    // Validate language - not recognized means this isn't a language segment at all
+    var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
-      lang = "en";
+      return next();
     }
+    var projectId = parseInt(req.params.id, 10);
 
     // Validate project ID
     if (isNaN(projectId)) {
@@ -159,14 +155,12 @@ app.get("/:lang/projects/:id", async function (req, res) {
 });
 
 // Blog page route
-app.get("/:lang/blog", async function (req, res) {
+app.get("/:lang/blog", async function (req, res, next) {
   try {
-    // Get language from path param or default to 'en'
-    var lang = req.params.lang || "en";
-
-    // Validate language
+    // Validate language - not recognized means this isn't a language segment at all
+    var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
-      lang = "en";
+      return next();
     }
 
     // Create context object
@@ -200,16 +194,14 @@ app.get("/:lang/blog", async function (req, res) {
 });
 
 // Blog post detail page route
-app.get("/:lang/blog/:id", async function (req, res) {
+app.get("/:lang/blog/:id", async function (req, res, next) {
   try {
-    // Get language from path param or default to 'en'
-    var lang = req.params.lang || "en";
-    var postId = parseInt(req.params.id, 10);
-
-    // Validate language
+    // Validate language - not recognized means this isn't a language segment at all
+    var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
-      lang = "en";
+      return next();
     }
+    var postId = parseInt(req.params.id, 10);
 
     // Validate post ID
     if (isNaN(postId)) {
@@ -248,14 +240,12 @@ app.get("/:lang/blog/:id", async function (req, res) {
 });
 
 // Contact page route
-app.get("/:lang/contact", async function (req, res) {
+app.get("/:lang/contact", async function (req, res, next) {
   try {
-    // Get language from path param or default to 'en'
-    var lang = req.params.lang || "en";
-
-    // Validate language
+    // Validate language - not recognized means this isn't a language segment at all
+    var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
-      lang = "en";
+      return next();
     }
 
     // Create context object
@@ -289,16 +279,14 @@ app.get("/:lang/contact", async function (req, res) {
 });
 
 // Experience detail page route
-app.get("/:lang/experience/:id", async function (req, res) {
+app.get("/:lang/experience/:id", async function (req, res, next) {
   try {
-    // Get language from path param or default to 'en'
-    var lang = req.params.lang || "en";
-    var experienceId = parseInt(req.params.id, 10);
-
-    // Validate language
+    // Validate language - not recognized means this isn't a language segment at all
+    var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
-      lang = "en";
+      return next();
     }
+    var experienceId = parseInt(req.params.id, 10);
 
     // Validate experience ID
     if (isNaN(experienceId)) {
