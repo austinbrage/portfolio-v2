@@ -5,7 +5,8 @@ import { join } from "path";
 
 export class ContactController {
   private templatePath = join(__dirname, "../views/contact.html");
-  private isDev = process.env.NODE_ENV === "development";
+  private isProd = process.env.NODE_ENV === "production";
+  private isDev = !this.isProd;
 
   // Simple cache objects
   private cache = {
@@ -62,7 +63,7 @@ export class ContactController {
 
   // Warmup cache method for production startup
   public async warmupCache() {
-    if (!this.isDev) {
+    if (this.isProd) {
       console.log("Warming up contact cache...");
       await this.getTemplate();
       await this.getRenderer(this.cache.template!);

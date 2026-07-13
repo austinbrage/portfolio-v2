@@ -6,7 +6,8 @@ import { join } from "path";
 
 export class ExperienceController {
   private templatePath = join(__dirname, "../views/experience.html");
-  private isDev = process.env.NODE_ENV === "development";
+  private isProd = process.env.NODE_ENV === "production";
+  private isDev = !this.isProd;
 
   // Simple cache objects
   private cache = {
@@ -63,7 +64,7 @@ export class ExperienceController {
 
   // Warmup cache method for production startup
   public async warmupCache() {
-    if (!this.isDev) {
+    if (this.isProd) {
       console.log("Warming up experience cache...");
       await this.getTemplate();
       await this.getRenderer(this.cache.template!);

@@ -6,7 +6,8 @@ import { join } from "path";
 
 export class ProjectController {
   private templatePath = join(__dirname, "../views/project.html");
-  private isDev = process.env.NODE_ENV === "development";
+  private isProd = process.env.NODE_ENV === "production";
+  private isDev = !this.isProd;
 
   // Simple cache objects
   private cache = {
@@ -63,7 +64,7 @@ export class ProjectController {
 
   // Warmup cache method for production startup
   public async warmupCache() {
-    if (!this.isDev) {
+    if (this.isProd) {
       console.log("Warming up project detail cache...");
       await this.getTemplate();
       await this.getRenderer(this.cache.template!);
