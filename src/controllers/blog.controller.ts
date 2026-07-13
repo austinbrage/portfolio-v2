@@ -5,6 +5,7 @@ import { ContentService } from "../services/content.service";
 import { MarkdownService } from "../services/markdown.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { startupTimestamp } from "../utils/environments";
 
 export class BlogController {
   private templatePath = join(__dirname, "../views/blog.html");
@@ -43,7 +44,7 @@ export class BlogController {
         title: post ? `${post.title} - Austin Brage` : "Post Not Found",
         description: post ? post.excerpt : "Blog post not found",
         isDevelopment: this.isDev,
-        timestamp: this.isDev ? Date.now() : undefined,
+        timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,
         currentPage: "blog",

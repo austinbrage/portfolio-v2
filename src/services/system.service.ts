@@ -2,6 +2,7 @@ import { compile } from "./html6.service";
 import { I18nService } from "./i18n.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { startupTimestamp } from "../utils/environments";
 
 var isProd = process.env.NODE_ENV === "production";
 var isDev = !isProd;
@@ -23,7 +24,7 @@ export async function renderServiceDown(context: any): Promise<string> {
 
   var renderData = {
     isDevelopment: isDev,
-    timestamp: isDev ? Date.now() : undefined,
+    timestamp: isDev ? Date.now() : startupTimestamp,
     lang,
     t,
   };

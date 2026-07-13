@@ -3,6 +3,7 @@ import { I18nService } from "../services/i18n.service";
 import { renderServiceDown } from "../services/system.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { startupTimestamp } from "../utils/environments";
 
 export class ContactController {
   private templatePath = join(__dirname, "../views/contact.html");
@@ -29,7 +30,7 @@ export class ContactController {
         title: "Contact - Austin Brage",
         description: "Get in touch with Austin Brage",
         isDevelopment: this.isDev,
-        timestamp: this.isDev ? Date.now() : undefined,
+        timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,
         currentPage: "contact",

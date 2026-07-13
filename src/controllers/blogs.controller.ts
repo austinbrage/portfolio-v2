@@ -4,6 +4,7 @@ import { renderServiceDown } from "../services/system.service";
 import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { startupTimestamp } from "../utils/environments";
 
 export class BlogsController {
   private templatePath = join(__dirname, "../views/blogs.html");
@@ -33,7 +34,7 @@ export class BlogsController {
         title: "Blog - Austin Brage",
         description: "Read my blog posts about web development and technology",
         isDevelopment: this.isDev,
-        timestamp: this.isDev ? Date.now() : undefined,
+        timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,
         currentPage: "blog",

@@ -4,6 +4,7 @@ import { renderServiceDown } from "../services/system.service";
 import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { startupTimestamp } from "../utils/environments";
 
 export class ProjectController {
   private templatePath = join(__dirname, "../views/project.html");
@@ -33,7 +34,7 @@ export class ProjectController {
         title: project ? `${project.title} - Austin Brage` : "Project Not Found",
         description: project ? project.description : "Project not found",
         isDevelopment: this.isDev,
-        timestamp: this.isDev ? Date.now() : undefined,
+        timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,
         currentPage: "projects",

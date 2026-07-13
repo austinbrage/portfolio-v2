@@ -4,6 +4,7 @@ import { renderServiceDown } from "../services/system.service";
 import { ContentService } from "../services/content.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { startupTimestamp } from "../utils/environments";
 
 export class ExperienceController {
   private templatePath = join(__dirname, "../views/experience.html");
@@ -33,7 +34,7 @@ export class ExperienceController {
         title: experience ? `${experience.title} - Austin Brage` : "Experience Not Found",
         description: experience ? experience.description : "Experience not found",
         isDevelopment: this.isDev,
-        timestamp: this.isDev ? Date.now() : undefined,
+        timestamp: this.isDev ? Date.now() : startupTimestamp,
         lang,
         t,
         currentPage: "home",

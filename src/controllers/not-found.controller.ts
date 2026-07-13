@@ -3,6 +3,7 @@ import { I18nService } from "../services/i18n.service";
 import { availableLanguages } from "../locales";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { startupTimestamp } from "../utils/environments";
 
 export class NotFoundController {
   private templatePath = join(__dirname, "../views/not-found.html");
@@ -23,7 +24,7 @@ export class NotFoundController {
 
     var renderData = {
       isDevelopment: this.isDev,
-      timestamp: this.isDev ? Date.now() : undefined,
+      timestamp: this.isDev ? Date.now() : startupTimestamp,
       lang,
       t,
     };
