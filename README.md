@@ -59,7 +59,7 @@ pnpm install
 pnpm dev
 ```
 
-Server runs at `http://localhost:3000`
+Server runs at `http://localhost:5173`
 
 ### Production
 
@@ -86,8 +86,9 @@ See `docs/HTML6.md` for complete documentation.
 ## Internationalization
 
 The site supports multiple languages via the URL path:
-- English: `http://localhost:3000/en`
-- Spanish: `http://localhost:3000/es`
+
+- English: `http://localhost:5173/en`
+- Spanish: `http://localhost:5173/es`
 
 Translations are managed in `src/locales/` and accessed via the `t()` function in templates.
 

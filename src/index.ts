@@ -10,7 +10,7 @@ import { BlogController } from "./controllers/blog.controller";
 import { ExperienceController } from "./controllers/experience.controller";
 
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 5173;
 var isDev = process.env.NODE_ENV === "development";
 
 // Serve static files from public folder
