@@ -5,6 +5,7 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
 import { cssBundle, jsBundle } from "../utils/bundle";
+import { buildSeoData } from "../utils/seo";
 
 export class ContactController {
   private templatePath = join(__dirname, "../views/contact.html");
@@ -26,6 +27,7 @@ export class ContactController {
       // Get language and create translator
       var lang = context.lang || "en";
       var t = I18nService.createTranslator(lang);
+      var seo = buildSeoData(lang, "/contact");
 
       const renderData = {
         title: "Contact - Austin Brage",
@@ -47,6 +49,8 @@ export class ContactController {
           { code: "en", name: "English", flag: "🇺🇸" },
           { code: "es", name: "Español", flag: "🇪🇸" },
         ],
+        canonicalUrl: seo.canonicalUrl,
+        hreflangAlternates: seo.hreflangAlternates,
         email: "austin@example.com",
         phone: "+1234567890",
         githubUrl: "https://github.com/austinbrage",

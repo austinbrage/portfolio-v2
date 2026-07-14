@@ -6,6 +6,7 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
 import { cssBundle, jsBundle } from "../utils/bundle";
+import { buildSeoData } from "../utils/seo";
 
 export class ExperienceController {
   private templatePath = join(__dirname, "../views/experience.html");
@@ -30,6 +31,7 @@ export class ExperienceController {
 
       // Get experience metadata by ID
       var experience = await ContentService.getExperienceById(lang, experienceId);
+      var seo = buildSeoData(lang, `/experience/${experienceId}`);
 
       const renderData = {
         title: experience ? `${experience.title} - Austin Brage` : "Experience Not Found",
@@ -51,6 +53,8 @@ export class ExperienceController {
           { code: "en", name: "English", flag: "🇺🇸" },
           { code: "es", name: "Español", flag: "🇪🇸" },
         ],
+        canonicalUrl: seo.canonicalUrl,
+        hreflangAlternates: seo.hreflangAlternates,
         experience,
         email: "austin@example.com",
       };

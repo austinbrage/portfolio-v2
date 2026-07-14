@@ -6,6 +6,7 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
 import { cssBundle, jsBundle } from "../utils/bundle";
+import { buildSeoData } from "../utils/seo";
 
 export class BlogsController {
   private templatePath = join(__dirname, "../views/blogs.html");
@@ -30,6 +31,7 @@ export class BlogsController {
 
       // Get all blog posts
       var blogPosts = await ContentService.getBlogPosts(lang);
+      var seo = buildSeoData(lang, "/blog");
 
       const renderData = {
         title: "Blog - Austin Brage",
@@ -51,6 +53,8 @@ export class BlogsController {
           { code: "en", name: "English", flag: "🇺🇸" },
           { code: "es", name: "Español", flag: "🇪🇸" },
         ],
+        canonicalUrl: seo.canonicalUrl,
+        hreflangAlternates: seo.hreflangAlternates,
         blogPosts,
         email: "austin@example.com",
       };

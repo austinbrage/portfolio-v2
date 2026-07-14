@@ -6,6 +6,7 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
 import { cssBundle, jsBundle } from "../utils/bundle";
+import { buildSeoData } from "../utils/seo";
 
 export class HomeController {
   private templatePath = join(__dirname, "../views/home.html");
@@ -32,6 +33,7 @@ export class HomeController {
       var projects = await ContentService.getProjects(lang, 4);
       var blogPosts = await ContentService.getBlogPosts(lang, 2);
       var experiences = await ContentService.getExperiences(lang);
+      var seo = buildSeoData(lang, "");
 
       const renderData = {
         title: "Austin Brage",
@@ -64,6 +66,8 @@ export class HomeController {
         heroGithubUrl: "https://github.com/austinbrage",
         heroLinkedinUrl: "https://linkedin.com/in/austinbrage",
         heroEmail: "austin@example.com",
+        canonicalUrl: seo.canonicalUrl,
+        hreflangAlternates: seo.hreflangAlternates,
         experiences,
         projects,
         blogPosts,

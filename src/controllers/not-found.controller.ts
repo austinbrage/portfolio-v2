@@ -28,6 +28,9 @@ export class NotFoundController {
       cssBundle: cssBundle,
       jsBundle: jsBundle,
       timestamp: this.isDev ? Date.now() : startupTimestamp,
+      // Error pages aren't real content - no canonical/hreflang, layout.html adds noindex instead
+      canonicalUrl: "",
+      hreflangAlternates: [],
       lang,
       t,
     };

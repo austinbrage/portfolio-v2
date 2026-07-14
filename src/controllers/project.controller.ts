@@ -6,6 +6,7 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
 import { cssBundle, jsBundle } from "../utils/bundle";
+import { buildSeoData } from "../utils/seo";
 
 export class ProjectController {
   private templatePath = join(__dirname, "../views/project.html");
@@ -30,6 +31,7 @@ export class ProjectController {
 
       // Get project by ID
       var project = await ContentService.getProjectById(lang, projectId);
+      var seo = buildSeoData(lang, `/projects/${projectId}`);
 
       const renderData = {
         title: project ? `${project.title} - Austin Brage` : "Project Not Found",
@@ -51,6 +53,8 @@ export class ProjectController {
           { code: "en", name: "English", flag: "🇺🇸" },
           { code: "es", name: "Español", flag: "🇪🇸" },
         ],
+        canonicalUrl: seo.canonicalUrl,
+        hreflangAlternates: seo.hreflangAlternates,
         project,
         email: "austin@example.com",
       };

@@ -28,6 +28,9 @@ export async function renderServiceDown(context: any): Promise<string> {
     cssBundle: cssBundle,
     jsBundle: jsBundle,
     timestamp: isDev ? Date.now() : startupTimestamp,
+    // Error pages aren't real content - no canonical/hreflang, layout.html adds noindex instead
+    canonicalUrl: "",
+    hreflangAlternates: [],
     lang,
     t,
   };

@@ -7,6 +7,7 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
 import { cssBundle, jsBundle } from "../utils/bundle";
+import { buildSeoData } from "../utils/seo";
 
 export class BlogController {
   private templatePath = join(__dirname, "../views/blog.html");
@@ -38,8 +39,10 @@ export class BlogController {
         content = await MarkdownService.getBlogContent(lang, post.slug);
       }
 
-      // Build current URL for sharing
-      var currentUrl = `https://yourwebsite.com/${lang}/blog/${postId}`;
+      var seo = buildSeoData(lang, `/blog/${postId}`);
+
+      // Reuse the canonical URL for sharing
+      var currentUrl = seo.canonicalUrl;
 
       const renderData = {
         title: post ? `${post.title} - Austin Brage` : "Post Not Found",
@@ -61,6 +64,8 @@ export class BlogController {
           { code: "en", name: "English", flag: "🇺🇸" },
           { code: "es", name: "Español", flag: "🇪🇸" },
         ],
+        canonicalUrl: seo.canonicalUrl,
+        hreflangAlternates: seo.hreflangAlternates,
         post,
         content,
         currentUrl,
