@@ -5,11 +5,12 @@
 
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { contentBucket } from "../utils/environments";
 
 export class ContentService {
-  private static projectsPath = join(__dirname, "../../content/projects");
-  private static postsPath = join(__dirname, "../../content/posts");
-  private static experiencesPath = join(__dirname, "../../content/experiences");
+  private static projectsPath = join(__dirname, "../../content", contentBucket, "projects");
+  private static postsPath = join(__dirname, "../../content", contentBucket, "posts");
+  private static experiencesPath = join(__dirname, "../../content", contentBucket, "experiences");
 
   // Cache objects
   private static cache = {

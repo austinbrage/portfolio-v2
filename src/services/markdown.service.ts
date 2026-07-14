@@ -6,6 +6,7 @@
 import { marked, Renderer } from "marked";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { contentBucket } from "../utils/environments";
 
 // marked (since v1) doesn't sanitize link hrefs itself - that's left to the consumer -
 // so dangerous schemes like javascript:/data: pass through untouched by default.
@@ -36,8 +37,8 @@ marked.use({
 });
 
 export class MarkdownService {
-  private static blogContentPath = join(__dirname, "../../content/blog");
-  private static projectContentPath = join(__dirname, "../../content/project");
+  private static blogContentPath = join(__dirname, "../../content", contentBucket, "blog");
+  private static projectContentPath = join(__dirname, "../../content", contentBucket, "project");
 
   /**
    * Default placeholder content when markdown file doesn't exist
