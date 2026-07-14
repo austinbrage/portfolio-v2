@@ -391,6 +391,76 @@
   color: #c084fc;
 }
 
+/* Divider */
+.ui-project-detail-divider {
+  width: 6rem;
+  height: 0.25rem;
+  background: linear-gradient(90deg, #9333ea 0%, #ec4899 100%);
+  border-radius: 9999px;
+  margin: 0 auto 3rem auto;
+}
+
+/* Extended Write-up (markdown) */
+.ui-project-detail-writeup {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #4b5563;
+  margin-bottom: 3rem;
+}
+
+:root.dark .ui-project-detail-writeup {
+  color: #cbd5e1;
+}
+
+.ui-project-detail-writeup h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+:root.dark .ui-project-detail-writeup h2 {
+  color: white;
+}
+
+.ui-project-detail-writeup h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+:root.dark .ui-project-detail-writeup h3 {
+  color: white;
+}
+
+.ui-project-detail-writeup p {
+  margin-bottom: 1rem;
+}
+
+.ui-project-detail-writeup ul,
+.ui-project-detail-writeup ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.ui-project-detail-writeup li {
+  margin-bottom: 0.5rem;
+}
+
+.ui-project-detail-writeup strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+:root.dark .ui-project-detail-writeup strong {
+  color: white;
+}
+
 /* CTA Section */
 .ui-project-detail-cta {
   background: linear-gradient(to right, #9333ea, #db2777);

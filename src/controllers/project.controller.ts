@@ -2,6 +2,7 @@ import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
 import { renderServiceDown } from "../services/system.service";
 import { ContentService } from "../services/content.service";
+import { MarkdownService } from "../services/markdown.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
@@ -33,6 +34,12 @@ export class ProjectController {
       var project = await ContentService.getProjectById(lang, projectId);
       var seo = buildSeoData(lang, `/projects/${projectId}`);
 
+      // Load extended markdown write-up (falls back to placeholder if missing)
+      var content = "";
+      if (project && project.slug) {
+        content = await MarkdownService.getProjectContent(lang, project.slug);
+      }
+
       const renderData = {
         title: project ? `${project.title} - Austin Brage` : "Project Not Found",
         description: project ? project.description : "Project not found",
@@ -56,6 +63,7 @@ export class ProjectController {
         canonicalUrl: seo.canonicalUrl,
         hreflangAlternates: seo.hreflangAlternates,
         project,
+        content,
         email: "austin@example.com",
       };
 
