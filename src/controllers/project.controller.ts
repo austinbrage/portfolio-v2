@@ -20,7 +20,7 @@ export class ProjectController {
     renderer: null as any,
   };
 
-  async render(context: any, projectId: number) {
+  async render(context: any, slug: string) {
     try {
       // Get template, renderer and data (with cache logic)
       const template = await this.getTemplate();
@@ -30,9 +30,9 @@ export class ProjectController {
       var lang = context.lang || "en";
       var t = I18nService.createTranslator(lang);
 
-      // Get project by ID
-      var project = await ContentService.getProjectById(lang, projectId);
-      var seo = buildSeoData(lang, `/projects/${projectId}`);
+      // Get project by slug
+      var project = await ContentService.getProjectBySlug(lang, slug);
+      var seo = buildSeoData(lang, `/projects/${slug}`);
 
       // Load extended markdown write-up (falls back to placeholder if missing)
       var content = "";

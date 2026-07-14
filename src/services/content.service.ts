@@ -47,15 +47,15 @@ export class ContentService {
   }
 
   /**
-   * Get a single project by ID and language
+   * Get a single project by slug and language
    */
-  static async getProjectById(lang: string, id: number): Promise<any | null> {
+  static async getProjectBySlug(lang: string, slug: string): Promise<any | null> {
     try {
       var projects = await this.getProjects(lang);
-      var project = projects.find((p) => p.id === id);
+      var project = projects.find((p) => p.slug === slug);
       return project || null;
     } catch (error) {
-      console.error(`Error getting project ${id} for ${lang}:`, error);
+      console.error(`Error getting project ${slug} for ${lang}:`, error);
       return null;
     }
   }
@@ -89,15 +89,15 @@ export class ContentService {
   }
 
   /**
-   * Get a single blog post by ID and language
+   * Get a single blog post by slug and language
    */
-  static async getBlogPostById(lang: string, id: number): Promise<any | null> {
+  static async getBlogPostBySlug(lang: string, slug: string): Promise<any | null> {
     try {
       var posts = await this.getBlogPosts(lang);
-      var post = posts.find((p) => p.id === id);
+      var post = posts.find((p) => p.slug === slug);
       return post || null;
     } catch (error) {
-      console.error(`Error getting blog post ${id} for ${lang}:`, error);
+      console.error(`Error getting blog post ${slug} for ${lang}:`, error);
       return null;
     }
   }

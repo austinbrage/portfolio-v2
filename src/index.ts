@@ -109,20 +109,14 @@ app.get("/:lang/projects", async function (req, res, next) {
 });
 
 // Project detail page route
-app.get("/:lang/projects/:id", async function (req, res, next) {
+app.get("/:lang/projects/:slug", async function (req, res, next) {
   try {
     // Validate language - not recognized means this isn't a language segment at all
     var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
       return next();
     }
-    var projectId = parseInt(req.params.id, 10);
-
-    // Validate project ID
-    if (isNaN(projectId)) {
-      res.status(404).send("Invalid project ID");
-      return;
-    }
+    var slug = req.params.slug;
 
     // Create context object
     var context = {
@@ -134,7 +128,7 @@ app.get("/:lang/projects/:id", async function (req, res, next) {
     };
 
     // Render the project detail page
-    var html = await projectController.render(context, projectId);
+    var html = await projectController.render(context, slug);
 
     // Apply headers and status from context
     if (context.set.status) {
@@ -194,20 +188,14 @@ app.get("/:lang/blog", async function (req, res, next) {
 });
 
 // Blog post detail page route
-app.get("/:lang/blog/:id", async function (req, res, next) {
+app.get("/:lang/blog/:slug", async function (req, res, next) {
   try {
     // Validate language - not recognized means this isn't a language segment at all
     var lang = req.params.lang;
     if (!availableLanguages.includes(lang)) {
       return next();
     }
-    var postId = parseInt(req.params.id, 10);
-
-    // Validate post ID
-    if (isNaN(postId)) {
-      res.status(404).send("Invalid post ID");
-      return;
-    }
+    var slug = req.params.slug;
 
     // Create context object
     var context = {
@@ -219,7 +207,7 @@ app.get("/:lang/blog/:id", async function (req, res, next) {
     };
 
     // Render the blog post detail page
-    var html = await blogController.render(context, postId);
+    var html = await blogController.render(context, slug);
 
     // Apply headers and status from context
     if (context.set.status) {

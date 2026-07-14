@@ -20,7 +20,7 @@ export class BlogController {
     renderer: null as any,
   };
 
-  async render(context: any, postId: number) {
+  async render(context: any, slug: string) {
     try {
       // Get template, renderer and data (with cache logic)
       const template = await this.getTemplate();
@@ -30,8 +30,8 @@ export class BlogController {
       var lang = context.lang || "en";
       var t = I18nService.createTranslator(lang);
 
-      // Get blog post metadata by ID
-      var post = await ContentService.getBlogPostById(lang, postId);
+      // Get blog post metadata by slug
+      var post = await ContentService.getBlogPostBySlug(lang, slug);
 
       // Load markdown content (will use placeholder if file doesn't exist)
       var content = "";
@@ -39,7 +39,7 @@ export class BlogController {
         content = await MarkdownService.getBlogContent(lang, post.slug);
       }
 
-      var seo = buildSeoData(lang, `/blog/${postId}`);
+      var seo = buildSeoData(lang, `/blog/${slug}`);
 
       // Reuse the canonical URL for sharing
       var currentUrl = seo.canonicalUrl;
