@@ -24,3 +24,6 @@ habría evitado directamente.
   un alcance acotado (catálogo, pedidos, pagos) en vez de un monolito.
 - **Datos**: MongoDB para el catálogo (la flexibilidad de esquema importaba
   más que las relaciones estrictas ahí), Redis para caché de rutas críticas.
+- **Pagos**: [Stripe](https://stripe.com/docs) para el procesamiento y confirmación de pedidos vía webhooks.
+
+Para un enfoque distinto de estado en tiempo real sin una capa de pagos de por medio, mirá [la app de gestión de tareas](/es/projects/task-management-app) que construí después.

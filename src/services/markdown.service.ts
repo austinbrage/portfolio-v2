@@ -3,9 +3,37 @@
  * Handles loading and parsing markdown blog post content
  */
 
-import { marked } from "marked";
+import { marked, Renderer } from "marked";
 import { readFile } from "fs/promises";
 import { join } from "path";
+
+// marked (since v1) doesn't sanitize link hrefs itself - that's left to the consumer -
+// so dangerous schemes like javascript:/data: pass through untouched by default.
+// Allow-list safe schemes; anything else degrades to plain text, no anchor.
+var SAFE_HREF_PATTERN = /^(https?:|mailto:|tel:|\/|#)/i;
+
+// External links open in a new tab; internal/relative links stay in the same tab.
+// Reuses the default renderer's link output (via the prototype method) instead of
+// building the <a> tag by hand, so title-attribute escaping still applies - only
+// the scheme check and target/rel injection are custom.
+marked.use({
+  renderer: {
+    link(token) {
+      if (!SAFE_HREF_PATTERN.test(token.href)) {
+        return this.parser.parseInline(token.tokens);
+      }
+      var html = Renderer.prototype.link.call(this, token);
+      var isExternal = /^https?:\/\//.test(token.href);
+      if (isExternal) {
+        html = html.replace(
+          /^<a /,
+          '<a target="_blank" rel="noopener noreferrer" ',
+        );
+      }
+      return html;
+    },
+  },
+});
 
 export class MarkdownService {
   private static blogContentPath = join(__dirname, "../../content/blog");
@@ -15,13 +43,13 @@ export class MarkdownService {
    * Default placeholder content when markdown file doesn't exist
    */
   private static getPlaceholderContent(lang: string): string {
-    var title = lang === "es"
-      ? "Contenido Próximamente"
-      : "Content Coming Soon";
+    var title =
+      lang === "es" ? "Contenido Próximamente" : "Content Coming Soon";
 
-    var message = lang === "es"
-      ? "Este contenido está en desarrollo. Volvé pronto para leerlo completo."
-      : "This content is currently being written. Check back soon for the full version.";
+    var message =
+      lang === "es"
+        ? "Este contenido está en desarrollo. Volvé pronto para leerlo completo."
+        : "This content is currently being written. Check back soon for the full version.";
 
     return `
       <div class="ui-blog-placeholder">
@@ -49,7 +77,9 @@ export class MarkdownService {
 
       return html;
     } catch (error) {
-      console.error(`Blog content not found for ${lang}/${slug}, using placeholder`);
+      console.error(
+        `Blog content not found for ${lang}/${slug}, using placeholder`,
+      );
 
       // Return placeholder content instead of null
       return this.getPlaceholderContent(lang);
@@ -74,7 +104,9 @@ export class MarkdownService {
 
       return html;
     } catch (error) {
-      console.error(`Project content not found for ${lang}/${slug}, using placeholder`);
+      console.error(
+        `Project content not found for ${lang}/${slug}, using placeholder`,
+      );
 
       // Return placeholder content instead of null
       return this.getPlaceholderContent(lang);

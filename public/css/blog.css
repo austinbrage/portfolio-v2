@@ -247,6 +247,25 @@
   display: block;
 }
 
+.ui-blog-content a {
+  color: #9333ea;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.ui-blog-content a:hover {
+  color: #db2777;
+}
+
+:root.dark .ui-blog-content a {
+  color: #c084fc;
+}
+
+:root.dark .ui-blog-content a:hover {
+  color: #f472b6;
+}
+
 .ui-blog-content code {
   background-color: #f3f4f6;
   color: #db2777;

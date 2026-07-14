@@ -11,7 +11,7 @@ La Inteligencia Artificial está transformando cómo escribimos código. Herrami
 
 ## WebAssembly y Rendimiento
 
-WebAssembly (Wasm) está habilitando rendimiento casi nativo en el navegador. Esperá ver:
+[WebAssembly (Wasm)](https://webassembly.org) está habilitando rendimiento casi nativo en el navegador. Esperá ver:
 
 - Aplicaciones web de alto rendimiento rivalizando con aplicaciones de escritorio
 - Motores de juegos y herramientas creativas ejecutándose completamente en el navegador
@@ -66,3 +66,5 @@ El desarrollo se está moviendo hacia arquitecturas más modulares y reutilizabl
 ## Conclusión
 
 El futuro del desarrollo web es emocionante y lleno de posibilidades. Manteniéndonos informados sobre estas tendencias y experimentando con nuevas tecnologías, podemos construir aplicaciones web mejores, más rápidas y más accesibles para todos.
+
+Si te interesan los datos en tiempo real y la ingeniería enfocada en rendimiento, mirá [mi proyecto de panel de análisis](/es/projects/analytics-dashboard) para un ejemplo concreto.

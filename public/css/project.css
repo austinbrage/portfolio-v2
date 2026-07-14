@@ -469,6 +469,25 @@
   display: block;
 }
 
+.ui-project-detail-writeup a {
+  color: #9333ea;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.ui-project-detail-writeup a:hover {
+  color: #db2777;
+}
+
+:root.dark .ui-project-detail-writeup a {
+  color: #c084fc;
+}
+
+:root.dark .ui-project-detail-writeup a:hover {
+  color: #f472b6;
+}
+
 /* CTA Section */
 .ui-project-detail-cta {
   background: linear-gradient(to right, #9333ea, #db2777);

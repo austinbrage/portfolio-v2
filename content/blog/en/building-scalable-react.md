@@ -10,7 +10,9 @@ The foundation of a scalable React app is a well-thought-out component architect
 
 ## State Management
 
-Choosing the right state management solution is critical. While React's built-in hooks (useState, useContext) work well for simple apps, larger applications benefit from dedicated state management libraries.
+Choosing the right state management solution is critical. While React's built-in hooks ([useState, useContext](https://react.dev/reference/react)) work well for simple apps, larger applications benefit from dedicated state management libraries.
+
+If you want a concrete example of these tradeoffs in practice, take a look at [the task management app](/en/projects/task-management-app) I built with Zustand for exactly this reason.
 
 Consider these factors when choosing a state management solution:
 - Application size and complexity

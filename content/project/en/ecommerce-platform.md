@@ -23,3 +23,6 @@ outright.
   scoped (catalog, orders, payments) rather than one monolith.
 - **Data**: MongoDB for the catalog (schema flexibility mattered more than
   strict relations there), Redis for hot-path caching.
+- **Payments**: [Stripe](https://stripe.com/docs) for processing and webhook-driven order confirmation.
+
+For a different take on real-time state without a payments layer in the mix, see [the task management app](/en/projects/task-management-app) I built next.

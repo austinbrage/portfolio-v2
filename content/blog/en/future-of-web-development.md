@@ -11,7 +11,7 @@ Artificial Intelligence is transforming how we write code. Tools like GitHub Cop
 
 ## WebAssembly and Performance
 
-WebAssembly (Wasm) is enabling near-native performance in the browser. Expect to see:
+[WebAssembly (Wasm)](https://webassembly.org) is enabling near-native performance in the browser. Expect to see:
 
 - High-performance web applications rivaling desktop apps
 - Game engines and creative tools running entirely in the browser
@@ -66,3 +66,5 @@ Development is moving toward more modular, reusable architectures:
 ## Conclusion
 
 The future of web development is exciting and full of possibilities. By staying informed about these trends and experimenting with new technologies, we can build better, faster, and more accessible web applications for everyone.
+
+If real-time data and performance-focused engineering interest you, check out [my analytics dashboard project](/en/projects/analytics-dashboard) for a concrete example.

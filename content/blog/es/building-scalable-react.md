@@ -10,7 +10,9 @@ La base de una aplicación React escalable es una arquitectura de componentes bi
 
 ## Gestión de Estado
 
-Elegir la solución correcta de gestión de estado es crítico. Mientras que los hooks integrados de React (useState, useContext) funcionan bien para aplicaciones simples, las aplicaciones más grandes se benefician de bibliotecas dedicadas de gestión de estado.
+Elegir la solución correcta de gestión de estado es crítico. Mientras que los hooks integrados de React ([useState, useContext](https://react.dev/reference/react)) funcionan bien para aplicaciones simples, las aplicaciones más grandes se benefician de bibliotecas dedicadas de gestión de estado.
+
+Si querés un ejemplo concreto de estos tradeoffs en la práctica, mirá [la app de gestión de tareas](/es/projects/task-management-app) que construí con Zustand por esta razón exacta.
 
 Considerá estos factores al elegir una solución de gestión de estado:
 - Tamaño y complejidad de la aplicación
