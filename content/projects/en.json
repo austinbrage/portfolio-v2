@@ -4,7 +4,12 @@
     "title": "E-Commerce Platform",
     "description": "A full-featured online store with real-time inventory management, payment processing, and analytics dashboard.",
     "image": "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-    "tags": ["React", "Node.js", "MongoDB", "Stripe"],
+    "tags": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Stripe"
+    ],
     "gradient": "from-blue-500",
     "githubUrl": "https://github.com/austinbrage/ecommerce",
     "liveUrl": "https://demo-ecommerce.com",
@@ -21,14 +26,20 @@
     ],
     "timeline": "3 months",
     "team": "4 developers, 1 designer, 1 PM",
-    "role": "Lead Developer"
+    "role": "Lead Developer",
+    "slug": "ecommerce-platform"
   },
   {
     "id": 2,
     "title": "Task Management App",
     "description": "Collaborative project management tool with drag-and-drop interface, team chat, and progress tracking.",
     "image": "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&q=80",
-    "tags": ["Next.js", "TypeScript", "Prisma", "TailwindCSS"],
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "TailwindCSS"
+    ],
     "gradient": "from-purple-500",
     "githubUrl": "https://github.com/austinbrage/task-manager",
     "liveUrl": "https://demo-taskmanager.com",
@@ -45,14 +56,20 @@
     ],
     "timeline": "4 months",
     "team": "Solo project",
-    "role": "Full-Stack Developer & Designer"
+    "role": "Full-Stack Developer & Designer",
+    "slug": "task-management-app"
   },
   {
     "id": 3,
     "title": "Analytics Dashboard",
     "description": "Real-time data visualization platform with customizable widgets, report generation, and API integrations.",
     "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    "tags": ["Vue.js", "D3.js", "Python", "FastAPI"],
+    "tags": [
+      "Vue.js",
+      "D3.js",
+      "Python",
+      "FastAPI"
+    ],
     "gradient": "from-orange-500",
     "githubUrl": "https://github.com/austinbrage/analytics",
     "liveUrl": "https://demo-analytics.com",
@@ -69,14 +86,20 @@
     ],
     "timeline": "5 months",
     "team": "3 developers, 1 data analyst",
-    "role": "Frontend Lead"
+    "role": "Frontend Lead",
+    "slug": "analytics-dashboard"
   },
   {
     "id": 4,
     "title": "Social Media Platform",
     "description": "Modern social networking app with real-time messaging, content sharing, and engagement analytics.",
     "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
-    "tags": ["React Native", "GraphQL", "PostgreSQL", "Redis"],
+    "tags": [
+      "React Native",
+      "GraphQL",
+      "PostgreSQL",
+      "Redis"
+    ],
     "gradient": "from-green-500",
     "githubUrl": "https://github.com/austinbrage/social-app",
     "liveUrl": "https://demo-social.com",
@@ -93,14 +116,20 @@
     ],
     "timeline": "6 months",
     "team": "5 developers, 2 designers",
-    "role": "Mobile Lead Developer"
+    "role": "Mobile Lead Developer",
+    "slug": "social-media-platform"
   },
   {
     "id": 5,
     "title": "AI Content Generator",
     "description": "Intelligent content creation platform powered by machine learning for generating marketing copy and blog posts.",
     "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    "tags": ["Python", "OpenAI", "React", "FastAPI"],
+    "tags": [
+      "Python",
+      "OpenAI",
+      "React",
+      "FastAPI"
+    ],
     "gradient": "from-violet-500",
     "githubUrl": "https://github.com/austinbrage/ai-content",
     "liveUrl": "https://demo-ai-content.com",
@@ -117,14 +146,20 @@
     ],
     "timeline": "4 months",
     "team": "3 developers, 1 ML engineer",
-    "role": "Backend Lead & ML Integration"
+    "role": "Backend Lead & ML Integration",
+    "slug": "ai-content-generator"
   },
   {
     "id": 6,
     "title": "Fitness Tracking App",
     "description": "Comprehensive fitness tracker with workout planning, nutrition tracking, and progress visualization.",
     "image": "https://images.unsplash.com/photo-1461088945293-0c17689e48ac?w=800&q=80",
-    "tags": ["React Native", "Firebase", "HealthKit", "Charts"],
+    "tags": [
+      "React Native",
+      "Firebase",
+      "HealthKit",
+      "Charts"
+    ],
     "gradient": "from-emerald-500",
     "githubUrl": "https://github.com/austinbrage/fitness-tracker",
     "liveUrl": "https://demo-fitness.com",
@@ -141,6 +176,7 @@
     ],
     "timeline": "5 months",
     "team": "2 developers, 1 fitness consultant",
-    "role": "Lead Mobile Developer"
+    "role": "Lead Mobile Developer",
+    "slug": "fitness-tracking-app"
   }
 ]

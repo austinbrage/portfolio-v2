@@ -1,0 +1,24 @@
+## Detrás de escena
+
+Construir la plataforma de e-commerce implicó equilibrar dos necesidades en
+tensión: un catálogo que se sintiera instantáneo al navegar, y un panel de
+administración que se mantuviera preciso bajo carga concurrente real —
+pedidos entrando mientras se ajustaba el inventario, descuentos cambiando a
+mitad del checkout, ese tipo de cosas.
+
+### Qué haría diferente
+
+Con más tiempo, movería más de la lógica de reconciliación de inventario a
+la capa de base de datos (bloqueo a nivel de fila) en lugar de apoyarme
+tanto en Redis como fuente de verdad — funcionó, pero agregó una clase de
+bugs de invalidación de caché que un modelo de consistencia más estricto
+habría evitado directamente.
+
+### Notas de stack
+
+- **Frontend**: React, con code-splitting bastante agresivo por ruta para
+  mantener el bundle inicial pequeño.
+- **Backend**: Servicios de Node.js detrás de un API gateway, cada uno con
+  un alcance acotado (catálogo, pedidos, pagos) en vez de un monolito.
+- **Datos**: MongoDB para el catálogo (la flexibilidad de esquema importaba
+  más que las relaciones estrictas ahí), Redis para caché de rutas críticas.

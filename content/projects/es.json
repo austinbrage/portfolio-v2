@@ -4,7 +4,12 @@
     "title": "Plataforma de E-Commerce",
     "description": "Tienda en línea completa con gestión de inventario en tiempo real, procesamiento de pagos y panel de análisis.",
     "image": "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-    "tags": ["React", "Node.js", "MongoDB", "Stripe"],
+    "tags": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Stripe"
+    ],
     "gradient": "from-blue-500",
     "githubUrl": "https://github.com/austinbrage/ecommerce",
     "liveUrl": "https://demo-ecommerce.com",
@@ -21,14 +26,20 @@
     ],
     "timeline": "3 meses",
     "team": "4 desarrolladores, 1 diseñador, 1 PM",
-    "role": "Desarrollador Líder"
+    "role": "Desarrollador Líder",
+    "slug": "ecommerce-platform"
   },
   {
     "id": 2,
     "title": "App de Gestión de Tareas",
     "description": "Herramienta de gestión de proyectos colaborativa con interfaz de arrastrar y soltar, chat de equipo y seguimiento de progreso.",
     "image": "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&q=80",
-    "tags": ["Next.js", "TypeScript", "Prisma", "TailwindCSS"],
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "TailwindCSS"
+    ],
     "gradient": "from-purple-500",
     "githubUrl": "https://github.com/austinbrage/task-manager",
     "liveUrl": "https://demo-taskmanager.com",
@@ -45,14 +56,20 @@
     ],
     "timeline": "4 meses",
     "team": "Proyecto individual",
-    "role": "Desarrollador Full-Stack y Diseñador"
+    "role": "Desarrollador Full-Stack y Diseñador",
+    "slug": "task-management-app"
   },
   {
     "id": 3,
     "title": "Panel de Análisis",
     "description": "Plataforma de visualización de datos en tiempo real con widgets personalizables, generación de informes e integraciones de API.",
     "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    "tags": ["Vue.js", "D3.js", "Python", "FastAPI"],
+    "tags": [
+      "Vue.js",
+      "D3.js",
+      "Python",
+      "FastAPI"
+    ],
     "gradient": "from-orange-500",
     "githubUrl": "https://github.com/austinbrage/analytics",
     "liveUrl": "https://demo-analytics.com",
@@ -69,14 +86,20 @@
     ],
     "timeline": "5 meses",
     "team": "3 desarrolladores, 1 analista de datos",
-    "role": "Líder de Frontend"
+    "role": "Líder de Frontend",
+    "slug": "analytics-dashboard"
   },
   {
     "id": 4,
     "title": "Plataforma de Redes Sociales",
     "description": "App de redes sociales moderna con mensajería en tiempo real, compartición de contenido y análisis de participación.",
     "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
-    "tags": ["React Native", "GraphQL", "PostgreSQL", "Redis"],
+    "tags": [
+      "React Native",
+      "GraphQL",
+      "PostgreSQL",
+      "Redis"
+    ],
     "gradient": "from-green-500",
     "githubUrl": "https://github.com/austinbrage/social-app",
     "liveUrl": "https://demo-social.com",
@@ -93,14 +116,20 @@
     ],
     "timeline": "6 meses",
     "team": "5 desarrolladores, 2 diseñadores",
-    "role": "Desarrollador Líder Móvil"
+    "role": "Desarrollador Líder Móvil",
+    "slug": "social-media-platform"
   },
   {
     "id": 5,
     "title": "Generador de Contenido IA",
     "description": "Plataforma de creación de contenido inteligente impulsada por aprendizaje automático para generar textos de marketing y artículos de blog.",
     "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    "tags": ["Python", "OpenAI", "React", "FastAPI"],
+    "tags": [
+      "Python",
+      "OpenAI",
+      "React",
+      "FastAPI"
+    ],
     "gradient": "from-violet-500",
     "githubUrl": "https://github.com/austinbrage/ai-content",
     "liveUrl": "https://demo-ai-content.com",
@@ -117,14 +146,20 @@
     ],
     "timeline": "4 meses",
     "team": "3 desarrolladores, 1 ingeniero de ML",
-    "role": "Líder Backend e Integración ML"
+    "role": "Líder Backend e Integración ML",
+    "slug": "ai-content-generator"
   },
   {
     "id": 6,
     "title": "App de Seguimiento de Fitness",
     "description": "Rastreador de fitness integral con planificación de entrenamientos, seguimiento de nutrición y visualización de progreso.",
     "image": "https://images.unsplash.com/photo-1461088945293-0c17689e48ac?w=800&q=80",
-    "tags": ["React Native", "Firebase", "HealthKit", "Charts"],
+    "tags": [
+      "React Native",
+      "Firebase",
+      "HealthKit",
+      "Charts"
+    ],
     "gradient": "from-emerald-500",
     "githubUrl": "https://github.com/austinbrage/fitness-tracker",
     "liveUrl": "https://demo-fitness.com",
@@ -141,6 +176,7 @@
     ],
     "timeline": "5 meses",
     "team": "2 desarrolladores, 1 consultor de fitness",
-    "role": "Desarrollador Móvil Líder"
+    "role": "Desarrollador Móvil Líder",
+    "slug": "fitness-tracking-app"
   }
 ]
