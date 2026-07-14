@@ -159,6 +159,7 @@
 
 /* Project Card */
 .ui-projects-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   border: 2px solid #e5e7eb;
@@ -180,6 +181,18 @@
 
 :root.dark .ui-projects-card:hover {
   border-color: #581c87;
+}
+
+/* Real anchor stretched over the whole card so clicking anywhere navigates
+   like a native link click (no JS). aria-hidden + tabindex="-1" in the
+   markup keep it out of the accessibility tree and tab order - the visible
+   "Details" button remains the one real accessible path to the same URL.
+   The secondary (Code) button sits above it via z-index: 1. */
+.ui-projects-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  cursor: pointer;
 }
 
 /* Card Image */
@@ -292,6 +305,7 @@
 .ui-projects-card-actions {
   display: flex;
   gap: 0.75rem;
+  z-index: 20;
 }
 
 .ui-projects-card-button {

@@ -32,6 +32,13 @@
     <!-- Projects Grid -->
     <div class="ui-projects-grid">
       <div class="ui-projects-card" map="project of props.projects">
+        <a
+          href="/{{lang}}/projects/{{project.slug}}"
+          class="ui-projects-card-link"
+          aria-hidden="true"
+          tabindex="-1"
+        ></a>
+
         <!-- Card Image -->
         <div class="ui-projects-card-image-wrapper">
           <img
