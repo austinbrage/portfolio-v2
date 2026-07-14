@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx watch src/index.ts",
     "bundle": "cross-env NODE_ENV=production tsx scripts/bundle.ts",
+    "bundle-clean": "rm -f public/css/app.*.css public/js/app.*.js manifest.json && echo \"Bundle files removed\"",
     "build": "tsc",
     "start": "npm run bundle && cross-env NODE_ENV=production node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
