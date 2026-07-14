@@ -6,6 +6,8 @@ administración que se mantuviera preciso bajo carga concurrente real —
 pedidos entrando mientras se ajustaba el inventario, descuentos cambiando a
 mitad del checkout, ese tipo de cosas.
 
+![Panel de administración mostrando analíticas de pedidos e inventario](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80)
+
 ### Qué haría diferente
 
 Con más tiempo, movería más de la lógica de reconciliación de inventario a

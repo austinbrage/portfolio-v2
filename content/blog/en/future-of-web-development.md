@@ -34,6 +34,8 @@ While the hype has cooled, Web3 technologies continue to mature:
 - Distributed file storage solutions
 - Smart contracts for complex business logic
 
+![Futuristic technology visualization](https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80)
+
 ## Progressive Web Apps Evolution
 
 PWAs are becoming more capable with each browser update:

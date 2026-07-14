@@ -461,6 +461,14 @@
   color: white;
 }
 
+.ui-project-detail-writeup img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  display: block;
+}
+
 /* CTA Section */
 .ui-project-detail-cta {
   background: linear-gradient(to right, #9333ea, #db2777);

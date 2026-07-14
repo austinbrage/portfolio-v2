@@ -18,6 +18,8 @@ Considerá estos factores al elegir una solución de gestión de estado:
 - Requisitos de rendimiento
 - Preferencias de experiencia del desarrollador
 
+![Diagrama de arquitectura de componentes dibujado en una pizarra](https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80)
+
 ## Organización del Código
 
 Una estructura de carpetas clara ayuda a los equipos a navegar el código eficientemente. Esta es la estructura que recomiendo:

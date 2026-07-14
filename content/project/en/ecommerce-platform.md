@@ -5,6 +5,8 @@ catalog that felt instant to browse, and an admin dashboard that stayed
 truthful under real concurrent load — orders coming in while inventory was
 being adjusted, discounts changing mid-checkout, that kind of thing.
 
+![Admin dashboard showing order and inventory analytics](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80)
+
 ### What I'd do differently
 
 With more time, I'd push more of the inventory reconciliation logic into the

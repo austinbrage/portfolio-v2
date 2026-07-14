@@ -18,6 +18,8 @@ Consider these factors when choosing a state management solution:
 - Performance requirements
 - Developer experience preferences
 
+![Component architecture diagram sketched on a whiteboard](https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80)
+
 ## Code Organization
 
 A clear folder structure helps teams navigate the codebase efficiently. Here's the structure I recommend:

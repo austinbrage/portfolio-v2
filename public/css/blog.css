@@ -239,6 +239,14 @@
   color: white;
 }
 
+.ui-blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  display: block;
+}
+
 .ui-blog-content code {
   background-color: #f3f4f6;
   color: #db2777;

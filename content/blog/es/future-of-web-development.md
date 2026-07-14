@@ -34,6 +34,8 @@ Aunque el hype se ha enfriado, las tecnologías Web3 continúan madurando:
 - Soluciones de almacenamiento de archivos distribuidos
 - Contratos inteligentes para lógica de negocio compleja
 
+![Visualización futurista de tecnología](https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?w=800&q=80)
+
 ## Evolución de Progressive Web Apps
 
 Las PWAs se están volviendo más capaces con cada actualización del navegador:
