@@ -488,6 +488,51 @@
   color: #f472b6;
 }
 
+.ui-project-detail-writeup code {
+  background-color: #f3f4f6;
+  color: #db2777;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: 'Courier New', monospace;
+}
+
+:root.dark .ui-project-detail-writeup code {
+  background-color: #1e293b;
+  color: #f472b6;
+}
+
+.ui-project-detail-writeup pre {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.ui-project-detail-writeup pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.ui-project-detail-writeup blockquote {
+  border-left: 4px solid #9333ea;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #6b7280;
+}
+
+:root.dark .ui-project-detail-writeup blockquote {
+  border-color: #c084fc;
+  color: #94a3b8;
+}
+
 /* CTA Section */
 .ui-project-detail-cta {
   background: linear-gradient(to right, #9333ea, #db2777);
