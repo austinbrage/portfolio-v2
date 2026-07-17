@@ -117,6 +117,11 @@
       />
       <link
         rel="stylesheet"
+        href="/css/syntax-highlight.css{{timestamp ? `?v=${timestamp}` : ''}}"
+        if="!cssBundle"
+      />
+      <link
+        rel="stylesheet"
         href="/css/experience.css{{timestamp ? `?v=${timestamp}` : ''}}"
         if="!cssBundle"
       />

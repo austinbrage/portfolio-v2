@@ -35,6 +35,7 @@ var CSS_FILES = [
   "blogs.css",
   "project.css",
   "blog.css",
+  "syntax-highlight.css",
   "experience.css",
   // System
   "service-down.css",
