@@ -11,12 +11,18 @@ importers:
       express:
         specifier: ^5.2.1
         version: 5.2.1
+      highlight.js:
+        specifier: ^11.11.1
+        version: 11.11.1
       html6:
         specifier: ^0.7.2
         version: 0.7.2
       marked:
         specifier: ^17.0.1
         version: 17.0.1
+      marked-highlight:
+        specifier: ^2.2.4
+        version: 2.2.4(marked@17.0.1)
     devDependencies:
       '@types/express':
         specifier: ^5.0.6
@@ -449,6 +455,10 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  highlight.js@11.11.1:
+    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
+    engines: {node: '>=12.0.0'}
+
   himalaya@1.1.1:
     resolution: {integrity: sha512-mJLY5tErGWtsw8hO2fJ2vK4IpG6S1AIgVkduRo4FqFJhgI2H3XLzgemRemk45zcnFyxNNpOfrIDle2KcnJM0lA==}
 
@@ -512,6 +522,11 @@ packages:
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
+
+  marked-highlight@2.2.4:
+    resolution: {integrity: sha512-PZxisNMJDduSjc0q6uvjsnqqHCXc9s0eyzxDO9sB1eNGJnd/H1/Fu+z6g/liC1dfJdFW4SftMwMlLvsBhUPrqQ==}
+    peerDependencies:
+      marked: '>=4 <19'
 
   marked@17.0.1:
     resolution: {integrity: sha512-boeBdiS0ghpWcSwoNm/jJBwdpFaMnZWRzjA6SkUMYb40SVaN1x7mmfGKp0jvexGcx+7y2La5zRZsYFZI6Qpypg==}
@@ -1128,6 +1143,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  highlight.js@11.11.1: {}
+
   himalaya@1.1.1: {}
 
   html6@0.7.2:
@@ -1185,6 +1202,10 @@ snapshots:
       is-buffer: 1.1.6
 
   lru-cache@10.4.3: {}
+
+  marked-highlight@2.2.4(marked@17.0.1):
+    dependencies:
+      marked: 17.0.1
 
   marked@17.0.1: {}
 

@@ -17,8 +17,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^5.2.1",
+    "highlight.js": "^11.11.1",
     "html6": "^0.7.2",
-    "marked": "^17.0.1"
+    "marked": "^17.0.1",
+    "marked-highlight": "^2.2.4"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
