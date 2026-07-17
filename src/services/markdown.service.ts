@@ -4,9 +4,24 @@
  */
 
 import { marked, Renderer } from "marked";
+import { markedHighlight } from "marked-highlight";
+import hljs from "highlight.js";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { contentBucket } from "../utils/environments";
+
+// Syntax highlighting happens server-side at parse time, not in the browser -
+// this app is SSR-only with no client-side rendering step, so the highlighted
+// <span> tags are just part of the HTML the server already sends.
+marked.use(
+  markedHighlight({
+    langPrefix: "hljs language-",
+    highlight(code, lang) {
+      var language = hljs.getLanguage(lang) ? lang : "plaintext";
+      return hljs.highlight(code, { language }).value;
+    },
+  }),
+);
 
 // marked (since v1) doesn't sanitize link hrefs itself - that's left to the consumer -
 // so dangerous schemes like javascript:/data: pass through untouched by default.
