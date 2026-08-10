@@ -358,6 +358,47 @@
   margin-top: 0.25rem;
 }
 
+/* Card Link */
+.ui-experience-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  margin-left: 3.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  border: none;
+  background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.ui-experience-card-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(147, 51, 234, 0.4);
+  filter: brightness(1.05);
+}
+
+.ui-experience-card-link:active {
+  transform: translateY(0);
+}
+
+.ui-experience-card-link-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 640px) {
+  .ui-experience-card-link {
+    margin-left: 0;
+  }
+}
+
 /* Footer */
 .ui-experience-footer {
   margin-top: 3rem;

@@ -33,6 +33,7 @@ export default {
   "experience-detail-challenge": "Desafío",
   "experience-detail-solution": "Solución",
   "experience-detail-impact": "Impacto",
+  "experience-detail-view-link": "Ver",
   "experience-detail-not-found": "Experiencia no encontrada",
 
   // Projects
