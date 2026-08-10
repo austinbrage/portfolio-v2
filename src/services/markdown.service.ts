@@ -103,6 +103,18 @@ export class MarkdownService {
   }
 
   /**
+   * Parse a markdown string (not file-based) into HTML - for short-form
+   * content stored directly in JSON fields (e.g. a project's challenge/
+   * solution text), so they can use paragraphs, bold, etc. instead of a
+   * single unformatted block. Uses the same configured marked instance as
+   * file-based content, so the same link-safety rules apply.
+   */
+  static async renderMarkdown(text: string): Promise<string> {
+    if (!text) return "";
+    return marked.parse(text);
+  }
+
+  /**
    * Get extended project write-up by language and slug
    * Loads the markdown file and converts it to HTML
    * Returns placeholder content if file doesn't exist

@@ -40,6 +40,17 @@ export class ProjectController {
         content = await MarkdownService.getProjectContent(lang, project.slug);
       }
 
+      // These JSON fields are short-form markdown, not plain text - lets them
+      // use paragraphs/bold instead of being stuck as one unformatted block
+      var longDescription = "";
+      var challenge = "";
+      var solution = "";
+      if (project) {
+        longDescription = await MarkdownService.renderMarkdown(project.longDescription);
+        challenge = await MarkdownService.renderMarkdown(project.challenge);
+        solution = await MarkdownService.renderMarkdown(project.solution);
+      }
+
       const renderData = {
         title: project ? `${project.title} - Austin Brage` : "Project Not Found",
         description: project ? project.description : "Project not found",
@@ -63,6 +74,9 @@ export class ProjectController {
         canonicalUrl: seo.canonicalUrl,
         hreflangAlternates: seo.hreflangAlternates,
         project,
+        longDescription,
+        challenge,
+        solution,
         content,
         email: "austin@example.com",
       };

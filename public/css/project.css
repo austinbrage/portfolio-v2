@@ -324,6 +324,66 @@
   color: #cbd5e1;
 }
 
+.ui-project-detail-section-text p {
+  margin-bottom: 1rem;
+}
+
+.ui-project-detail-section-text p:last-child {
+  margin-bottom: 0;
+}
+
+.ui-project-detail-section-text ul,
+.ui-project-detail-section-text ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.ui-project-detail-section-text li {
+  margin-bottom: 0.5rem;
+}
+
+.ui-project-detail-section-text strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+:root.dark .ui-project-detail-section-text strong {
+  color: white;
+}
+
+.ui-project-detail-section-text a {
+  color: #9333ea;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.ui-project-detail-section-text a:hover {
+  color: #db2777;
+}
+
+:root.dark .ui-project-detail-section-text a {
+  color: #c084fc;
+}
+
+:root.dark .ui-project-detail-section-text a:hover {
+  color: #f472b6;
+}
+
+.ui-project-detail-section-text code {
+  background-color: #f3f4f6;
+  color: #9d174d;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: 'Courier New', monospace;
+}
+
+:root.dark .ui-project-detail-section-text code {
+  background-color: #1e293b;
+  color: #f472b6;
+}
+
 /* Sidebar */
 .ui-project-detail-sidebar {
   position: relative;
@@ -490,11 +550,11 @@
 
 .ui-project-detail-writeup code {
   background-color: #f3f4f6;
-  color: #db2777;
+  color: #b11616;
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.875em;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
 }
 
 :root.dark .ui-project-detail-writeup code {
@@ -509,7 +569,7 @@
   border-radius: 0.5rem;
   overflow-x: auto;
   margin-bottom: 1rem;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 1.25rem;
   line-height: 1.5;
 }

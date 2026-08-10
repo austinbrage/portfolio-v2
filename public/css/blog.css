@@ -268,11 +268,11 @@
 
 .ui-blog-content code {
   background-color: #f3f4f6;
-  color: #db2777;
+  color: #b11616;
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.875em;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
 }
 
 :root.dark .ui-blog-content code {
@@ -287,7 +287,7 @@
   border-radius: 0.5rem;
   overflow-x: auto;
   margin-bottom: 1rem;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 1.25rem;
   line-height: 1.5;
 }
