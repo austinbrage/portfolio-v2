@@ -25,6 +25,7 @@ export default {
   "experience-title": "Experience",
   "experience-view-details": "View details",
   "experience-download-cv": "Download CV",
+  "resume-filename": "Austin_Brage_Resume",
 
   // Experience Detail Page
   "experience-detail-back": "Back to Home",

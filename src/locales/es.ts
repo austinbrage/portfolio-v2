@@ -25,6 +25,7 @@ export default {
   "experience-title": "Experiencia",
   "experience-view-details": "Ver detalles",
   "experience-download-cv": "Descargar CV",
+  "resume-filename": "Agustin_Brage_Resume",
 
   // Experience Detail Page
   "experience-detail-back": "Volver al Inicio",
