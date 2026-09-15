@@ -1,1 +1,69 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Ingeniero Full-Stack",
+    "company": "Eldøy Projects",
+    "startDate": "2025",
+    "endDate": "2025",
+    "duration": "6 meses",
+    "location": "Remoto",
+    "description": "Construí una suite de librerías y productos internos desde cero: una librería de chatbots RAG con web scraping y recuperación basada en vectores, un motor de plantillas HTML y un lenguaje de expresiones a medida, y un CMS visual para construir sitios usado para lanzar un sitio de e-commerce de referencia.",
+    "technologies": [
+      "Node.js",
+      "Sanity CMS",
+      "HTML6",
+      "Vector Search / RAG",
+      "Qdrant",
+      "OpenAI",
+      "Ollama"
+    ],
+    "accomplishments": [
+      {
+        "title": "Botty — Librería de Chatbots RAG",
+        "description": "Construí una librería de npm para crear chatbots RAG con web scraping, recuperación basada en vectores y soporte para múltiples modelos.",
+        "challenge": "La librería necesitaba **convertir la URL de cualquier empresa en un chatbot funcional**: pegar un dominio en una demo, y todo el pipeline scrape → chunk → embed → retrieve detrás tenía que funcionar de forma genérica, sin nada hardcodeado a un sitio o a un proveedor de IA en particular.\n\n**Nada de eso existía todavía como base.** Scraping, chunking, embedding y recuperación había que diseñarlos y conectarlos sin tener una implementación previa de la que partir.",
+        "solution": "Construí el pipeline de punta a punta: scrapeé un sitio a partir de su sitemap, dividí el contenido en chunks de tamaño fijo con solapamiento, los embebí, y guardé los vectores en Qdrant usando la URL de origen como key. Ante cada pregunta del usuario, embebo la pregunta de la misma forma, traigo los chunks más parecidos desde Qdrant, y se los paso al modelo como contexto.\n\nGeneralicé los scripts para correr contra cualquier dominio, agregué un mapeador de function calling para que el modelo pudiera disparar acciones del backend durante la conversación, e hice el proveedor de IA configurable (OpenAI o un modelo local con Ollama) detrás de una sola interfaz. Lancé un servidor de demo liviano para poder probar todo el pipeline de punta a punta desde una URL.",
+        "results": [
+          "Construí un pipeline RAG agnóstico al dominio (scraping, chunking, embedding y recuperación) usable en el sitio de cualquier empresa a partir de una sola URL, con los vectores guardados en Qdrant",
+          "Agregué function calling con IA para disparar acciones del backend durante la conversación, e hice el modelo configurable: alojado (OpenAI) o local (Ollama), detrás de una sola interfaz",
+          "Lancé una app de demo para poder probar todo el pipeline de punta a punta desde una URL"
+        ]
+      },
+      {
+        "title": "HTML6 — Motor de Plantillas del Lado del Servidor",
+        "description": "Diseñé y construí un motor de plantillas y renderizado HTML desde cero, evolucionado a partir de una librería interna anterior (@nodedk/html) hacia HTML6, usado como capa de renderizado para SanityCMS y Nobo.",
+        "challenge": "HTML6 es un motor de Node.js que compila plantillas de JavaScript a HTML para renderizado del lado del servidor. El objetivo no era solo que funcionara bien: **tenía que ser el motor más rápido de su tipo.**\n\nLa primera versión resolvía condicionales, loops y slots con escaneos anidados O(n), y no pasaba los benchmarks a medida que las plantillas crecían. La consigna también descartaba el feature creep: la solución tenía que ser una arquitectura más rápida, no más funcionalidades.",
+        "solution": "Siguiendo la sugerencia de mi jefe, reconstruí el compilador alrededor de masking/unmasking: los tags especiales (if, else-if, else, map) se hashean en una tabla de lookup durante el parseo, así el compilador trabaja sobre un string plano en lugar de recorrer estructuras anidadas. Un pase final reemplaza cada hash por su función de renderizado.\n\nMantuve el lenguaje mínimo (condicionales, loops y paso de props, nada más) y **lo validé en producción dos veces**: como capa de renderizado de [Nobo](https://en.nobo.no/), el sitio del cliente construido en Eldøy, y como motor detrás de [uLearn](https://ultimatelearning.app), mi propio producto.",
+        "results": [
+          "Reemplacé la resolución de tags O(n) por un compilador basado en masking/unmasking. HTML6 es ahora el motor de plantillas más rápido del mundo",
+          "Mantuve el lenguaje mínimo (if/else-if/else, map, paso de props) en lugar de sumar funcionalidades, y lo validé en producción en Nobo y en uLearn",
+          "Publicado como paquete público en npm, con README y documentación"
+        ],
+        "link": "https://www.npmjs.com/package/html6"
+      },
+      {
+        "title": "SanityCMS — Constructor Visual de Sitios",
+        "description": "Construí una capa de CMS sobre Sanity Studio que renderiza sitios completamente dinámicos (encabezados, pies de página, páginas, secciones) usando el motor HTML6, con edición visual en tiempo real (click-to-edit).",
+        "challenge": "Las herramientas de click-to-edit y preview en vivo de Sanity están pensadas principalmente para frontends en Next.js, con hooks a nivel de framework hacia Studio.\n\nEste stack era distinto: HTML6 para renderizado del lado del servidor, JS vanilla en el cliente y Node.js plano por debajo. Nada de eso tenía un camino ya armado en Next.js, y conectar el preview de Studio con la página realmente renderizada **no tenía una integración lista para usar.**",
+        "solution": "Hice ingeniería inversa del flujo de preview de Sanity para entender qué esperaba, y en su lugar **construí un traspaso basado en tokens**: Studio emite un token, el frontend lo intercambia por acceso al contenido en borrador, y las ediciones aparecen en la página en vivo en tiempo real. Mover esos tokens de forma segura entre la app y Studio implicó extender la librería propia de manejo de cookies de Eldøy, que tampoco estaba pensada para ese intercambio.\n\nSobre esa base, modelé páginas y secciones de forma dinámica en lugar de fijar un esquema por página, armé la asignación automática del layout principal para que los editores no tuvieran que configurarlo a mano, y construí un plugin propio (sanity-plugin-markdown) con autocompletado, sanitización y edición a pantalla completa para los autores de contenido.",
+        "results": [
+          "Construí una integración de preview basada en tokens propia, ya que las herramientas de Sanity asumen Next.js, así que los editores tienen click-to-edit en tiempo real sobre un stack de HTML6/Node.js plano",
+          "Sitio completamente basado en datos, con páginas, secciones y layouts ensamblados dinámicamente desde el contenido de Sanity",
+          "Plugin de markdown propio con autocompletado, sanitización y edición a pantalla completa lanzado para los autores de contenido"
+        ]
+      },
+      {
+        "title": "Nobo — Sitio de Referencia de E-Commerce",
+        "description": "Construí designo-nobo, una implementación completa de referencia de e-commerce sobre SanityCMS y HTML6, cubriendo búsqueda, listado y detalle de productos, y páginas de categorías.",
+        "challenge": "**Nobo ya era un sitio de e-commerce real y en producción**, corría sobre Mustache, con el click-to-edit conectado de la misma forma en que ya se había construido para SanityCMS. Migrar toda su capa de plantillas a HTML6 sin romper producción fue la verdadera prueba de estrés del motor, no un benchmark sintético.\n\nAdemás de la migración, los datos de producto (variantes, precios, estructura de categorías) tenían que renderizarse bien en búsqueda, listados, detalle de producto y categorías, y la capa compartida de unwrap de @nodedk/sanity tiraba errores de referencias circulares cada vez que el contenido se referenciaba a sí mismo.",
+        "solution": "**Migré toda la capa de plantillas de Nobo de Mustache a HTML6 en vivo**, reconstruyendo las secciones de encabezado, pie de página, hero, búsqueda, listado de productos, detalle de producto, categoría y FAQ contra los esquemas y handlers de renderizado de HTML6, manteniendo funcionando la integración de click-to-edit existente durante todo el proceso.\n\nRastreé los errores de referencias circulares hasta contenido que se referenciaba a sí mismo en Sanity y reescribí la lógica de unwrap de @nodedk/sanity para manejarlo, centralizando todo el reshaping de datos en un solo método reutilizable y publicando una nueva versión del paquete adoptada en todo el sitio.",
+        "results": [
+          "Migré el storefront en producción de Nobo de Mustache a HTML6 sin romperlo: la prueba real detrás de la velocidad de HTML6",
+          "Modelé variantes de producto, precios y datos de categoría para que se renderizaran bien en búsqueda, listado, detalle y categorías",
+          "Arreglé bugs de referencias circulares por contenido autoreferenciado en la lógica de unwrap de @nodedk/sanity, centralicé el reshaping de datos en un solo método, y publiqué la nueva versión en todo el sitio"
+        ],
+        "link": "https://en.nobo.no"
+      }
+    ]
+  }
+]

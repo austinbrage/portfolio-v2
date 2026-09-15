@@ -1,1 +1,69 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Full-Stack Engineer",
+    "company": "Eldøy Projects",
+    "startDate": "2025",
+    "endDate": "2025",
+    "duration": "6 months",
+    "location": "Remote",
+    "description": "Built a suite of internal libraries and products from scratch: a RAG chatbot library with web scraping and vector-based retrieval, a custom HTML templating engine and expression language, and a visual site-building CMS used to ship a full e-commerce reference site.",
+    "technologies": [
+      "Node.js",
+      "Sanity CMS",
+      "HTML6",
+      "Vector Search / RAG",
+      "Qdrant",
+      "OpenAI",
+      "Ollama"
+    ],
+    "accomplishments": [
+      {
+        "title": "Botty — RAG Chatbot Library",
+        "description": "Built an npm library for creating RAG chatbots with web scraping, vector-based retrieval, and multi-model support.",
+        "challenge": "The library needed to **turn any company's URL into a working chatbot**: paste a domain into a demo, and the scrape → chunk → embed → retrieve pipeline behind it had to work generically, with nothing hardcoded to one site or one AI provider.\n\n**None of that existed yet to build on.** Scraping, chunking, embedding, and retrieval all had to be designed and wired together with no prior implementation to lean on.",
+        "solution": "Built the pipeline end-to-end: scrape a site from its sitemap, split content into fixed-size overlapping chunks, embed them, and store the vectors in Qdrant keyed by the source URL. On each user question, embed the question the same way, pull the closest-matching chunks back out of Qdrant, and feed them to the model as context.\n\nGeneralized the scripts to run against any target domain, added an API-calling mapper so the model could trigger backend actions mid-conversation, and made the AI provider itself configurable (OpenAI or a local Ollama model) behind one interface. Shipped a lightweight demo server so the whole pipeline could be tried end-to-end from a URL.",
+        "results": [
+          "Built a domain-agnostic RAG pipeline (scraping, chunking, embedding, and retrieval) usable on any company's site from just a URL, with vectors stored in Qdrant",
+          "Added AI-driven function calling for backend actions mid-conversation, and made the model itself configurable: hosted (OpenAI) or local (Ollama), behind one interface",
+          "Shipped a demo web app so the whole pipeline could be tried end-to-end from a URL"
+        ]
+      },
+      {
+        "title": "HTML6 — Custom Server-Side Templating Engine",
+        "description": "Designed and built a from-scratch HTML templating and rendering engine, evolved from an earlier internal library (@nodedk/html) into HTML6, used as the rendering layer for SanityCMS and Nobo.",
+        "challenge": "HTML6 is a Node.js engine that compiles JavaScript templates into HTML for server-side rendering. The goal wasn't just correctness; **it had to be the fastest engine of its kind.**\n\nThe first version resolved conditionals, loops, and slots with nested O(n) scans, and it failed benchmarks as templates grew. The brief also ruled out feature creep: the fix had to be a faster architecture, not more features.",
+        "solution": "Following my manager's suggestion, rebuilt the compiler around masking/unmasking: special tags (if, else-if, else, map) get hashed into a lookup table during parsing, so the compiler works over a flat string instead of re-walking nested structures. A final pass swaps each hash back for its render function.\n\nKept the language minimal (conditionals, loops, and prop passing, nothing more) and **validated it in production twice over**: as the rendering layer for [Nobo](https://en.nobo.no/), the client site built at Eldøy, and as the engine behind [uLearn](https://ultimatelearning.app), my own product.",
+        "results": [
+          "Replaced nested O(n) tag resolution with a masking/unmasking compile step. HTML6 is now the fastest template engine in the world",
+          "Kept the language minimal (if/else-if/else, map, prop passing) instead of adding features, and validated it in production on both Nobo and uLearn",
+          "Published as a public package on npm, with README and docs"
+        ],
+        "link": "https://www.npmjs.com/package/html6"
+      },
+      {
+        "title": "SanityCMS — Visual Site Builder",
+        "description": "Built a CMS layer on top of Sanity Studio that renders fully dynamic sites (headers, footers, pages, sections) using the HTML6 engine, with live visual click-to-edit editing.",
+        "challenge": "Sanity's click-to-edit and live-preview tooling is built primarily for Next.js frontends, with tight framework-level hooks into Studio.\n\nThis stack was different: HTML6 for server-side rendering, vanilla JS on the client, plain Node.js underneath. Nothing Next.js provided a path for, and linking Studio's preview to the actual rendered page meant **there was no ready integration to reach for.**",
+        "solution": "Reverse-engineered Sanity's preview flow to understand what it expected, then **built a token-based handoff in its place**: Studio issues a token, the frontend exchanges it for draft-content access, and edits show up on the live page in real time. Moving those tokens safely between the app and Studio meant extending Eldøy's own cookie-management library, since it wasn't built for that exchange either.\n\nOn top of that, modeled pages and sections dynamically instead of hardcoding one schema per page, wired up automatic main-layout assignment so editors didn't have to set it by hand, and built a custom sanity-plugin-markdown with autocompletion, sanitization, and full-screen editing for content authors.",
+        "results": [
+          "Built a custom token-based preview integration since Sanity's tooling assumes Next.js, so editors get real-time click-to-edit on a plain HTML6/Node.js stack",
+          "Site fully data-driven, with pages, sections, and layouts assembled dynamically from Sanity content",
+          "Custom markdown plugin with autocompletion, sanitization, and full-screen editing shipped for content authors"
+        ]
+      },
+      {
+        "title": "Nobo — E-Commerce Reference Site",
+        "description": "Built designo-nobo, a full e-commerce reference implementation on top of SanityCMS and HTML6, covering search, product listing and detail, and category pages.",
+        "challenge": "**Nobo was already a real, live e-commerce site**, running on Mustache, with click-to-edit wired in the same way it had already been built for SanityCMS. Migrating its entire template layer to HTML6 without breaking production was the actual stress test for the engine, not a synthetic benchmark.\n\nOn top of the migration, product data (variants, pricing, category structure) had to render correctly across search, listings, product detail, and category pages, and the shared @nodedk/sanity unwrap layer was throwing circular-reference errors whenever content referenced itself.",
+        "solution": "**Migrated Nobo's full template layer from Mustache to HTML6 live**, rebuilding header, footer, hero, search, product list, product detail, category, and FAQ sections against HTML6 schemas and render handlers, while keeping the site's existing click-to-edit integration working throughout.\n\nTraced the circular-reference errors to self-referencing content in Sanity and rewrote @nodedk/sanity's unwrap logic to handle it, centralizing all data reshaping into one reusable method and shipping a new package version adopted across the site.",
+        "results": [
+          "Migrated Nobo's live production storefront from Mustache to HTML6 without breaking it: the real-world proof behind HTML6's speed",
+          "Modeled product variants, pricing, and category data so it rendered correctly across search, listing, detail, and category pages",
+          "Fixed self-referencing circular-reference bugs in @nodedk/sanity's unwrap logic, centralized data reshaping into one method, and shipped the new version site-wide"
+        ],
+        "link": "https://en.nobo.no"
+      }
+    ]
+  }
+]
