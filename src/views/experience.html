@@ -27,7 +27,10 @@
             <h1 class="ui-experience-title">
               <span class="ui-experience-title-gradient">{{experience.title}}</span>
             </h1>
-            <p class="ui-experience-company">{{experience.company}}</p>
+            <p class="ui-experience-company">
+              <a if="experience.companyUrl" href="{{experience.companyUrl}}" target="_blank" rel="noopener noreferrer">{{experience.company}}</a>
+              <span else>{{experience.company}}</span>
+            </p>
             <div class="ui-experience-meta">
               <div class="ui-experience-meta-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

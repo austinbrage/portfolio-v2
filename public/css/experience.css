@@ -118,8 +118,28 @@
 
 .ui-experience-company {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: #4b5563;
   margin-bottom: 1rem;
+}
+
+.dark .ui-experience-company {
+  color: #cbd5e1;
+}
+
+.ui-experience-company a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ui-experience-company a:hover {
+  color: #9333ea;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dark .ui-experience-company a:hover {
+  color: #c084fc;
 }
 
 .ui-experience-meta {
