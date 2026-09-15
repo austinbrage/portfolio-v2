@@ -290,10 +290,14 @@
 }
 
 .ui-experience-card-title {
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #111827;
   margin-bottom: 0.5rem;
+}
+
+.dark .ui-experience-card-title {
+  color: #f8fafc;
 }
 
 .ui-experience-card-description {
@@ -322,17 +326,57 @@
 }
 
 .ui-experience-card-section-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-tertiary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #9333ea;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.dark .ui-experience-card-section-title {
+  color: #c084fc;
 }
 
 .ui-experience-card-section-text {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--text-secondary);
+}
+
+.ui-experience-card-section-text p {
+  margin-bottom: 1rem;
+}
+
+.ui-experience-card-section-text p:last-child {
+  margin-bottom: 0;
+}
+
+.ui-experience-card-section-text strong {
+  font-weight: 700;
+  color: #111827;
+}
+
+.dark .ui-experience-card-section-text strong {
+  color: #f8fafc;
+}
+
+.ui-experience-card-section-text a {
+  color: #db2777;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.ui-experience-card-section-text a:hover {
+  color: #9333ea;
+}
+
+.dark .ui-experience-card-section-text a {
+  color: #f472b6;
+}
+
+.dark .ui-experience-card-section-text a:hover {
+  color: #c084fc;
 }
 
 /* Results List */

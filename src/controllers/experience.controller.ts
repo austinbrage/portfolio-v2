@@ -2,6 +2,7 @@ import { compile } from "../services/html6.service";
 import { I18nService } from "../services/i18n.service";
 import { renderServiceDown } from "../services/system.service";
 import { ContentService } from "../services/content.service";
+import { MarkdownService } from "../services/markdown.service";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { startupTimestamp } from "../utils/environments";
@@ -32,6 +33,22 @@ export class ExperienceController {
       // Get experience metadata by ID
       var experience = await ContentService.getExperienceById(lang, experienceId);
       var seo = buildSeoData(lang, `/experience/${experienceId}`);
+
+      // Accomplishment challenge/solution are short-form markdown, not plain
+      // text - lets them use paragraphs/bold instead of being stuck as one
+      // unformatted block, same as a project's challenge/solution
+      if (experience && experience.accomplishments) {
+        experience = {
+          ...experience,
+          accomplishments: await Promise.all(
+            experience.accomplishments.map(async (accomplishment: any) => ({
+              ...accomplishment,
+              challenge: await MarkdownService.renderMarkdown(accomplishment.challenge),
+              solution: await MarkdownService.renderMarkdown(accomplishment.solution),
+            })),
+          ),
+        };
+      }
 
       const renderData = {
         title: experience ? `${experience.title} - Austin Brage` : "Experience Not Found",
