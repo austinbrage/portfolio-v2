@@ -2,7 +2,7 @@
  * English Translations
  */
 
-
+// prettier-ignore
 export default {
   // Navbar
   "navbar-brand": "Portfolio",
@@ -16,7 +16,7 @@ export default {
   "hero-badge": "Available for Work",
   "hero-greeting": "Hi, I'm",
   "hero-description-prefix": "A product-focused",
-  "hero-description-highlight": "full-stack developer",
+  "hero-description-highlight": "Full-Stack Engineer",
   "hero-description-suffix": "building fast, reliable, beautiful products.",
   "hero-cta-primary": "View My Work",
   "hero-cta-secondary": "Contact Me",
