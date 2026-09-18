@@ -1,5 +1,65 @@
 [
   {
+    "id": 2,
+    "title": "Founder & Full-Stack Engineer",
+    "company": "uLearn",
+    "companyUrl": "https://ultimatelearning.app",
+    "startDate": "2025",
+    "endDate": "Present",
+    "location": "Remote",
+    "description": "Designed, built, and operate in production a subscription-based AI language-learning platform: eight independent Go microservices behind a Bun/Elysia/HTML6 web frontend, real-time voice tutoring over WebSockets, and adaptive spaced-repetition review, helping users learn German, English, Russian, and French.",
+    "technologies": [
+      "Go",
+      "Bun",
+      "Elysia",
+      "HTML6",
+      "HTMX",
+      "Alpine.js",
+      "AWS (ECS, EC2, DynamoDB)",
+      "Pulumi",
+      "Gemini",
+      "Lemon Squeezy"
+    ],
+    "accomplishments": [
+      {
+        "title": "Usage-Based Subscription Tiers",
+        "description": "Designed and shipped usage-based subscription tiers (Free, Pro, Premium) for uLearn, with consistent limit enforcement across every paid feature.",
+        "challenge": "A real paid product isn't just features that work: it's features that can be metered. Every paid tier needed usage tracked and enforced across chat, speech-to-text, text-to-speech, and flashcard generation, features spanning several independent Go services instead of one codebase, so **there was no single place to just check a limit and move on**.",
+        "solution": "Built a shared usage counter in DynamoDB that every service checks and increments before allowing a metered action, so **tier limits get enforced consistently no matter which service handles the request**. Free, Pro, and Premium tiers, billed through Lemon Squeezy, all run on the same counter rather than each service tracking its own.",
+        "results": [
+          "Shipped Free, Pro, and Premium subscription tiers with usage enforced consistently across every service from one shared counter",
+          "Operate the platform solo in production with real users",
+          "Metering covers every paid feature: AI chat, speech-to-text, text-to-speech, and flashcard generation"
+        ],
+        "link": "https://ultimatelearning.app/en/home/pricing"
+      },
+      {
+        "title": "Eight Independent Go Microservices",
+        "description": "Split uLearn's backend into eight independent Go microservices, one per external provider, deployed on AWS ECS.",
+        "challenge": "Every new AI or data provider (Gemini-powered vocabulary generation, Gemini-powered chat and AI tutor mode, speech-to-text, text-to-speech, generated reading texts, YouTube video search, email, and core user/card data) added to a single Go web service meant more surface area in one codebase, one deploy unit, one blast radius, even before it became an actual bottleneck. **The plan was to split before it became a problem, not after.**",
+        "solution": "Gave each provider its own independent Go service, built with the Fiber framework for speed of iteration, with the web frontend (Bun, Elysia, HTML6) just calling into whichever one it needed for a given request. **The split was for development speed, not performance.** Eight small, consistent codebases are easier to reason about solo than one growing one. Deployed all eight on AWS ECS, which handles scaling and restarts per service without needing Kubernetes, keeping solo operational overhead low despite the extra services.",
+        "results": [
+          "Split uLearn into eight independent Go services (api, agent, chat, tts, stt, text, video, and email) instead of one growing web server",
+          "Kept solo operational overhead low by deploying all eight on AWS ECS, with no Kubernetes needed",
+          "Consistent Fiber-based patterns across every service made adding or debugging any one of them fast"
+        ],
+        "link": "https://ultimatelearning.app/en/home"
+      },
+      {
+        "title": "Real-Time Voice AI Tutor",
+        "description": "Built a real-time voice conversation pipeline for uLearn's AI tutor over WebSockets, with voice-activity detection for natural turn-taking.",
+        "challenge": "A voice conversation with an AI tutor needed to actually feel like a conversation: knowing when a learner stopped talking without a fixed push-to-talk button, keeping round-trip latency low enough that replies didn't feel like a laggy request/response cycle, and never letting the assistant's own voice get picked back up by the mic mid-reply. **None of that is solved by just wiring speech-to-text and text-to-speech together.**",
+        "solution": "Benchmarked WebSocket against plain HTTP for the round trip through the STT provider (Groq Whisper-large-v3) and TTS provider (gpt-4o-mini-tts), and WebSocket won on latency in both the docs and manual testing, so the whole pipeline runs over it: client to web service, and web service to each provider. Voice-activity detection (`@ricky0123/vad-web`, Silero VAD) flags when the learner stops talking, the captured audio gets sent, and **recording stays off entirely until the assistant's reply finishes playing**, so the two sides never talk over each other.",
+        "results": [
+          "Real-time voice conversation with an AI tutor over WebSockets, with voice-activity detection instead of push-to-talk",
+          "Prevents the assistant's own voice from being picked up by the mic by blocking recording during playback",
+          "Contextual corrections mid-conversation as part of the same voice pipeline"
+        ],
+        "link": "https://ultimatelearning.app/en/tour/tutor/session"
+      }
+    ]
+  },
+  {
     "id": 1,
     "title": "Full-Stack Engineer",
     "company": "Eldøy Projects",

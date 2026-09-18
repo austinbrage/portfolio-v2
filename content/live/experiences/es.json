@@ -1,5 +1,65 @@
 [
   {
+    "id": 2,
+    "title": "Fundador e Ingeniero Full-Stack",
+    "company": "uLearn",
+    "companyUrl": "https://ultimatelearning.app",
+    "startDate": "2025",
+    "endDate": "Presente",
+    "location": "Remoto",
+    "description": "Diseñé, construí y opero en producción una plataforma de aprendizaje de idiomas con IA basada en suscripción: ocho microservicios independientes en Go detrás de un frontend web en Bun/Elysia/HTML6, tutoría por voz en tiempo real sobre WebSockets, y repaso con repetición espaciada adaptativa, ayudando a usuarios a aprender alemán, inglés, ruso y francés.",
+    "technologies": [
+      "Go",
+      "Bun",
+      "Elysia",
+      "HTML6",
+      "HTMX",
+      "Alpine.js",
+      "AWS (ECS, EC2, DynamoDB)",
+      "Pulumi",
+      "Gemini",
+      "Lemon Squeezy"
+    ],
+    "accomplishments": [
+      {
+        "title": "Niveles de Suscripción Basados en Uso",
+        "description": "Diseñé y lancé niveles de suscripción basados en uso (Free, Pro, Premium) para uLearn, con un límite aplicado de forma consistente en cada función paga.",
+        "challenge": "Un producto pago real no es solo funciones que funcionan: son funciones que se pueden medir. Cada nivel pago necesitaba el uso rastreado y aplicado en chat, speech-to-text, text-to-speech y generación de flashcards, funciones repartidas en varios servicios de Go independientes en lugar de un solo código base, así que **no había un solo lugar donde simplemente chequear un límite y seguir**.",
+        "solution": "Construí un contador de uso compartido en DynamoDB que cada servicio chequea e incrementa antes de permitir una acción medida, así que **los límites de nivel se aplican de forma consistente sin importar qué servicio maneje el pedido**. Los niveles Free, Pro y Premium, facturados a través de Lemon Squeezy, corren todos sobre el mismo contador en lugar de que cada servicio lleve el suyo.",
+        "results": [
+          "Lancé los niveles de suscripción Free, Pro y Premium con el uso aplicado de forma consistente en cada servicio desde un solo contador compartido",
+          "Opero la plataforma en solitario en producción con usuarios reales",
+          "El medidor cubre cada función paga: chat con IA, speech-to-text, text-to-speech y generación de flashcards"
+        ],
+        "link": "https://ultimatelearning.app/es/home/pricing"
+      },
+      {
+        "title": "Ocho Microservicios Independientes en Go",
+        "description": "Dividí el backend de uLearn en ocho microservicios independientes en Go, uno por proveedor externo, desplegados en AWS ECS.",
+        "challenge": "Cada nuevo proveedor de IA o de datos (generación de vocabulario con Gemini, chat y modo tutor de IA con Gemini, speech-to-text, text-to-speech, textos de lectura generados, búsqueda de videos de YouTube, email, y datos centrales de usuarios y tarjetas) agregado a un solo servicio web en Go significaba más superficie en un mismo código base, una sola unidad de deploy, un solo radio de impacto, incluso antes de convertirse en un cuello de botella real. **El plan era dividir antes de que fuera un problema, no después.**",
+        "solution": "Le di a cada proveedor su propio servicio independiente en Go, construido con el framework Fiber por velocidad de iteración, con el frontend web (Bun, Elysia, HTML6) simplemente llamando al que necesitara en cada pedido. **La división fue por velocidad de desarrollo, no por performance**: ocho código bases chicos y consistentes son más fáciles de razonar en solitario que uno que sigue creciendo. Desplegué los ocho en AWS ECS, que maneja el escalado y los reinicios por servicio sin necesitar Kubernetes, manteniendo bajo el overhead operativo en solitario a pesar de los servicios de más.",
+        "results": [
+          "Dividí uLearn en ocho microservicios independientes en Go (api, agent, chat, tts, stt, text, video y email) en lugar de un solo servidor web que seguía creciendo",
+          "Mantuve bajo el overhead operativo en solitario desplegando los ocho en AWS ECS, sin necesitar Kubernetes",
+          "Patrones consistentes basados en Fiber en cada servicio hicieron rápido agregar o debuggear cualquiera de ellos"
+        ],
+        "link": "https://ultimatelearning.app/es/home"
+      },
+      {
+        "title": "Tutor de IA por Voz en Tiempo Real",
+        "description": "Construí un pipeline de conversación por voz en tiempo real para el tutor de IA de uLearn sobre WebSockets, con detección de actividad de voz para turnos naturales.",
+        "challenge": "Una conversación por voz con un tutor de IA tenía que sentirse realmente como una conversación: saber cuándo un estudiante dejaba de hablar sin un botón fijo de mantener presionado, mantener la latencia de ida y vuelta lo bastante baja para que las respuestas no se sintieran como un ciclo de pedido y respuesta con demora, y que la propia voz del asistente nunca volviera a ser captada por el micrófono a mitad de respuesta. **Nada de eso se resuelve solo conectando speech-to-text y text-to-speech entre sí.**",
+        "solution": "Comparé WebSocket contra HTTP plano para el viaje de ida y vuelta a través del proveedor de STT (Groq Whisper-large-v3) y del proveedor de TTS (gpt-4o-mini-tts), y WebSocket ganó en latencia tanto en la documentación como en pruebas manuales, así que todo el pipeline corre sobre eso: del cliente al servicio web, y del servicio web a cada proveedor. La detección de actividad de voz (`@ricky0123/vad-web`, Silero VAD) marca cuándo el estudiante deja de hablar, se envía el audio capturado, y **la grabación queda apagada por completo hasta que termina de reproducirse la respuesta del asistente**, para que ninguno de los dos lados se pise con el otro.",
+        "results": [
+          "Conversación por voz en tiempo real con un tutor de IA sobre WebSockets, con detección de actividad de voz en lugar de mantener presionado para hablar",
+          "Evita que el micrófono capture la propia voz del asistente bloqueando la grabación durante la reproducción",
+          "Correcciones contextuales durante la conversación como parte del mismo pipeline de voz"
+        ],
+        "link": "https://ultimatelearning.app/es/tour/tutor/session"
+      }
+    ]
+  },
+  {
     "id": 1,
     "title": "Ingeniero Full-Stack",
     "company": "Eldøy Projects",

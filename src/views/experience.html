@@ -40,7 +40,8 @@
                   <line x1="3" x2="21" y1="10" y2="10"></line>
                 </svg>
                 <span if="experience.startDate === experience.endDate">{{experience.startDate}}</span>
-                <span else>{{experience.startDate}} - {{experience.endDate}} ({{experience.duration}})</span>
+                <span elsif="experience.duration">{{experience.startDate}} - {{experience.endDate}} ({{experience.duration}})</span>
+                <span else>{{experience.startDate}} - {{experience.endDate}}</span>
               </div>
               <div class="ui-experience-meta-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

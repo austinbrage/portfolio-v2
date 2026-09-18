@@ -124,6 +124,11 @@
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
   text-decoration: none;
   color: inherit;
+  margin-bottom: 1.5rem;
+}
+
+.ui-experience-section-card:last-of-type {
+  margin-bottom: 0;
 }
 
 :root.dark .ui-experience-section-card {
