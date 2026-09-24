@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Cómo el TDD moldeó HTML6",
+    "excerpt": "Mi jefe en Eldøy me enseñó a diseñar librerías test-first, función por función. Así fue como esa disciplina moldeó el parser, el transpiler y el motor de masking de HTML6.",
+    "date": "18 Sep 2026",
+    "readTime": "4 min de lectura",
+    "image": "/images/blog-html6-tdd.svg",
+    "category": "Desarrollo",
+    "tags": [
+      "TDD",
+      "Testing",
+      "HTML6"
+    ],
+    "author": "Agustin Brage",
+    "slug": "html6-tdd"
+  }
+]

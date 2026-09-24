@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "How TDD Shaped HTML6",
+    "excerpt": "My manager at Eldøy taught me to design libraries test-first, one function at a time. Here's how that discipline shaped HTML6's parser, transpiler, and masking engine.",
+    "date": "Sep 18, 2026",
+    "readTime": "4 min read",
+    "image": "/images/blog-html6-tdd.svg",
+    "category": "Development",
+    "tags": [
+      "TDD",
+      "Testing",
+      "HTML6"
+    ],
+    "author": "Austin Brage",
+    "slug": "html6-tdd"
+  }
+]

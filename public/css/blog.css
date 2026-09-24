@@ -247,6 +247,29 @@
   display: block;
 }
 
+.ui-blog-content figure {
+  margin: 2rem 0;
+}
+
+.ui-blog-content figure svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.ui-blog-content figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #6b7280;
+  margin-top: 0.75rem;
+}
+
+:root.dark .ui-blog-content figcaption {
+  color: #94a3b8;
+}
+
 .ui-blog-content a {
   color: #9333ea;
   text-decoration: underline;
@@ -296,6 +319,11 @@
   background-color: transparent;
   color: inherit;
   padding: 0;
+}
+
+:root.dark .ui-blog-content pre code {
+  background-color: transparent;
+  color: inherit;
 }
 
 .ui-blog-content blockquote {

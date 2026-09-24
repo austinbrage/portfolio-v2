@@ -1,0 +1,22 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <marker id="heroArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ffffff"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M 920 275 C 920 120, 280 120, 280 275" fill="none" stroke="#ffffff" stroke-width="6" stroke-dasharray="14 10" marker-end="url(#heroArrow)"/>
+  <line x1="345" y1="340" x2="535" y2="340" stroke="#ffffff" stroke-width="6" marker-end="url(#heroArrow)"/>
+  <line x1="665" y1="340" x2="855" y2="340" stroke="#ffffff" stroke-width="6" marker-end="url(#heroArrow)"/>
+  <circle cx="280" cy="340" r="70" fill="#ffffff"/>
+  <circle cx="600" cy="340" r="70" fill="#ffffff"/>
+  <circle cx="920" cy="340" r="70" fill="#ffffff"/>
+  <line x1="255" y1="315" x2="305" y2="365" stroke="#ef4444" stroke-width="14" stroke-linecap="round"/>
+  <line x1="305" y1="315" x2="255" y2="365" stroke="#ef4444" stroke-width="14" stroke-linecap="round"/>
+  <path d="M575 345 L595 365 L630 310" fill="none" stroke="#22c55e" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M875 340 Q895 310 915 340 T955 340" fill="none" stroke="#9333ea" stroke-width="12" stroke-linecap="round"/>
+</svg>
