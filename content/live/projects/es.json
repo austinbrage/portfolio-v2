@@ -1,1 +1,64 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Motor de Plantillas HTML6",
+    "description": "Un motor de plantillas del lado del servidor, ligero y basado en componentes, para construir HTML rápido y dinámico a partir de JavaScript puro — el motor que renderiza este mismo sitio.",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+    "tags": [
+      "TypeScript",
+      "Node.js",
+      "Motor de Plantillas",
+      "SSR",
+      "Código Abierto"
+    ],
+    "gradient": "from-violet-500",
+    "githubUrl": "https://github.com/austinbrage/html6",
+    "liveUrl": "https://www.npmjs.com/package/html6",
+    "longDescription": "HTML6 es un motor de plantillas del lado del servidor. Compila HTML plano — enriquecido con expresiones, componentes y control de flujo — en funciones de renderizado rápidas y reutilizables.\n\nCada plantilla se compila una sola vez al iniciar, y luego se renderiza por cada request con datos frescos — **sin virtual DOM, sin hidratación en el cliente**, solo HTML de salida.",
+    "challenge": "La parte más difícil fue decidir cuánto de JavaScript exponer dentro de las plantillas, sin terminar construyendo un parser completo de un lenguaje de expresiones. Las interpolaciones, condicionales y argumentos de pipes necesitaban aceptar **expresiones de JavaScript arbitrarias** — no un subconjunto restringido — manteniéndose seguras de evaluar contra los datos en tiempo de renderizado.\n\nUn segundo problema relacionado: los componentes necesitaban su propio scope de props aislado, pero aun así debían poder ver variables de la plantilla externa, como el idioma activo o la función de traducción. Eso tenía que funcionar sin una cadena explícita de prop-drilling a través de cada componente anidado.",
+    "solution": "Las plantillas se compilan de antemano en funciones de renderizado que capturan (closure) el evaluador de expresiones. Eso significa que el costo por request es solo insertar los datos — no volver a parsear la plantilla.\n\nLas expresiones se evalúan como JavaScript real contra el scope de renderizado, así que una condición o un argumento de pipe simplemente funciona — sin un mini-lenguaje que aprender. El scope de un componente hereda del padre por defecto, así que valores compartidos como el idioma y el traductor fluyen hacia abajo gratis, mientras que los props explícitos se mantienen aislados para evitar colisiones de nombres.\n\nEl renderizado también exige estrictamente que cada variable referenciada en la plantilla esté presente en los datos. Una variable faltante lanza un error en tiempo de renderizado en lugar de imprimir silenciosamente nada — lo cual convirtió toda una clase de bugs de plantillas en errores inmediatos y ruidosos durante el desarrollo, en lugar de huecos silenciosos en el HTML de producción.\n\nConstruido función por función con TDD: el parser, el evaluador de expresiones y la lógica de resolución de scope de componentes tienen cada uno su propia suite de tests que cubre cada input posible, escrita antes de conectar la implementación final.",
+    "features": [
+      "Sistema de componentes con props, slots y herencia automática del scope del padre",
+      "Las expresiones son JavaScript real, no un mini-lenguaje de plantillas restringido",
+      "Pipes componibles para transformaciones inline: {{value |> esc |> truncate 2}}",
+      "Condicionales if/elsif/else y loops map (con índice opcional) integrados en cualquier tag",
+      "Variables estrictas - una variable referenciada pero ausente falla de forma ruidosa en tiempo de renderizado",
+      "Compila una vez, renderiza muchas veces - sin volver a parsear en cada request"
+    ],
+    "timeline": "Estable",
+    "team": "2 desarrolladores",
+    "role": "Co-Desarrollador y Mantenedor",
+    "slug": "html6"
+  },
+  {
+    "id": 2,
+    "title": "uLearn",
+    "description": "Una plataforma de aprendizaje de idiomas con IA que diseñé, construí y opero en solitario — tutoría por voz en tiempo real, flashcards adaptativas y manejo de gramática específico por idioma en cuatro idiomas, corriendo sobre seis microservicios independientes en Go.",
+    "image": "https://ultimatelearning.app/images/og-image.png",
+    "tags": [
+      "Go",
+      "TypeScript",
+      "Microservicios",
+      "IA/LLM",
+      "AWS"
+    ],
+    "gradient": "from-blue-500",
+    "githubUrl": "",
+    "liveUrl": "https://ultimatelearning.app",
+    "longDescription": "uLearn es una plataforma de aprendizaje de idiomas para alemán, inglés, ruso y francés, construida sobre una idea central: la lectura, el repaso de vocabulario y la tutoría con IA deberían reforzarse entre sí en lugar de vivir en aplicaciones separadas.\n\nCorre como seis servicios independientes en Go — un servicio de contenido respaldado por LLM, speech-to-text, text-to-speech, un generador de texto, email y la API central — más un frontend web, todo desplegado en AWS. **Diseñé, construí y sigo operando cada parte en solitario**, desde la infraestructura en AWS hasta la facturación de las suscripciones.",
+    "challenge": "Lo difícil no fue conectar un LLM — fue que cuatro idiomas no comparten una misma gramática. El alemán necesita manejo de casos y declinaciones, el ruso necesita su propia lógica de conjugación y declinación, y las tablas verbales del francés no encajan en ninguna de las dos. Un enfoque genérico de \"preguntarle al modelo\" se cae en el momento en que un estudiante necesita un desglose gramatical preciso, no solo uno que suene plausible.\n\nEl segundo desafío fue la latencia: una conversación por voz con un tutor de IA tiene que sentirse en tiempo real, lo que significaba que las etapas de speech-to-text, LLM y text-to-speech de ese pipeline debían ser rápidas y escalar de forma independiente — no un monolito bloqueado por el paso más lento.",
+    "solution": "Cada idioma tiene su propia lógica de gramática — conjugación y declinación por idioma, no una caja negra compartida — dentro de un servicio de contenido dedicado que también genera flashcards y búsquedas de palabras. Ese servicio llama a un LLM para la generación en sí, pero la lógica que lo rodea (qué se pide, cómo se estructura, cómo se valida) es determinista, no el modelo improvisando gramática.\n\nSeparar speech-to-text, text-to-speech y el servicio de contenido con LLM en servicios independientes de Go permitió que cada uno escale y falle por su cuenta — una llamada lenta de TTS no bloquea la generación de una flashcard en otro lugar. Todo corre en AWS (ECS, EC2, DynamoDB), provisionado con Pulumi, con el frontend web servido a través de HTML6 — el mismo motor de plantillas que construí en Eldoy Projects, ahora corriendo mi propio producto en producción.",
+    "features": [
+      "Conversaciones por voz en tiempo real con un tutor de IA, con correcciones contextuales",
+      "Repaso de flashcards con repetición espaciada adaptativa",
+      "Generación automática de flashcards a partir de cualquier palabra o frase durante la lectura",
+      "Transcripciones interactivas de YouTube con búsqueda de palabras al hacer clic",
+      "Manejo de gramática por idioma — declinación en alemán, conjugación en ruso, tablas verbales en francés",
+      "Planes de suscripción Free, Pro y Premium"
+    ],
+    "timeline": "En vivo",
+    "team": "Desarrollador solo",
+    "role": "Fundador y Desarrollador Full-Stack",
+    "slug": "ulearn"
+  }
+]

@@ -580,6 +580,11 @@
   padding: 0;
 }
 
+:root.dark .ui-project-detail-writeup pre code {
+  background-color: transparent;
+  color: inherit;
+}
+
 .ui-project-detail-writeup blockquote {
   border-left: 4px solid #9333ea;
   padding-left: 1rem;

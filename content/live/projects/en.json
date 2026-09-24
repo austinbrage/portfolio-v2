@@ -1,1 +1,64 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "HTML6 Template Engine",
+    "description": "A lightweight, component-based server-side template engine for building fast, dynamic HTML from plain JavaScript — the engine powering this site's own rendering.",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+    "tags": [
+      "TypeScript",
+      "Node.js",
+      "Template Engine",
+      "SSR",
+      "Open Source"
+    ],
+    "gradient": "from-violet-500",
+    "githubUrl": "https://github.com/austinbrage/html6",
+    "liveUrl": "https://www.npmjs.com/package/html6",
+    "longDescription": "HTML6 is a server-side template engine. It compiles plain HTML — enhanced with expressions, components, and control flow — into fast, reusable render functions.\n\nEach template compiles once at startup, then renders per request with fresh data — **no virtual DOM, no client-side hydration**, just HTML out.",
+    "challenge": "The hardest part was deciding how much of JavaScript to expose inside templates, without pulling in a full expression-language parser. Interpolations, conditionals, and pipe arguments all needed to accept **arbitrary JavaScript expressions** — not a restricted subset — while staying safe to evaluate against render-time data.\n\nA second, related problem: components needed their own isolated prop scope, while still being able to see outer template variables like the active language or the translator function. That had to work without an explicit prop-drilling chain through every nested component.",
+    "solution": "Templates compile ahead of time into render functions that close over the expression evaluator. That means the per-request cost is just plugging in data — not re-parsing the template.\n\nExpressions are evaluated as real JavaScript against the render scope, so a condition or a pipe argument just works — no mini-language to learn. Component scope inherits from its parent by default, so shared values like the language and translator flow down for free, while explicit props stay isolated to avoid naming collisions.\n\nRendering also strictly requires every referenced template variable to be present in the data. A missing variable throws at render time instead of silently printing nothing — which turned a whole class of template bugs into immediate, loud errors during development instead of quiet gaps in production HTML.\n\nBuilt function by function with TDD: the parser, the expression evaluator, and the component-scope resolution logic each have their own test suite covering every input, written before the final implementation was wired together.",
+    "features": [
+      "Component system with props, slots, and automatic parent-scope inheritance",
+      "Expressions are real JavaScript, not a restricted template mini-language",
+      "Composable pipes for inline transforms: {{value |> esc |> truncate 2}}",
+      "Built-in if/elsif/else conditionals and map loops (with optional index) on any tag",
+      "Strict variable requirements - a referenced-but-missing template variable fails loudly at render time",
+      "Compiles once, renders many times - no per-request re-parsing"
+    ],
+    "timeline": "Stable",
+    "team": "2 developers",
+    "role": "Co-Developer & Maintainer",
+    "slug": "html6"
+  },
+  {
+    "id": 2,
+    "title": "uLearn",
+    "description": "A production AI language-learning platform I designed, built, and operate solo — real-time voice tutoring, adaptive flashcards, and per-language grammar handling across four languages, running on six independent Go microservices.",
+    "image": "https://ultimatelearning.app/images/og-image.png",
+    "tags": [
+      "Go",
+      "TypeScript",
+      "Microservices",
+      "AI/LLM",
+      "AWS"
+    ],
+    "gradient": "from-blue-500",
+    "githubUrl": "",
+    "liveUrl": "https://ultimatelearning.app",
+    "longDescription": "uLearn is a language-learning platform for German, English, Russian, and French, built around one idea: reading, vocabulary review, and AI tutoring should reinforce each other instead of living in separate apps.\n\nIt runs as six independent Go services — an LLM-backed content service, speech-to-text, text-to-speech, a text generator, email, and the core API — plus a web frontend, all deployed on AWS. **I designed, built, and still operate every part of it solo**, from the AWS infrastructure to the subscription billing.",
+    "challenge": "The hard part wasn't wiring up an LLM — it was that four languages don't share a grammar. German needs case and declension handling, Russian needs its own conjugation and declension logic, French verb tables don't map onto either. A single generic \"ask the model\" approach falls apart the moment a learner needs an accurate grammatical breakdown, not just a plausible-sounding one.\n\nThe second challenge was latency: a voice conversation with an AI tutor has to feel real-time, which meant the speech-to-text, LLM, and text-to-speech legs of that pipeline all needed to be fast and independently scalable — not one monolith blocking on the slowest step.",
+    "solution": "Each language got its own grammar-handling code — conjugation and declension logic per language, not one shared black box — living inside a dedicated content service that also generates flashcards and word lookups. That service calls an LLM for the generation itself, but the surrounding logic (what's asked, how it's structured, how it's validated) is deterministic, not the model improvising grammar.\n\nSplitting speech-to-text, text-to-speech, and the LLM content service into independent Go services let each one scale and fail on its own — a slow TTS call doesn't block a flashcard being generated elsewhere. The whole thing runs on AWS (ECS, EC2, DynamoDB), provisioned with Pulumi, with the web frontend served through HTML6 — the same template engine I built at Eldøy Projects, now running my own product in production.",
+    "features": [
+      "Real-time voice conversations with an AI tutor, with contextual corrections",
+      "Adaptive spaced-repetition flashcard review",
+      "Automatic flashcard generation from any word or phrase while reading",
+      "Interactive YouTube transcripts with clickable word lookup",
+      "Per-language grammar handling — German declension, Russian conjugation, French verb tables",
+      "Free, Pro, and Premium subscription tiers"
+    ],
+    "timeline": "Live",
+    "team": "Solo developer",
+    "role": "Founder & Full-Stack Developer",
+    "slug": "ulearn"
+  }
+]
