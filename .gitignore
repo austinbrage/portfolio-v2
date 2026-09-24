@@ -48,3 +48,7 @@ Desktop.ini
 *.tmp
 *.temp
 .tmp/
+
+# Own docs
+docs/job-search.md
+docs/interview-strategy.md
