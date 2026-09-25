@@ -20,6 +20,14 @@
 
 import { writeFile, mkdir, rm, cp } from "fs/promises";
 import { dirname, join, basename } from "path";
+
+try {
+  // Cloudflare Pages injects WEB3FORMS_ACCESS_KEY directly - .env is only for local builds
+  process.loadEnvFile();
+} catch {
+  // .env is optional
+}
+
 import { CSS_FILES, JS_FILES } from "./asset-files.js";
 import { availableLanguages } from "../src/locales";
 import { ContentService } from "../src/services/content.service";
