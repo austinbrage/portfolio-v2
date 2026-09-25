@@ -65,6 +65,7 @@
               <a
                 map="language of props.languages"
                 href="/{{language.code}}"
+                :href="localizedPath('{{language.code}}')"
                 class="ui-navbar-dropdown-item {{lang === language.code ? 'active' : ''}}"
               >
                 <span class="ui-navbar-flag">{{language.flag}}</span>
@@ -101,6 +102,7 @@
               <a
                 map="language of props.languages"
                 href="/{{language.code}}"
+                :href="localizedPath('{{language.code}}')"
                 class="ui-navbar-dropdown-item {{lang === language.code ? 'active' : ''}}"
               >
                 <span class="ui-navbar-flag">{{language.flag}}</span>
