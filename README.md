@@ -113,6 +113,17 @@ pnpm bundle-clean    # or: make bundle-clean
 
 Bundled output (`public/css/app.*.css`, `public/js/app.*.js`, `manifest.json`) is gitignored - it's build output, regenerated on demand.
 
+## Contact Form (Web3Forms)
+
+Create a `.env` from `.env.example` and set `WEB3FORMS_ACCESS_KEY`.
+
+| Environment | Website URL to register on Web3Forms |
+| ----------- | ------------------------------------- |
+| Local       | `http://localhost:5173`               |
+| Production  | your production domain                |
+
+Create a separate form/key per environment at [web3forms.com](https://web3forms.com).
+
 ## Content: Fixtures vs Live
 
 `ContentService` (projects/posts/experiences JSON) and `MarkdownService` (blog/project markdown) both read from a `content/{bucket}/` folder, where the bucket is picked once at boot by `contentBucket` in `src/utils/environments.ts`:
