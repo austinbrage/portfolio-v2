@@ -123,15 +123,15 @@
 .ui-contact-info-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  max-width: 80rem;
+  gap: 3rem;
+  max-width: 72rem;
   margin: 0 auto 4rem;
   padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
   .ui-contact-info-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -223,6 +223,47 @@
 .ui-contact-info-text {
   font-size: 1.25rem;
   color: #4b5563;
+}
+
+.ui-contact-info-copy-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ui-contact-info-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  background-color: rgba(147, 51, 234, 0.1);
+  border: none;
+  border-radius: 0.375rem;
+  color: #9333ea;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+:root.dark .ui-contact-info-copy-btn {
+  color: #a855f7;
+}
+
+.ui-contact-info-copy-btn:hover {
+  background-color: rgba(147, 51, 234, 0.18);
+  color: #db2777;
+}
+
+:root.dark .ui-contact-info-copy-btn:hover {
+  color: #ec4899;
+}
+
+.ui-contact-info-copy-btn svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 :root.dark .ui-contact-info-text {

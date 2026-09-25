@@ -15,40 +15,43 @@ document.addEventListener("alpine:init", function() {
       showSuccess: false,
       showError: false,
 
-      handleSubmit: function() {
+      handleSubmit: function(event) {
         // Prevent multiple submissions
         if (this.isSubmitting) return;
 
-        // Capture the Alpine context before setTimeout
         var self = this;
+        var form = event.target;
 
         self.isSubmitting = true;
         self.showSuccess = false;
         self.showError = false;
 
-        // Simulate API call (replace with real backend call)
-        setTimeout(function() {
-          // Success
-          self.isSubmitting = false;
-          self.showSuccess = true;
+        var payload = Object.fromEntries(new FormData(form));
 
-          // Reset form
-          self.formData = {
-            name: "",
-            email: "",
-            message: ""
-          };
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        })
+          .then(function(response) { return response.json(); })
+          .then(function(result) {
+            self.isSubmitting = false;
 
-          // Hide success message after 5 seconds
-          setTimeout(function() {
-            self.showSuccess = false;
-          }, 5000);
+            if (result.success) {
+              self.showSuccess = true;
+              self.formData = { name: "", email: "", message: "" };
 
-        }, 1000);
-
-        // For error handling:
-        // self.isSubmitting = false;
-        // self.showError = true;
+              setTimeout(function() {
+                self.showSuccess = false;
+              }, 5000);
+            } else {
+              self.showError = true;
+            }
+          })
+          .catch(function() {
+            self.isSubmitting = false;
+            self.showError = true;
+          });
       }
     };
   });

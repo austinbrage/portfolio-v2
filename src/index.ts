@@ -1,5 +1,11 @@
 import express from "express";
 import { join } from "path";
+
+try {
+  process.loadEnvFile();
+} catch {
+  // .env is optional (e.g. CI, or no secrets needed locally)
+}
 import { availableLanguages } from "./locales";
 import { HomeController } from "./controllers/home.controller";
 import { ContactController } from "./controllers/contact.controller";

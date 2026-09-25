@@ -41,9 +41,17 @@ export class ContactController {
         currentPage: "contact",
         navItems: [
           { name: t("navbar-home"), id: "home", href: `/${lang}` },
-          { name: t("navbar-projects"), id: "projects", href: `/${lang}/projects` },
+          {
+            name: t("navbar-projects"),
+            id: "projects",
+            href: `/${lang}/projects`,
+          },
           { name: t("navbar-blog"), id: "blog", href: `/${lang}/blog` },
-          { name: t("navbar-contact"), id: "contact", href: `/${lang}/contact` },
+          {
+            name: t("navbar-contact"),
+            id: "contact",
+            href: `/${lang}/contact`,
+          },
         ],
         languages: [
           { code: "en", name: "English", flag: "🇺🇸" },
@@ -51,15 +59,16 @@ export class ContactController {
         ],
         canonicalUrl: seo.canonicalUrl,
         hreflangAlternates: seo.hreflangAlternates,
-        email: "austin@example.com",
-        phone: "+1234567890",
+        email: "agustinbrage19@gmail.com",
         githubUrl: "https://github.com/austinbrage",
         linkedinUrl: "https://linkedin.com/in/austinbrage",
-        twitterUrl: "https://twitter.com/austinbrage",
+        twitterUrl: "https://x.com/BrageAgustin",
+        web3formsAccessKey: process.env.WEB3FORMS_ACCESS_KEY || "",
       };
 
       // Browser + Cloudflare edge cache, 1h
-      context.set.headers["Cache-Control"] = "public, max-age=3600, s-maxage=3600";
+      context.set.headers["Cache-Control"] =
+        "public, max-age=3600, s-maxage=3600";
       context.set.headers["Content-Type"] = "text/html";
       return renderer.render(renderData);
     } catch (error) {
