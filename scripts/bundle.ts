@@ -16,33 +16,10 @@
 import { readFileSync, writeFileSync, readdirSync, unlinkSync } from "fs";
 import { join } from "path";
 import { createHash } from "crypto";
+import { CSS_FILES, JS_FILES } from "./asset-files.js";
 
 var SKIP_CSS = new Set<string>([]);
 var SKIP_JS = new Set<string>([]);
-
-var CSS_FILES = [
-  // Base
-  "layout.css",
-  "navbar.css",
-  "hero.css",
-  "experience-section.css",
-  "projects-section.css",
-  "blogs-section.css",
-  "footer.css",
-  // Pages
-  "contact.css",
-  "projects.css",
-  "blogs.css",
-  "project.css",
-  "blog.css",
-  "syntax-highlight.css",
-  "experience.css",
-  // System
-  "service-down.css",
-  "not-found.css",
-];
-
-var JS_FILES = ["navbar.js", "contact.js"];
 
 function validateFiles(
   dir: string,

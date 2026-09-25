@@ -19,7 +19,8 @@
  */
 
 import { writeFile, mkdir, rm, cp } from "fs/promises";
-import { dirname, join } from "path";
+import { dirname, join, basename } from "path";
+import { CSS_FILES, JS_FILES } from "./asset-files.js";
 import { availableLanguages } from "../src/locales";
 import { ContentService } from "../src/services/content.service";
 import { HomeController } from "../src/controllers/home.controller";
@@ -104,9 +105,10 @@ async function main() {
   await writeFileAt("404.html", rootNotFound);
 
   console.log("Copying public/ assets...");
+  var bundledFiles = new Set([...CSS_FILES, ...JS_FILES]);
   await cp(join(process.cwd(), "public"), OUT_DIR, {
     recursive: true,
-    filter: (source) => !source.endsWith(".DS_Store"),
+    filter: (source) => !source.endsWith(".DS_Store") && !bundledFiles.has(basename(source)),
   });
 
   console.log(`\nStatic site generated in ${OUT_DIR}`);
