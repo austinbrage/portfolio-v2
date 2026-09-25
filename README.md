@@ -113,6 +113,28 @@ pnpm bundle-clean    # or: make bundle-clean
 
 Bundled output (`public/css/app.*.css`, `public/js/app.*.js`, `manifest.json`) is gitignored - it's build output, regenerated on demand.
 
+### Static Export (Cloudflare Pages)
+
+The whole site is content-driven (no per-request server logic left once the contact form posts directly to Web3Forms), so it ships as pre-rendered static HTML instead of a running server.
+
+```bash
+pnpm run pages:build
+```
+
+Pre-renders every page (both languages, every project/blog/experience, both 404 pages) into `out/`, plus copies `public/` assets. Uses `content/live/` (`NODE_ENV=production`), so requires a real `WEB3FORMS_ACCESS_KEY` to be set (it's baked into the HTML at generation time).
+
+**Cloudflare Pages project settings:**
+
+| Setting                  | Value                       |
+| ------------------------- | ---------------------------- |
+| Framework preset          | None                         |
+| Build command             | `pnpm run pages:build`       |
+| Build output directory    | `out`                        |
+| Root directory             | `/`                           |
+| Environment variable      | `WEB3FORMS_ACCESS_KEY`       |
+
+Connect the GitHub repo with `main` as the production branch to get build-and-deploy on every push. `out/` is gitignored - it's build output, regenerated on every deploy.
+
 ## Contact Form (Web3Forms)
 
 Create a `.env` from `.env.example` and set `WEB3FORMS_ACCESS_KEY`.
