@@ -18,6 +18,13 @@
 
     <div class="ui-projects-section-grid">
       <div class="ui-projects-section-card" map="project of props.projects">
+        <a
+          href="/{{lang}}/projects/{{project.slug}}"
+          class="ui-projects-section-card-link"
+          aria-hidden="true"
+          tabindex="-1"
+        ></a>
+
         <div class="ui-projects-section-card-image-wrapper">
           <img
             src="{{project.image}}"
