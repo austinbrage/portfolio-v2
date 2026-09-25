@@ -14,5 +14,21 @@
     ],
     "author": "Agustin Brage",
     "slug": "html6-tdd"
+  },
+  {
+    "id": 2,
+    "title": "Construyendo un tutor de IA por voz en tiempo real",
+    "excerpt": "Construí un asistente de voz con IA y por defecto se va a sentir lento: no es el modelo, es el transporte. Así es como el tutor de uLearn se mantiene en un socket, filtra el mic con VAD real, y nunca habla sobre sí mismo.",
+    "date": "24 Sep 2026",
+    "readTime": "4 min de lectura",
+    "image": "/images/blog-voice-ai-tutor.svg",
+    "category": "Ingeniería de IA",
+    "tags": [
+      "IA de voz",
+      "WebSocket",
+      "uLearn"
+    ],
+    "author": "Agustin Brage",
+    "slug": "real-time-voice-ai-tutor"
   }
 ]

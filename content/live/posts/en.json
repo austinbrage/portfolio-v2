@@ -14,5 +14,21 @@
     ],
     "author": "Austin Brage",
     "slug": "html6-tdd"
+  },
+  {
+    "id": 2,
+    "title": "Building a Real-Time Voice AI Tutor",
+    "excerpt": "Build a voice AI assistant and it defaults to feeling laggy: not the model, the transport. How uLearn's AI tutor stays on one socket, gates the mic with real VAD, and never talks over itself.",
+    "date": "Sep 24, 2026",
+    "readTime": "4 min read",
+    "image": "/images/blog-voice-ai-tutor.svg",
+    "category": "AI Engineering",
+    "tags": [
+      "Voice AI",
+      "WebSocket",
+      "uLearn"
+    ],
+    "author": "Austin Brage",
+    "slug": "real-time-voice-ai-tutor"
   }
 ]
