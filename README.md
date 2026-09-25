@@ -125,17 +125,17 @@ pnpm run pages:build
 
 Pre-renders every page (both languages, every project/blog/experience, both 404 pages) into `out/`, plus copies `public/` assets. Uses `content/live/` (`NODE_ENV=production`), so requires a real `WEB3FORMS_ACCESS_KEY` to be set (it's baked into the HTML at generation time).
 
-**Cloudflare Pages project settings:**
+**Cloudflare project settings** (current onboarding deploys via Workers Git integration, using `wrangler.toml` + `wrangler deploy` - not the older Pages-only flow):
 
-| Setting                  | Value                       |
-| ------------------------- | ---------------------------- |
-| Framework preset          | None                         |
-| Build command             | `pnpm run pages:build`       |
-| Build output directory    | `out`                        |
-| Root directory             | `/`                           |
-| Environment variable      | `WEB3FORMS_ACCESS_KEY`       |
+| Setting                       | Value                             |
+| ------------------------------ | ----------------------------------- |
+| Build command                  | `pnpm run pages:build`             |
+| Deploy command                 | `npx wrangler deploy`              |
+| Non-production/preview command | `npx wrangler deploy` (same)       |
+| Root directory                 | `/`                                 |
+| Environment variable           | `WEB3FORMS_ACCESS_KEY`             |
 
-Connect the GitHub repo with `main` as the production branch to get build-and-deploy on every push. `out/` is gitignored - it's build output, regenerated on every deploy.
+`wrangler.toml` declares the assets directory (`./out`) that `wrangler deploy` uploads - no separate "build output directory" field to set. Connect the GitHub repo with `main` as the production branch to get build-and-deploy on every push. `out/` is gitignored - it's build output, regenerated on every deploy.
 
 To check the generated output locally before pushing:
 
