@@ -1,73 +1,116 @@
-## Why not just use an existing template engine
+## It's just .html
 
-There's no shortage of server-side template engines already — [Pug](https://pugjs.org), EJS, [Handlebars](https://handlebarsjs.com), Nunjucks.
+Every HTML6 template is a real `.html` file. Not `.pug`, not `.hbs`, not a `.jsx` file pretending to be markup. It's HTML with a few extra attributes and `{{ }}` sprinkled in, so your editor, Prettier, and every linter you already have already understand it.
 
-What kept pulling us back to building our own was a narrower requirement: I wanted interpolations, conditionals, and pipe arguments to accept **real JavaScript expressions** — not a restricted template-language subset that almost, but doesn't quite, do what a normal conditional does.
+That's the actual differentiator, more than any single feature below. No plugin to install, no new extension for your tooling to learn, no build step standing between the file you write and the file the browser would recognize as HTML. A UI/UX designer with zero JavaScript experience can open the file and follow exactly what it's doing.
 
-Handlebars-style engines deliberately keep logic out of templates. I wanted the opposite: trust the template author with real expressions, and put the safety elsewhere (see below).
+## Real JavaScript, not a mini-language
+
+Interpolations and conditionals run **real JavaScript expressions** against the render scope, not a simplified template language that only looks similar:
 
 ```html
-<li map="p of projects" if="p.title.length > 0">{{p.title}}</li>
+<h1>{{title}}</h1>
+<div if="user.loggedIn">Welcome back</div>
+<div elsif="user.pending">Pending approval</div>
+<div else>Please log in</div>
 ```
 
-That condition isn't a mini-DSL comparison — it's evaluated as actual JavaScript against the render scope. Anything valid in a JS expression is valid there.
+If it's valid JavaScript, it's valid inside `{{ }}` or an `if`. There's no mini-language to look up.
 
-![Code editor showing template syntax](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80)
+## Loops with map
 
-## The escaping trade-off
-
-Interpolated values are **not** HTML-escaped by default. Escaping every interpolation costs real time at scale, and most values flowing through a server-rendered template — translated strings, already-sanitized content, numbers, computed labels — don't need it.
-
-One built-in pipe opts a specific value into escaping instead:
+`map` loops over arrays directly on the tag, with an optional index and its own `if`:
 
 ```html
-{{userComment |> esc}}
+<ul>
+  <li map="p, i of projects" if="p.title.length > 0">{{i}}: {{p.title}}</li>
+</ul>
 ```
 
-The trade-off is real. It pushes a security-relevant decision onto whoever writes the template, for every single interpolation, rather than making the safe choice the silent default. I went back and forth on this more than once.
-
-What settled it: nearly everything rendered through HTML6 in practice is either author-controlled content or already-escaped upstream. The interpolations that do need escaping are usually easy to spot at the call site.
-
-It's the kind of trade-off I'd revisit if this were ever handling arbitrary untrusted user input directly in templates at a larger scale.
-
-## Components: shared scope, isolated props
-
-A component gets its own isolated *props* namespace. Everything else in the outer render scope — the active language, the translator function, a cache-busting timestamp — flows down automatically, without being re-declared at every nesting level:
+Nested loops work the same way, one `map` attribute per level:
 
 ```html
-<template is="layout" title="string" description="string">
-  <html lang="{{lang || 'en'}}">
-    ...
-  </html>
+<div map="group of groups">
+  <h2>{{group.name}}</h2>
+  <ul>
+    <li map="item of group.items">{{item}}</li>
+  </ul>
+</div>
+```
+
+## Pipes for safe transforms
+
+Function calls inside `{{ }}` are disabled for security. `|>` chains transforms onto a value instead:
+
+```html
+{{title |> upper |> truncate 20}}
+{{price |> formatCurrency}}
+{{date |> formatDate 'YYYY-MM-DD'}}
+```
+
+Pipes are just functions registered by name, so adding a new one is a few lines of JavaScript, not a change to the template language itself:
+
+```js
+var pipes = {
+  upper: (x) => String(x).toUpperCase(),
+  truncate: (x, len) => String(x).slice(0, len)
+}
+
+html6.compile(template, { pipes })
+```
+
+## Components, slots, and isolated props
+
+`<template is="...">` defines a component. `<slot>` marks where its children get inserted. Props stay isolated to that component, while everything else in the outer scope flows down automatically, without being re-declared at every level:
+
+```html
+<template is="card" title="string">
+  <div class="card">
+    <h2>{{props.title}}</h2>
+    <slot></slot>
+  </div>
 </template>
 ```
 
-The active language here was never listed as a prop of this component. It's simply *visible*, inherited from whatever called the top-level render with that data.
+```html
+<card title="Hi {{user.name}}">
+  <p>Rendered from the slot.</p>
+</card>
+```
 
-Only **title** and **description** are actual props — those are things a caller should explicitly set per use, not inherit implicitly.
+## Compiles once, runs on every request
 
-Prop names also have to be valid JavaScript identifiers: camelCase, not dash-separated. They become direct property access under the hood, and a dash in a name would make that access invalid syntax.
+`compile()` takes the template and returns a render function. That's the expensive part, so it only runs once, at startup, and the result gets cached. Every request after that just calls that cached render function with fresh data.
 
-It's a small constraint, but a much cheaper one to enforce upfront than to explain after the fact — so it's simply how components are written from the start.
-
-## Fail loud, not quiet
-
-The rule I'm most opinionated about: every variable a template references has to be present in the data object passed to render, even if it's just an empty string.
-
-A referenced-but-missing variable throws immediately, instead of silently printing nothing.
-
-I added this after chasing one too many blank sections in rendered HTML that turned out to be a forgotten field in a controller three files away. With strict variables, that mistake now surfaces the moment you render — not whenever someone happens to notice the empty section on the page.
-
-## Built test-first, function by function
-
-My manager at Eldøy pushed me to build HTML6 test-first: a small, focused unit test suite for every function — the parser, the masking/unmasking compiler step, the expression evaluator, the component-scope resolver — each one covering its full range of inputs before the implementation that made those tests pass even existed.
-
-It's part of why the masking/unmasking rewrite (the whole reason HTML6 ended up this fast) was something I could attempt with real confidence. Rewriting a compiler that already has a genuine test suite around every piece is a different kind of risk than rewriting one held together by manual spot-checks.
+<figure>
+<svg viewBox="0 0 690 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing a template compiling once into a render function, then fanning out to serve multiple requests without recompiling">
+  <text x="345" y="20" text-anchor="middle" font-size="12" font-style="italic" fill="currentColor" fill-opacity="0.75">one compile, many renders</text>
+  <defs>
+    <marker id="html6flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+    </marker>
+  </defs>
+  <rect x="15" y="90" width="210" height="90" rx="10" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <text x="120" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">Template compiles</text>
+  <text x="120" y="156" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor" fill-opacity="0.75">once, at startup</text>
+  <line x1="225" y1="135" x2="285" y2="135" stroke="currentColor" stroke-width="1.5" />
+  <path d="M305 100 L280 140 L298 140 L285 175 L325 130 L303 130 Z" fill="currentColor" />
+  <line x1="330" y1="135" x2="555" y2="45" stroke="currentColor" stroke-width="1.5" marker-end="url(#html6flow-arrow)" />
+  <line x1="330" y1="135" x2="555" y2="135" stroke="currentColor" stroke-width="1.5" marker-end="url(#html6flow-arrow)" />
+  <line x1="330" y1="135" x2="555" y2="225" stroke="currentColor" stroke-width="1.5" marker-end="url(#html6flow-arrow)" />
+  <rect x="560" y="20" width="46" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <line x1="568" y1="35" x2="598" y2="35" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="568" y1="48" x2="590" y2="48" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <rect x="560" y="110" width="46" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <line x1="568" y1="125" x2="598" y2="125" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="568" y1="138" x2="590" y2="138" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <rect x="560" y="200" width="46" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <line x1="568" y1="215" x2="598" y2="215" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="568" y1="228" x2="590" y2="228" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+</svg>
+<figcaption>Compiling depends only on the template, so it happens once and gets cached. Rendering depends only on the data, so every request just calls that cached function again. An already fast engine, made even faster: compiling never runs twice.</figcaption>
+</figure>
 
 ## Where it actually runs
 
-HTML6 first shipped in production at [Nobo](https://en.nobo.no/) — the very first deployed site to run it, and the workplace this all started at.
-
-It also powers [Ultimate Learning](https://ultimatelearning.app/), a language-learning app I actively maintain. Each template compiles once, then renders per request from that compiled function — no re-parsing, no client-side hydration step.
-
-It's a genuinely stable, production template engine at this point — not a toy that got built once and abandoned.
+HTML6 first shipped in production at [Nobo](https://en.nobo.no/), the workplace this all started at. It also powers [Ultimate Learning](https://ultimatelearning.app/), a language-learning app I actively maintain. Two real production sites, not a demo that got built once and abandoned.

@@ -1,73 +1,116 @@
-## Por qué no usar simplemente un motor de plantillas existente
+## Es simplemente .html
 
-No faltan motores de plantillas del lado del servidor — [Pug](https://pugjs.org), EJS, [Handlebars](https://handlebarsjs.com), Nunjucks.
+Cada plantilla de HTML6 es un archivo `.html` real. No `.pug`, no `.hbs`, no un archivo `.jsx` disfrazado de markup. Es HTML con algunos atributos extra y `{{ }}` de vez en cuando, así que tu editor, Prettier y cualquier linter que ya tengas lo entienden sin nada más.
 
-Lo que nos hacía volver una y otra vez a construir el nuestro fue un requisito más específico: quería que las interpolaciones, condicionales y argumentos de pipes aceptaran **expresiones de JavaScript reales** — no un subconjunto de lenguaje de plantillas restringido que casi, pero no del todo, hace lo mismo que un condicional normal.
+Ese es el diferenciador real, más que cualquier feature puntual de las de abajo. No hay plugin que instalar, ni una extensión nueva que tu tooling tenga que aprender, ni un build step parado entre el archivo que escribís y el archivo que el navegador ya reconocería como HTML. Un diseñador UI/UX sin experiencia en JavaScript puede abrir el archivo y seguir exactamente qué está haciendo.
 
-Los motores estilo Handlebars mantienen la lógica deliberadamente fuera de las plantillas. Yo quería lo contrario: confiar en el autor de la plantilla con expresiones reales, y poner la seguridad en otro lado (ver más abajo).
+## JavaScript real, no un mini-lenguaje
+
+Las interpolaciones y los condicionales ejecutan **expresiones de JavaScript reales** contra el scope de renderizado, no un lenguaje de plantillas simplificado que solo se le parece:
 
 ```html
-<li map="p of projects" if="p.title.length > 0">{{p.title}}</li>
+<h1>{{title}}</h1>
+<div if="user.loggedIn">Bienvenido de nuevo</div>
+<div elsif="user.pending">Pendiente de aprobación</div>
+<div else>Por favor iniciá sesión</div>
 ```
 
-Esa condición no es una comparación de un mini-DSL — se evalúa como JavaScript real contra el scope de renderizado. Cualquier cosa válida en una expresión de JS es válida ahí.
+Si es JavaScript válido, es válido dentro de `{{ }}` o de un `if`. No hay un mini-lenguaje que tener que consultar.
 
-![Editor de código mostrando la sintaxis de plantillas](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80)
+## Loops con map
 
-## El trade-off del escaping
-
-Los valores interpolados **no** se escapan a HTML por defecto. Escapar cada interpolación cuesta tiempo real a escala, y la mayoría de los valores que fluyen por una plantilla renderizada en el servidor — strings traducidos, contenido ya sanitizado, números, labels calculados — no lo necesitan.
-
-Un pipe integrado permite optar por escapar un valor específico:
+`map` recorre arrays directamente sobre el tag, con un índice opcional y su propio `if`:
 
 ```html
-{{userComment |> esc}}
+<ul>
+  <li map="p, i of projects" if="p.title.length > 0">{{i}}: {{p.title}}</li>
+</ul>
 ```
 
-El trade-off es real. Empuja una decisión relevante para la seguridad hacia quien escribe la plantilla, en cada interpolación, en lugar de hacer que la opción segura sea la opción silenciosa por defecto. Lo dudé más de una vez.
-
-Lo que terminó de decidirlo: en la práctica, casi todo lo que se renderiza a través de HTML6 es contenido controlado por el autor o ya viene escapado desde antes. Las interpolaciones que sí necesitan escaping suelen ser fáciles de detectar en el punto donde se usan.
-
-Es el tipo de trade-off que reconsideraría si esto alguna vez tuviera que manejar input arbitrario de usuarios no confiables directamente en las plantillas, a mayor escala.
-
-## Componentes: scope compartido, props aislados
-
-Un componente tiene su propio namespace aislado de *props*. Todo lo demás en el scope de renderizado externo — el idioma activo, la función de traducción, un timestamp para cache-busting — fluye hacia abajo automáticamente, sin tener que redeclararse en cada nivel de anidamiento:
+Los loops anidados funcionan igual, un atributo `map` por nivel:
 
 ```html
-<template is="layout" title="string" description="string">
-  <html lang="{{lang || 'en'}}">
-    ...
-  </html>
+<div map="group of groups">
+  <h2>{{group.name}}</h2>
+  <ul>
+    <li map="item of group.items">{{item}}</li>
+  </ul>
+</div>
+```
+
+## Pipes para transformaciones seguras
+
+Las llamadas a funciones dentro de `{{ }}` están deshabilitadas por seguridad. `|>` encadena transformaciones sobre un valor en su lugar:
+
+```html
+{{title |> upper |> truncate 20}}
+{{price |> formatCurrency}}
+{{date |> formatDate 'YYYY-MM-DD'}}
+```
+
+Los pipes son simplemente funciones registradas por nombre, así que agregar uno nuevo son unas pocas líneas de JavaScript, no un cambio al lenguaje de plantillas en sí:
+
+```js
+var pipes = {
+  upper: (x) => String(x).toUpperCase(),
+  truncate: (x, len) => String(x).slice(0, len)
+}
+
+html6.compile(template, { pipes })
+```
+
+## Componentes, slots y props aislados
+
+`<template is="...">` define un componente. `<slot>` marca dónde se insertan sus hijos. Los props quedan aislados a ese componente, mientras que todo lo demás del scope externo fluye hacia abajo automáticamente, sin tener que redeclararse en cada nivel:
+
+```html
+<template is="card" title="string">
+  <div class="card">
+    <h2>{{props.title}}</h2>
+    <slot></slot>
+  </div>
 </template>
 ```
 
-El idioma activo aquí nunca se declaró como prop de este componente. Simplemente es *visible*, heredado de quien haya llamado al render de nivel superior con esos datos.
+```html
+<card title="Hola {{user.name}}">
+  <p>Renderizado desde el slot.</p>
+</card>
+```
 
-Solo **title** y **description** son props reales — son cosas que quien llama debería setear explícitamente en cada uso, no heredar implícitamente.
+## Se compila una vez, corre en cada request
 
-Los nombres de los props también tienen que ser identificadores válidos de JavaScript: camelCase, no separados por guiones. Por debajo se convierten en acceso directo a propiedades, y un guión en el nombre haría que ese acceso fuera sintaxis inválida.
+`compile()` toma la plantilla y devuelve una función de render. Esa es la parte costosa, así que solo corre una vez, al arrancar, y el resultado se guarda en caché. Cada request después de eso simplemente llama a esa función cacheada con datos frescos.
 
-Es una restricción pequeña, pero mucho más barata de imponer desde el principio que de explicar después — así que simplemente es la forma en que se escriben los componentes desde el inicio.
-
-## Fallar ruidosamente, no en silencio
-
-La regla en la que soy más estricto: cada variable que una plantilla referencia tiene que estar presente en el objeto de datos que se pasa al render, aunque sea solo un string vacío.
-
-Una variable referenciada pero ausente lanza un error inmediatamente, en lugar de imprimir silenciosamente nada.
-
-Agregué esto después de perseguir demasiadas secciones en blanco en el HTML renderizado que resultaban ser un campo olvidado en un controller a tres archivos de distancia. Con variables estrictas, ese error ahora sale a la luz en el momento de renderizar — no cuando alguien nota por casualidad la sección vacía en la página.
-
-## Construido test-first, función por función
-
-Mi jefe en Eldøy me impulsó a construir HTML6 test-first: una suite de tests unitarios chica y enfocada para cada función — el parser, el paso de compilación de masking/unmasking, el evaluador de expresiones, el resolvedor de scope de componentes — cada una cubriendo todo su rango de inputs antes de que existiera siquiera la implementación que hacía pasar esos tests.
-
-Es en parte por qué la reescritura de masking/unmasking (la razón por la que HTML6 terminó siendo tan rápido) fue algo que pude intentar con confianza real. Reescribir un compilador que ya tiene una suite de tests genuina alrededor de cada pieza es un tipo de riesgo distinto a reescribir uno sostenido por chequeos manuales.
+<figure>
+<svg viewBox="0 0 690 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama que muestra una plantilla compilándose una vez en una función de render, y después ramificándose para servir múltiples requests sin recompilar">
+  <text x="345" y="20" text-anchor="middle" font-size="12" font-style="italic" fill="currentColor" fill-opacity="0.75">se compila una vez, se renderiza muchas</text>
+  <defs>
+    <marker id="html6flow-arrow-es" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+    </marker>
+  </defs>
+  <rect x="15" y="90" width="210" height="90" rx="10" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <text x="120" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">La plantilla compila</text>
+  <text x="120" y="156" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor" fill-opacity="0.75">una vez, al arrancar</text>
+  <line x1="225" y1="135" x2="285" y2="135" stroke="currentColor" stroke-width="1.5" />
+  <path d="M305 100 L280 140 L298 140 L285 175 L325 130 L303 130 Z" fill="currentColor" />
+  <line x1="330" y1="135" x2="555" y2="45" stroke="currentColor" stroke-width="1.5" marker-end="url(#html6flow-arrow-es)" />
+  <line x1="330" y1="135" x2="555" y2="135" stroke="currentColor" stroke-width="1.5" marker-end="url(#html6flow-arrow-es)" />
+  <line x1="330" y1="135" x2="555" y2="225" stroke="currentColor" stroke-width="1.5" marker-end="url(#html6flow-arrow-es)" />
+  <rect x="560" y="20" width="46" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <line x1="568" y1="35" x2="598" y2="35" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="568" y1="48" x2="590" y2="48" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <rect x="560" y="110" width="46" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <line x1="568" y1="125" x2="598" y2="125" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="568" y1="138" x2="590" y2="138" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <rect x="560" y="200" width="46" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <line x1="568" y1="215" x2="598" y2="215" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="568" y1="228" x2="590" y2="228" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.6" />
+</svg>
+<figcaption>Compilar depende solo de la plantilla, así que pasa una vez y se cachea. Renderizar depende solo de los datos, así que cada request simplemente vuelve a llamar a esa función cacheada. Un motor ya rápido, hecho todavía más rápido: la compilación nunca corre dos veces.</figcaption>
+</figure>
 
 ## Dónde corre realmente
 
-HTML6 se lanzó por primera vez en producción en [Nobo](https://en.nobo.no/) — el primer sitio desplegado en correr con él, y el lugar de trabajo donde todo esto empezó.
-
-También impulsa [Ultimate Learning](https://ultimatelearning.app/), una app de aprendizaje de idiomas que mantengo activamente. Cada plantilla se compila una vez, y luego se renderiza por cada request a partir de esa función compilada — sin volver a parsear, sin paso de hidratación en el cliente.
-
-A esta altura es un motor de plantillas genuinamente estable y en producción — no un juguete que se construyó una vez y se abandonó.
+HTML6 se lanzó por primera vez en producción en [Nobo](https://en.nobo.no/), el lugar de trabajo donde todo esto empezó. También impulsa [Ultimate Learning](https://ultimatelearning.app/), una app de aprendizaje de idiomas que mantengo activamente. Dos sitios reales en producción, no una demo que se construyó una vez y se abandonó.

@@ -1,0 +1,30 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <marker id="html6HeroArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ffffff"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- stage 1: the tag as written -->
+  <rect x="60" y="165" width="300" height="300" rx="28" fill="#ffffff"/>
+  <path d="M160 245 L120 315 L160 385" fill="none" stroke="#9333ea" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="180" y="300" width="60" height="30" rx="8" fill="#9333ea"/>
+  <path d="M260 245 L300 315 L260 385" fill="none" stroke="#9333ea" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="370" y1="315" x2="440" y2="315" stroke="#ffffff" stroke-width="8" marker-end="url(#html6HeroArrow)"/>
+  <!-- stage 2: masked behind a placeholder key -->
+  <rect x="450" y="165" width="300" height="300" rx="28" fill="#ffffff"/>
+  <path d="M570 300 A30 30 0 0 1 630 300" fill="none" stroke="#ec4899" stroke-width="14" stroke-linecap="round"/>
+  <rect x="555" y="295" width="90" height="80" rx="14" fill="#ec4899"/>
+  <circle cx="600" cy="325" r="10" fill="#ffffff"/>
+  <rect x="594" y="333" width="12" height="22" rx="4" fill="#ffffff"/>
+  <line x1="760" y1="315" x2="830" y2="315" stroke="#ffffff" stroke-width="8" marker-end="url(#html6HeroArrow)"/>
+  <!-- stage 3: hydrated back to the real tag -->
+  <rect x="840" y="165" width="300" height="300" rx="28" fill="#ffffff"/>
+  <path d="M940 245 L900 315 L940 385" fill="none" stroke="#9333ea" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="960" y="300" width="60" height="30" rx="8" fill="#9333ea"/>
+  <path d="M1040 245 L1080 315 L1040 385" fill="none" stroke="#9333ea" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
