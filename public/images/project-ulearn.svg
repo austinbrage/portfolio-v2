@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- spokes to each language -->
+  <line x1="250" y1="150" x2="600" y2="315" stroke="#ffffff" stroke-width="5" stroke-opacity="0.65"/>
+  <line x1="950" y1="150" x2="600" y2="315" stroke="#ffffff" stroke-width="5" stroke-opacity="0.65"/>
+  <line x1="250" y1="480" x2="600" y2="315" stroke="#ffffff" stroke-width="5" stroke-opacity="0.65"/>
+  <line x1="950" y1="480" x2="600" y2="315" stroke="#ffffff" stroke-width="5" stroke-opacity="0.65"/>
+  <!-- central voice-tutor chat bubble -->
+  <path d="M580 425 L580 460 L620 425 Z" fill="#ffffff"/>
+  <rect x="430" y="205" width="340" height="220" rx="40" fill="#ffffff"/>
+  <rect x="521" y="285" width="14" height="60" rx="7" fill="#9333ea"/>
+  <rect x="545" y="272" width="14" height="86" rx="7" fill="#9333ea"/>
+  <rect x="569" y="250" width="14" height="130" rx="7" fill="#9333ea"/>
+  <rect x="593" y="235" width="14" height="160" rx="7" fill="#9333ea"/>
+  <rect x="617" y="250" width="14" height="130" rx="7" fill="#9333ea"/>
+  <rect x="641" y="272" width="14" height="86" rx="7" fill="#9333ea"/>
+  <rect x="665" y="285" width="14" height="60" rx="7" fill="#9333ea"/>
+  <!-- four languages, orbiting -->
+  <circle cx="250" cy="150" r="60" fill="#ffffff"/>
+  <text x="250" y="172" text-anchor="middle" font-size="58" font-weight="700" fill="#9333ea" font-family="Georgia, serif">Ä</text>
+  <circle cx="950" cy="150" r="60" fill="#ffffff"/>
+  <text x="950" y="172" text-anchor="middle" font-size="58" font-weight="700" fill="#ec4899" font-family="Georgia, serif">Я</text>
+  <circle cx="250" cy="480" r="60" fill="#ffffff"/>
+  <text x="250" y="502" text-anchor="middle" font-size="58" font-weight="700" fill="#ec4899" font-family="Georgia, serif">É</text>
+  <circle cx="950" cy="480" r="60" fill="#ffffff"/>
+  <text x="950" y="502" text-anchor="middle" font-size="58" font-weight="700" fill="#9333ea" font-family="Georgia, serif">A</text>
+</svg>

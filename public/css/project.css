@@ -472,6 +472,10 @@
   color: #cbd5e1;
 }
 
+.ui-project-detail-writeup figure {
+  margin: 2rem 0;
+}
+
 .ui-project-detail-writeup h2 {
   font-size: 1.875rem;
   font-weight: 700;
