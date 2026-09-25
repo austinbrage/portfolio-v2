@@ -135,6 +135,14 @@ Pre-renders every page (both languages, every project/blog/experience, both 404 
 
 Connect the GitHub repo with `main` as the production branch to get build-and-deploy on every push. `out/` is gitignored - it's build output, regenerated on every deploy.
 
+To check the generated output locally before pushing:
+
+```bash
+pnpm run pages:preview
+```
+
+Serves `out/` as static files (via `serve`). Good enough to click through pages, verify content/assets/language switching and the contact form. It doesn't replicate Cloudflare Pages' nested `404.html` handling though - that part only verifies correctly after a Pages deploy.
+
 ## Contact Form (Web3Forms)
 
 Create a `.env` from `.env.example` and set `WEB3FORMS_ACCESS_KEY`.

@@ -10,6 +10,7 @@
     "bundle-clean": "rm -f public/css/app.*.css public/js/app.*.js manifest.json && echo \"Bundle files removed\"",
     "build": "tsc",
     "pages:build": "npm run bundle && cross-env NODE_ENV=production tsx scripts/generate-static.js",
+    "pages:preview": "npx serve out",
     "start": "npm run bundle && cross-env NODE_ENV=production node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
