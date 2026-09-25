@@ -113,6 +113,8 @@ pnpm bundle-clean    # or: make bundle-clean
 
 Bundled output (`public/css/app.*.css`, `public/js/app.*.js`, `manifest.json`) is gitignored - it's build output, regenerated on demand.
 
+> **Note:** `pnpm build && pnpm start` currently doesn't fully boot - `tsc` only compiles `.ts` files, so `dist/` never gets `src/views/*.html` / `src/components/*.html`, and the server fails on startup looking for them. Left as-is since production now runs through the static export below instead of this compiled server; worth a look if this path is ever needed again (e.g. staging, or dynamic server logic later).
+
 ### Static Export (Cloudflare Pages)
 
 The whole site is content-driven (no per-request server logic left once the contact form posts directly to Web3Forms), so it ships as pre-rendered static HTML instead of a running server.
