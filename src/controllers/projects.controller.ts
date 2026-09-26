@@ -64,7 +64,6 @@ export class ProjectsController {
         canonicalUrl: seo.canonicalUrl,
         hreflangAlternates: seo.hreflangAlternates,
         projects,
-        email: "austin@example.com",
       };
 
       // Browser + Cloudflare edge cache, 1h

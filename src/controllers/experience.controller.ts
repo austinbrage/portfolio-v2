@@ -73,7 +73,6 @@ export class ExperienceController {
         canonicalUrl: seo.canonicalUrl,
         hreflangAlternates: seo.hreflangAlternates,
         experience,
-        email: "austin@example.com",
       };
 
       // Browser + Cloudflare edge cache, 1h

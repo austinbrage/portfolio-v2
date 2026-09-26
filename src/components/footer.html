@@ -1,4 +1,4 @@
-<template is="ui-footer" email="string">
+<template is="ui-footer">
   <footer id="contact" class="ui-footer">
     <div class="ui-footer-container">
       <h2 class="ui-footer-title">{{t('footer-title')}}</h2>
@@ -6,7 +6,7 @@
         {{t('footer-description')}}
       </p>
       <a
-        href="mailto:{{props.email}}"
+        href="/{{lang}}/contact"
         class="ui-footer-cta"
       >
         {{t('footer-cta')}}

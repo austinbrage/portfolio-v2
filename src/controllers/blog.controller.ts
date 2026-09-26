@@ -70,7 +70,6 @@ export class BlogController {
         content,
         currentUrl,
         encodeURIComponent: encodeURIComponent,
-        email: "austin@example.com",
       };
 
       // Browser + Cloudflare edge cache, 1h
