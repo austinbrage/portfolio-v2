@@ -65,7 +65,7 @@ export class HomeController {
         ],
         heroGithubUrl: "https://github.com/austinbrage",
         heroLinkedinUrl: "https://linkedin.com/in/austinbrage",
-        heroEmail: "austin@example.com",
+        heroEmail: "agustinbrage19@gmail.com",
         canonicalUrl: seo.canonicalUrl,
         hreflangAlternates: seo.hreflangAlternates,
         experiences,

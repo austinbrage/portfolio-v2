@@ -78,7 +78,6 @@ export class ProjectController {
         challenge,
         solution,
         content,
-        email: "austin@example.com",
       };
 
       // Browser + Cloudflare edge cache, 1h

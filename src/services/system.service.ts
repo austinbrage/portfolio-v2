@@ -33,6 +33,7 @@ export async function renderServiceDown(context: any): Promise<string> {
     hreflangAlternates: [],
     lang,
     t,
+    email: "agustinbrage19@gmail.com",
   };
 
   context.set.status = 500;
